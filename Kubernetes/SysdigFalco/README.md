@@ -1,49 +1,52 @@
-# Profiling and Logging - sysdig-falco
+# **Sysdig Falco**
 
 
-##### Step 1: 
+### *Profiling and Monitoring K8s*
 
-* Navigate to the `SysdigFalco` directory
+-------
 
-```bash
+#### Step 1:
+
+* Navigate to the `SysdigFalco` directory on the provisioned server
+
+```commandline
 cd /root/container_training/Kubernetes/SysdigFalco
 ```
 
-##### Step 2: 
+* Fetch the IP of the provisioned server
 
-* Fetch the Server IP
-
-```bash
+```commandline
 serverip
 ```
 
-##### Step 3: 
+-------
 
-* Edit `falco_daemonset.yaml` and update the IP in curl command on `line 21`.
+#### Step 2:
 
-```bash
+* On `line 21` in `falco_daemonset.yaml`, replace `<serverip>` and update the IP in curl command
+
+```commandline
 sed -i -e 's/SERVER-IP/<serverip>/g' falco_daemonset.yaml
 ```
 
-EXAMPLE:
+**EXAMPLE**: `sed -i -e 's/SERVER-IP/104.1.1.1/g' falco_daemonset.yaml`
 
-```yaml
-args: [ "/usr/bin/falco", "-pk", "-o", "json_output=true", "-o", "program_output.enabled=true", "-o",  "program_output.program=jq '{text: .output}' | curl -d @- -X POST http://192.168.1.1:9090"]
-```
 
-##### Step 4: 
+-------
 
-* Create the Falco daemonset
+#### Step 3:
 
-```yaml
+* Create the Falco `daemonset` and wait for a few seconds till the pod is `Running`
+
+```commandline
 kubectl create -f falco_daemonset.yaml
+
+kubectl get pods
 ```
 
-##### Step 5:
+* Create a pod that intentionally generates malicious events for Falco to track
 
-* Create a Pod that intentionally generates malicious events
-
-```bash
+```commandline
 kubectl create -f falco-event-generator-deployment.yaml
 
 kubectl get deployments
@@ -51,23 +54,36 @@ kubectl get deployments
 kubectl get pods
 ```
 
-* Ensure that the `Status` of pods in `Running`
+* Ensure that the `Status` of pods are `Running`
 
-##### Step 6:
+-------
 
+#### Step 4:
 
-* Start tornado server to get the real-time logs of malicious events
+* Start a server to get real-time logs of malicious events generated on the cluster. Observe the results
 
-```bash
+```commandline
 ./tornado_server.py
 ```
 
-* Stop the tornado server with `ctrl + c`
+* Stop the server
 
-##### Step 7:
+```commandline
+crtl + c
+```
 
-* Stop the malicious event-generator and falco daemonset
+-------
 
-```bash
+#### Step 5:
+
+* Stop the Malicious event-generator and Falco daemonset
+
+```commandline
 kubectl delete -f falco-event-generator-deployment.yaml -f falco_daemonset.yaml
 ```
+
+---------
+
+### Reading Material/References:
+
+

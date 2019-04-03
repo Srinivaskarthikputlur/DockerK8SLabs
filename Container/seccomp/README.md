@@ -1,7 +1,50 @@
-## SECCOMP Profiles for Docker Containers
+# **SecComp**
 
-* cd into <directory> with `cd <directory>`
+### *Secure Computing Profiles for Docker*
 
-* Run `docker run -it --rm --security-opt seccomp:custom_profile.json alpine chmod 400 /etc/hostname`
+-------
 
-* Observe the results
+#### Step 1:
+
+* Navigate to the `SecComp` directory on the provisioned server.
+
+```
+cd /root/container-training/Container/seccomp/
+```
+
+-------
+
+#### Step 2:
+
+* Go through the `custom_profile.json`, the example SecComp profile we'll be using
+
+```commandline
+cat custom_profile.json
+```
+
+#####  **The SecComp profile blocks `chmod`, `chown` and `chown32` when loaded onto a container**
+
+-------
+
+#### Step 3:
+
+* Launch a container and try using the `chmod` command. Observer the results
+
+```commandline
+docker run -it --rm --security-opt seccomp:custom_profile.json alpine chmod 400 /etc/hostname
+```
+
+-------
+
+#### Step 4:
+
+* Stop all containers
+
+```commandline
+clean-docker
+```
+
+---------
+
+### Reading Material/References:
+

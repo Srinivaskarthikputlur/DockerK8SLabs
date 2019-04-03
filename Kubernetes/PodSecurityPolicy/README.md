@@ -1,88 +1,94 @@
-# Pod Security Policy
+# **Pod Security Policy**
 
-###### There are multiple options that one can use to protect the runtime deployment of a Pod. One of them is the `PodSecurityPolicy`.
+### *There are multiple options that one can use to protect the runtime deployment of a Pod. One of them is the `PodSecurityPolicy`.*
 
-###### `PodSecurityPolicy` can be deployed, cluster-wide, namespace-wide or inline as part of the Pod's declaration.
+### *`PodSecurityPolicy` can be deployed, cluster-wide, namespace-wide or inline as part of the Pod's declaration.*
 
-###### We are going to use a combination of `AppArmor` profiles, `Seccomp` and some good container security practices to protect our deployment
+### *We are going to use a combination of `AppArmor` profiles, `Seccomp` and some good container security practices to protect our deployment*
 
-###### First let's read the `secure-ngflask-deploy.yml` file, you will see some changes from before:
+-------
 
-```
-annotations:
-    seccomp.security.alpha.kubernetes.io/defaultProfileName:  'docker/default'
-    container.apparmor.security.beta.kubernetes.io/secure-vul-flask: 'localhost/k8s-vul-flask-redis-armor'
+#### Step 1:
 
-```
+* Navigate to the `PodSecurityPolicy` directory on the provisioned server
 
-###### These annotations essentially ensure two things.
-
-###### 1. The default docker `seccomp` profile is added to the the Pod.
-
-###### 2. A custom AppArmor Profile that we have prepped for this class, will be applied against a specific container in this case, the flask application.
-
-###### This is our AppArmor Profile:
-
-```
-#include <tunables/global>
-profile k8s-vul-flask-redis-armor flags=(attach_disconnected,mediate_deleted) {
-  #include <abstractions/base>
-  file,
-  network,
-  capability,
-  deny /app/** w, #deny file write to /app directory
-  deny /tmp/** w, #deny file write to /tmp directory
-  deny /etc/passwd rwklx, #deny all access to /etc/passwd
-  deny /etc/shadow rwklx, #deny all access to /etc/shadow
-
-  #restrict access to HOME
-
-  audit deny @{HOME}/.* mrwkl,
-  audit deny @{HOME}/.*/ rw,
-  audit deny @{HOME}/.*/** mrwkl,
-  audit deny @{HOME}/bin/ rw,
-  audit deny @{HOME}/bin/** mrwkl,
-  # @{HOME}/ r,
-  # @{HOME}/** rw,
-}
-```
-
-###### The objective of this profile is not necessarily to block all possible attacks (which is highly difficult/impossible to achieve).
-
-###### The focus is to block off some possible attacks and reduce the damage caused by a compromise of the app or container in any way.
-
-### Let's apply this apparmor profile.
-
-
-##### Step 1:
-
-* Navigate to the `PodSecurityPolicy` directory.
-
-```bash
+```commandline
 cd /root/container_training/Kubernetes/PodSecurityPolicy
 ```
 
+* Read the `secure-ngflask-deploy.yml` file and observe the changes
 
-##### Step 2:
+```commandline
+annotations:
+    seccomp.security.alpha.kubernetes.io/defaultProfileName:  'docker/default'
+    container.apparmor.security.beta.kubernetes.io/secure-vul-flask: 'localhost/k8s-vul-flask-redis-armor'
+```
 
-* Run `apparmor_parser k8s-vul-flask-redis-armor` to apply the profile on the local AppArmor instance
+* These annotations essentially ensure two things:
+    
+    1. The default docker `seccomp` profile is added to the the Pod
+    2. A custom AppArmor Profile that we have prepped for this class, will be applied against a specific container in this case, the flask application.
 
+-------
 
-##### Step 4:
+#### Step 2:
 
-* Create the nginx configmap with `kubectl create configmap nginx-config --from-file=/root/container_training/Kubernetes/PodSecurityPolicy/reverseproxy.conf`
+* Read the AppArmor profile
 
-* Deploy the pod with `kubectl create -f secure-ngflask-deploy.yml`
+```commandline
+cat k8s-vul-flask-redis-armor
+```
 
-* Run `kubectl get pods` and make wait till you get the status of `Running` for the Pod
+### *The objective of this profile is not necessarily to block all possible attacks (which is highly difficult/impossible to achieve).*
 
+### *The focus is to block off some possible attacks and reduce the damage caused by a compromise of the app or container in any way.*
 
-##### Step 5:
+-------
 
-* Now run `kubectl exec -it secure-ngflask-redis --container secure-vul-flask -- sh` get a shell environment on the Container running flask
+#### Step 3:
 
-* Try to create a file with `touch shell.py`. Observe the results
+* Apply the AppArmor profile on the local instance
 
-* Try to create a file in the `/tmp` directory with `touch /tmp/shell.py`. Observe the results.
+```commandline
+apparmor_parser k8s-vul-flask-redis-armor
+```
 
-* Try and access `/etc/passwd` or `/etc/shadow` with `cat /etc/passwd` or `cat /etc/shadow`
+* Create a nginx `configmap`
+
+```commandline
+kubectl create configmap nginx-config --from-file=/root/container_training/Kubernetes/PodSecurityPolicy/reverseproxy.conf
+```
+
+* Deploy the Secure nginx-flask pod and wait the the status of the pod is `Running`
+
+```commandline
+kubectl create -f secure-ngflask-deploy.yml
+
+kubectl get pods
+```
+
+-------
+
+#### Step 4:
+
+* Exec into the container running flask to get a shell environment
+
+```commandline
+kubectl exec -it secure-ngflask-redis --container secure-vul-flask -- sh
+```
+
+* Try to create and access files. Observe the results
+
+```commandline
+touch shell.py
+
+touch /tmp/shell.py
+
+cat /etc/passwd
+
+cat /etc/shadow
+```
+
+---------
+
+### Reading Material/References:

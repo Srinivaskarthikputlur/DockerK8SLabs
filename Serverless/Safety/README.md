@@ -1,30 +1,47 @@
-# **`Safety - Python Source-Code-Analysis-Tool`**
+# **Safety**
 
 
-Step 1: Navigate to the directory(`~/serverless-training-apps`) that has the python virtual-environment.
+### *Python Source-Code-Analysis-Tool*
 
-```bash
+-------
+
+#### Step 1:
+
+* Navigate to that has the `requirements` to be scanned on the provisioned server
+
+```commandline
 cd ~/serverless-training-apps
 ```
 
+-------
 
-Step 2: Create and activate python-virtual environment by running `source venv/bin/activate`
+#### Step 2:
 
-```bash
+* Create a python virtual-environment, activate it and install the requirements
+
+```commandline
 virtualenv venv
 
+ls
+
 source venv/bin/activate
-```
 
-
-Step 3: Install the necessary requirements
-
-```bash
 pip install -r ~/serverless-training-apps/cv_uploader/cv-upload-handler/requirements.txt
 ```
 
+-------
 
-Step 4: Run a scan on installed python libraries by running `safety check --json`
+#### Step 3:
 
-![](img/safety-4.png)
+* Run a scan on the installed python libraries
 
+```commandline
+safety check
+
+# Generate a json report
+safety check --json
+```
+
+---------
+
+### Reading Material/References:

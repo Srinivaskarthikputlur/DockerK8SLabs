@@ -1,14 +1,36 @@
-## Insecure Deployment - IAM Privileges
+# **Insecure Deployment**
 
 
-* Run: `cd container_training/Serverless/insecure-deployment`
+### *  *
 
-* Run `npm install`
+-------
 
-* Run: `pip install awscli` if `aws-cli` is not installed already
+#### Step 1:
 
-* Run: `aws configure` and configure the aws creds Access key ID and Secret (if not done already)
+* Navigate to `Insecure Deployment` directory on the provisioned server
 
-* Run `npx deploy`
+```commandline
+cd container_training/Serverless/insecure-deployment
+```
 
-* Now login to your AWS Console and examine the AWS Lambda deployment for this function
+-------
+
+#### Step 2:
+
+* Ensure that the AWS credentials have been configured
+
+```commandline
+aws configure
+```
+
+* Deploy the Serverless function using `arc`
+
+```commandline
+npx deploy
+```
+
+* On the browser, login to AWS console and look at the deployed function in `lambda`
+
+-------
+
+### Reading Material/References:

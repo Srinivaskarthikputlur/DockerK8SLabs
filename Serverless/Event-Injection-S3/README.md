@@ -1,65 +1,33 @@
-## Event Injection S3
-
-##### Step 1:
-* Open browser
-
-![](img/open-browser.png)
+# **Event Injection**
 
 
-##### Step 2:
+### *  *
 
-* open `http://sls-training-ui.s3-website-us-east-1.amazonaws.com/` to access the XML-Uploader application.
+-------
 
-![](img/login-page.png)
+#### Step 1:
 
+* Access the [XML-Uploader](http://sls-training-ui.s3-website-us-east-1.amazonaws.com/) Application on the browser.
 
-##### Step 3:
+```commandline
+http://sls-training-ui.s3-website-us-east-1.amazonaws.com/
+```
 
-* Click Register icon to register on the application
+* Register and Login to the Application
 
-    **Note:** Please enter required information and submit.
-
-    ![](img/register-page.png)
-
-
-##### Step 4:
-
-* Using `email` and `password` login to the application.
-
-![](img/login-page.png)
-
-##### Step 5:
-
-* Once Logged in, click `Upload File` icon
-
-![](img/click-upload-xml.png)
-
-##### Step 6:
-
-* Upload-XML file view
-
-**Note:** Please upload a malicious XML file (https://github.com/we45/container_training/blob/master/Serverless/Event-Injection-S3/malicious-xml.xml)
-
-![](img/upload-file-view.png)
+### *Note: The details provided CAN be fake and we highly recommend it!*
 
 
-##### Step 7:
+-------
 
-* Once the file has been uploaded, It will redirect to `/home/` .
+#### Step 2:
 
-**Note:** Here will see all our uploaded Xml files. Please refresh the page if the file is not visible.
+* Once logged in, click on the `Upload File` icon and upload [malicious-xml.xml](https://github.com/we45/container_training/blob/master/Serverless/Event-Injection-S3/malicious-xml.xml)
 
-![](img/upload-file-view.png)
+* Once the file has been uploaded, it will redirect to `/home`. Please refresh the page if the uploaded file is not visible.
 
-##### Step 8:
+* Click on the file and it can be observed that the exploitation has been successful
 
-* Click the file name on the left .
+---------
 
-![](img/click-xml-file.png)
-
-##### Step 9:
-
-* You will see that the exploitation has been successful.
-
-![](img/exploited-info.png)
-
+### Reading Material/References:

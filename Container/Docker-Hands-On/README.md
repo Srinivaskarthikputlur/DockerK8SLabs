@@ -1,95 +1,116 @@
-# Docker Hands-On
+# **Docker Hands-On**
 
 
-##### Step 1:
+### * *
 
-* Pull the latest `abhaybhargav/vul_flask` docker image from DockerHub.
+-------
+
+#### Step 1:
+
+* Navigate to the `Docker Hands-on` directory on the provisioned server
+
+```commandline
+cd /root/container-training/Container/Docker-Hands-On/
+```
+
+-------
+
+#### Step 2:
+
+* Pull a docker image from DockerHub
 
 ```commandline
 docker pull abhaybhargav/vul_flask
 ```
 
+* List all docker images on the server
 
-##### Step 2: 
-  
-* List all docker images on the machine.
-
-```bash
+```commandline
 docker images
 ```
 
-
-##### Step 3:
-
 * Run the `abhaybhargav/vul_flask` docker image.
 
-```bash
+```commandline
 docker run -d --name vul_flask abhaybhargav/vul_flask
 ```
 
+* View all running containers
 
-##### Step 4:
-
-* View all running containers.
-
-```bash
+```commandline
 docker ps
 ```
 
+* Check logs of a running container
 
-##### Step 5:
- 
-* To exec into/access the running container, run the following command
+```commandline
+docker logs vul_flask
+```
 
-```bash
+-------
+
+#### Step 3:
+
+* Exec into a running container
+
+```commandline
 docker exec -it vul_flask bash
-
-root@0c8c0c6a5122:/apps#
 ```
 
+* Exit from the container
 
-##### Step 6:
-
-* To exit from the container, run `exit`
-
-```bash
- exit
+```commandline
+exit
 ```
 
+* Stop the running `vul_flask` container
 
-##### Step 7: 
-  
-* Stop the running `vul_flask` container.
-
-```bash
+```commandline
 docker stop vul_flask
 ```
 
+* View all running and stopped containers
 
-##### Step 8:
-
-* View all running and stopped containers.
-
-```bash
+```commandline
 docker ps -a
 ```
 
+* Build and run a Docker image
 
-##### Step 9:
+```commandline
+docker build -t helloworld:latest .
 
-* Remove the stopped container.
-
-```bash
-docker rm vul_flask
+docker run -d -p 5000:5000 helloworld:latest
 ```
 
+* Fetch the IP of the provisioned server
 
-##### Step 10:
+```commandline
+serverip
+```
 
-* Remove the `abhaybhargav/vul_flask` docker image from the system.
+* Access the `helloworld` application on the browser
 
-    **Note:** Don't delete image from the VM
+```commandline
+http://<IP>:5000
+```
 
-```bash
+* Remove an image from the server
+
+```commandline
 docker rmi abhaybhargav/vul_flask
 ```
+
+-------
+
+#### Step 4:
+
+* Stop all containers
+
+```commandline
+clean-docker
+```
+
+---------
+
+### Reading Material/References:

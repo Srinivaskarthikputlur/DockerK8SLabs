@@ -1,21 +1,40 @@
-## Dockerbench
+# **Dockerbench**
 
-###### Docker-bench checks for common best-practices inspired from Docker-CIS-Benchmark when deploying docker containers in production. (https://benchmarks.cisecurity.org/tools2/docker/CIS_Docker_Community_Edition_Benchmark_v1.1.0.pdf) 
+### *Docker-bench checks for common best-practices inspired from Docker-CIS-Benchmark when deploying docker containers in production. (https://www.cisecurity.org/benchmark/docker/)*
 
-* SSH into your Virtual Lab or open Terminal, if you're on the VM
+-------
 
-* Navigate to Docker-bench Lab Folder
+#### Step 1:
+
+* Navigate to the `docker-bench` directory on the provisioned server
 
 ```commandline
-cd /root/labs/container_training/Container/Docker-bench
+cd /root/container-training/Container/Docker-bench/
 ```
 
-* Run docker bench command
+-------
+
+#### Step 2:
+
+* Run the Docker-bench container
 
 ```commandline
 docker run -it --net host --pid host --userns host --cap-add audit_control -e DOCKER_CONTENT_TRUST=$DOCKER_CONTENT_TRUST -v /var/lib:/var/lib -v /var/run/docker.sock:/var/run/docker.sock -v /usr/lib/systemd:/usr/lib/systemd -v /etc:/etc --label docker_bench_security docker/docker-bench-security
 ```
 
-![](img/cmd.png)
+#####  **The command exposes all the necessary host resources and volumes to run the scan**
 
-* Run `clean-docker` to stop all the containers
+-------
+
+#### Step 3:
+
+* Stop all containers
+
+```commandline
+clean-docker
+```
+
+---------
+
+### Reading Material/References:
+

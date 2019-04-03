@@ -1,101 +1,114 @@
-## Trusted Images
+# **Trusted Images**
 
+### *Ensuring the integrity and the publisher of all the data a system operates on with content-trust*
 
-##### Step 1:
+-------
+
+#### Step 1:
 
 * Register/Login on [DockerHub](https://hub.docker.com/)
 
-```bash
+```commandline
 https://hub.docker.com/
 ```
 
-![Dockerhub](img/docker-hub.png)
+* On the provisioned server, login with DockerHub credentials
 
-
-* On the server provisioned, login with DockerHub credentials
-
-```bash
+```commandline
 docker login
 ```
 
+-------
 
-##### Step 2:
+#### Step 2:
 
-* Tag an `alpine` image using DockerHub username
+* Tag an image(`alpine`) using DockerHub username.
 
-````bash
+```commandline
 docker tag alpine <username>/untrusted:latest
-````
+```
 
 * Push the `<username>/untrusted:latest` image to DockerHub
 
-```bash
+```commandline
 docker push <username>/untrusted:latest
 ```
 
+-------
 
-##### Step 3:
+#### Step 2:
 
 * Enable [Content Trust](https://docs.docker.com/engine/security/trust/content_trust/) on the server provisioned
 
-```bash
+```commandline
 export DOCKER_CONTENT_TRUST=1
+
 ```
 
 * Try to pull the `<username>/untrusted:latest` image from DockerHub and observe the results
 
-```bash
+```commandline
 docker pull <username>/untrusted:latest
 ```
 
+-------
 
-##### Step 4:
+#### Step 3:
 
 * With `Content Trust` enabled, tag an `alpine` image using DockerHub username
 
-````bash
+```commandline
 docker tag alpine <username>/trusted:latest
-````
+```
 
 * Push the `<username>/trusted:latest` image to DockerHub
 
-```bash
+```commandline
 docker push <username>/trusted:latest
 ```
 
-###### * Note: You will be prompted to create a new root signing key passphrase. 
+------
 
+###  ** Note: You will be prompted to create a new root signing key passphrase. 
 
-##### Step 5:
+----
+
+#### Step 4:
 
 * Pull the `<username>/trusted:latest` image from DockerHub Repository.
 
-```bash
+```commandline
 docker pull <username>/trusted:latest
 ```
 
 * It can be observed that only signed images can be pulled.
 
-###### * Note: Check `~/.docker/trust/private` for private keys
+###  ** Note: Check `~/.docker/trust/private` for private keys
 
+----
 
-##### Step 6:
+#### Step 5:
 
 * Inspect the `untrusted` and `trusted` docker images
 
-```bash
+```commandline
 docker trust inspect <username>/untrusted:latest
 
 docker trust inspect <username>/trusted:latest
 ```
 
+----
 
-##### Step 7:
+#### Step 6:
 
 * Disable `Content Trust` to pull images for other exercises
 
-```bash
+```commandline
 export DOCKER_CONTENT_TRUST=0
 ```
 
-* Run `clean-docker` to stop all containers.  
+-------
+
+
+### Reading Material/References:
+

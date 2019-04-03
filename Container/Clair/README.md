@@ -1,33 +1,74 @@
-# Clair
+# **Clair**
 
----
 
-* SSH into your Virtual Lab or open Terminal, if you're on the VM
+### *Vulnerability Static Analysis for Containers*
 
-* Run `cd /root/labs/container_training/Container/Clair` into Clair Lab Folder
+-------
 
-* Run clair related docker containers
+#### Step 1:
 
-    * `docker run -d -p 5432:5432 --name db arminc/clair-db:2019-01-01`
-    
-    ```commandline
-     root@we45:container_training/Container/Container-Vulnerability-Assessment/Clair# docker run -d -p 5432:5432 --name db arminc/clair-db:2017-09-18
-     e4cc159b0a71400ef6e57b4b2e5207b44bc4ceda630c27c551026a197b7f7414
-    ```
-    
-    * `docker run -d -p 6060:6060 --link db:postgres --name clair arminc/clair-local-scan:v2.0.1`
-    
-    ```commandline
-    root@we45:container_training/Container/Container-Vulnerability-Assessment/Clair# docker run -d -p 6060:6060 --link db:postgres --name clair arminc/clair-local-scan:v2.0.1
-    4e3e38be1f84ff757836ea1cf34184d160b90a9a63ee236b7134d2a842a74f58
-    ```
-
-* Run Clair Scan 
-    * `./clair-scanner --ip <VM_IP> -r clair_report.json abhaybhargav/vul_flask:latest`
-    ![](img/run-scan.png)
-
-* Run `clean-docker` to stop all the containers
+* Navigate to the `Clair` directory on the provisioned server.
 
 ```commandline
-root@we45:~$ clean-docker
+cd /root/container-training/Container/Clair/
 ```
+
+-------
+
+#### Step 2:
+
+* Launch [`arminc/clair-db`](https://cloud.docker.com/repository/docker/arminc/clair-db), the pre-filled Database
+
+```commandline
+docker run -d -p 5432:5432 --name db arminc/clair-db:2019-01-01
+```
+
+* Wait for a few seconds for the database to initialize. Check the container logs to confirm
+
+```commandline
+docker logs db
+```
+
+* Launch [`arminc/clair-local-scan`](https://cloud.docker.com/repository/docker/arminc/clair-local-scan), the Clair local scanner.
+
+```commandline
+docker run -d -p 6060:6060 --link db:postgres --name clair arminc/clair-local-scan:v2.0.1
+```
+
+-------
+
+#### Step 3:
+
+* Pull the image to be scanned
+
+```commandline
+docker pull abhaybhargav/vul_flask:latest
+```
+
+* Fetch the IP of the provisioned server
+
+```commandline
+serverip
+```
+
+* Run Clair scan against the image and generate a `json` report
+
+```commandline
+./clair-scanner --ip <IP> -r clair_report.json abhaybhargav/vul_flask:latest
+```
+
+**EXAMPLE**: `./clair-scanner --ip 104.1.1.1 -r clair_report.json abhaybhargav/vul_flask:latest`
+
+-------
+
+#### Step 4:
+
+* Stop all containers
+
+```commandline
+clean-docker
+```
+
+---------
+
+### Reading Material/References:

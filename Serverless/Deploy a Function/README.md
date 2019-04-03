@@ -1,59 +1,74 @@
-## Deploy a Serverless Function
+# **Deploying a Serverless Function**
 
-##### Step 1:
 
-* Install pip3, if it is not installed
+### *  *
 
-```bash
+-------
+
+#### Step 1:
+
+* Navigate to `Insecure Deserialization` project in the `DVFaaS` directory on the provisioned server
+
+```commandline
+cd /root/DVFaaS-Damn-Vulnerable-Functions-as-a-Service/insecure_deserialization/insecure-deserialization
+```
+
+-------
+
+#### Step 2:
+
+* Install `pip3`, if it is not installed already
+
+```commandline
 wget https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py && rm get-pip.py
 ```
 
 * Install `Chalice`
 
-```bash
+```commandline
 pip3 install chalice
 ```
 
-##### Step 2:
+-------
 
-* Navigate to `DVFaaS` Directory
-
-```bash
-cd /root/DVFaaS-Damn-Vulnerable-Functions-as-a-Service/
-
-ls
-```
-
-* Navigate to Insecure Deserialization directory
-
-```bash
-cd insecure_deserialization/insecure-deserialization
-```
-
-
-##### Step 3:
-
-#### * IMPORTANT: Ensure that the AWS creds have been configured!
-
+#### Step 3:
 
 * Set the necessary environment variables
 
-```bash
+```commandline
 export LC_ALL=C.UTF-8
 
 export LANG=C.UTF-8
 ```
 
-* Deploy the serverless function using `chalice`
+* Ensure that the AWS credentials have been configured
 
-```bash
+```commandline
+aws configure
+```
+
+-------
+
+#### Step 3:
+
+* Deploy the Serverless function using `chalice`
+
+```commandline
 chalice deploy
 ```
 
-##### Step 3:
+* On the browser, login to AWS console and look at the deployed function in `lambda`
+
+-------
+
+#### Step 4:
 
 * Delete the serverless function
 
-```bash
+```commandline
 chalice delete
 ```
+
+---------
+
+### Reading Material/References:

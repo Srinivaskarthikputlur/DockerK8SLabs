@@ -1,40 +1,44 @@
-# **`NodeJsScan - NodeJS Static-Application-Security-Testing`**
+# **NodeJsScan**
 
 
-Step 1: Navigate to the NodeJsScan directory.
+### *NodeJS Static-Application-Security-Testing*
 
-```bash
+-------
+
+#### Step 1:
+
+* Navigate to the `NodeJsScan` directory on the provisioned server
+
+```commandline
 cd /root/NodeJsScan
 ```
 
+-------
 
-Step 2: Create a python-virtual environment
+#### Step 2:
 
-```bash
+* Create a python virtual-environment, activate it and install the requirements
+
+```commandline
 virtualenv -p python2 venv
 
 ls
-```
 
-
-Step 3: Activate python-virtual environment and install the requirements.
-
-```bash
 source venv/bin/activate
 
 pip install -r requirements.txt
 ```
 
+-------
 
-Step 4: Run the scan against a directory containing NodeJS code and generate a `json` report.
+#### Step 3:
 
-```bash
+* Run a scan against a directory containing NodeJs code and generate a `.json` report
+
+```commandline
 python cli.py -r report -d /root/serverless-training-apps/jwt_example/
 ```
 
+---------
 
-Step 5: The report is generated and can be read
-
-```bash
-cat report.json
-```
+### Reading Material/References:

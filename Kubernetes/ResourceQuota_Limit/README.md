@@ -1,43 +1,67 @@
-# Resource Quotas and Limits
+# **Resource Quota and Limits**
 
-##### Step 1:
 
-* Navigate to the `ResourceQuota_Limit` directory
+### **
 
-```bash
+-------
+
+#### Step 1:
+
+* Navigate to the `Resource Quota and Limits` directory on the provisioned server.
+
+```commandline
 cd /root/container_training/Kubernetes/ResourceQuota_Limit
 ```
 
-##### Step 2:
+-------
 
-* Create a pod on the `default` namespace.
+#### Step 2:
 
-```bash
+* Check the `nginx-basic-limit.yaml` pod specification
+
+* Create a pod on the `default` namespace
+
+```commandline
 kubectl create -f nginx-basic-limit.yaml
 ```
 
-* Ensure that the `Status` of the pod is set to `Running`
+* Ensure that the `Status` of pod is set to `Running`
 
-```bash
+```commandline
 kubectl get pods
 ```
 
-##### Step 3:
+-------
 
-* Now test the memory consumption of the pod with the `stress` command:
+#### Step 3:
 
-* Run `kubectl exec -it nginx-resource -- stress --cpu 1 --io 1 --vm 2 --vm-bytes 100M`
+* Test the memory consumption of the pod with the `stress` command.
 
-* Stop it and run: `kubectl exec -it nginx-resource -- stress --cpu 1 --io 1 --vm 2 --vm-bytes 200M`
+```commandline
+kubectl exec -it nginx-resource -- stress --cpu 1 --io 1 --vm 2 --vm-bytes 100M
+# Stop it after a few seconds
+crtl + c
 
-* Stop it and run `kubectl exec -it nginx-resource -- stress --cpu 1 --io 1 --vm 2 --vm-bytes 400M`
+kubectl exec -it nginx-resource -- stress --cpu 1 --io 1 --vm 2 --vm-bytes 200M
+# Stop it after a few seconds
+crtl + c
 
-* It can be observed that the stress test fails with `exit code 1` at 400M because of the limit specified in Pod Spec. 
+kubectl exec -it nginx-resource -- stress --cpu 1 --io 1 --vm 2 --vm-bytes 400M
+```
 
-##### Step 4:
+* It can be observed that the stress test fails with **`exit code 1`** at 400M because of the limit specified in Pod Spec.
+
+-------
+
+#### Step 4:
 
 * Delete the pod
 
-```bash
+```commandline
 kubectl delete -f nginx-basic-limit.yaml
 ```
+
+---------
+
+### Reading Material/References:
+

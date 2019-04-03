@@ -1,11 +1,28 @@
-# **`NPM-Audit - NodeJS Source-Code-Analysis-Tool`**
+# **NPM Audit**
 
 
-Step 1: Navigate to the directory(`~/Cut-The-Funds-NodeJS`) that has the source code to be scanned.
+### *NodeJs Source-Code-Analysis-Tool*
 
-![](img/npm-audit-1.png)
+-------
 
+#### Step 1:
 
-Step 2: Run `npm audit --json >> npm_audit.json` to scan and generate a json report. The report generated can be read.
+* Navigate to the directory on the provisioned server that has the project to be scanned
 
-![](img/npm-audit-2.png)
+```commandline
+cd /root/Cut-The-Funds-NodeJS
+```
+
+-------
+
+#### Step 2:
+
+* Run a scan and generate a `.json` report
+
+```commandline
+npm audit --json >> npm_audit.json
+```
+
+---------
+
+### Reading Material/References:

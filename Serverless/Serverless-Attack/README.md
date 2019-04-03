@@ -1,47 +1,45 @@
-# Serverless JWT Attack
+# **Serverless Attack**
 
 
-##### Step 1:
+### *  *
 
-* Access the application on the browser: [`https://serverless-attack.netlify.com`](https://serverless-attack.netlify.com).
+-------
 
-* Click on `Registration`
+#### Step 1:
 
-* Enter the necessary details and register as a user.
+* Access the [Serverless-Attack](https://serverless-attack.netlify.com) Application on the browser.
 
-###### * Note: The details provided CAN be fake and we highly recommend it!
+```commandline
+https://serverless-attack.netlify.com
+```
 
+* Register and Login to the Application
 
-##### Step 2:
+### *Note: The details provided CAN be fake and we highly recommend it!*
 
-* Navigate to the login page, enter the details and login to the application.
+-------
+
+#### Step 2:
 
 * Once logged in, copy the value of `token` that can be found in `Session Storage` under the `Storage` section in `developer tools`
 
-##### Step 3:
+* Click on the `File-Upload` icon present in the header
 
-* Once logged in, click on the `File-Upload` icon present in the header.
+* Click on the `Upload` button and upload the `readme.txt` file. It can be observed that the contents of the file is rendered on the UI
 
-* Click on the `Upload` button. Upload the `readme.txt` file. 
+### *Note: It only accepts `.txt` files.*
 
-* Once uploaded, the contents of the file is rendered on the UI.
+### *What are the potential attacks based on this functionality???*
 
-###### * Note: It only accepts `.txt` files.
+-------
 
+#### Step 3:
 
-#### What are the potential attacks based on this functionality???
+* Similar to **Step 2**, upload `malicious-file.txt` and observe the output rendered on the UI
 
----
+-------
 
-##### Step 4:
-
-* Click on the `File-Upload` icon present in the header.
-
-* Click on the `Upload` button. Upload the `malicious-file.txt` file. 
-
-* Observe the output rendered on the UI.
-
-##### Step 5:
+#### Step 4:
 
 * Sensitive information like the ones mentioned below can be fetched from the environment variables:
 
@@ -71,21 +69,13 @@ export AWS_DEFAULT_REGION=<VALUE-OF-AWS_DEFAULT_REGION>
 export AWS_SECRET_ACCESS_KEY=<VALUE-OF-AWS_SECRET_ACCESS_KEY>
 ```
 
+-------
 
-##### Step 6:
+#### Step 5:
 
-* Click on the `File-Upload` icon present in the header.
+* Similar to **Step 2**, upload `read-etc-pwd.txt` and `read-py-files.txt`.
 
-* Click on the `Upload` button. Upload the `read-etc-pwd.txt` file. 
-
-* Observe the output rendered on the UI.
-
-
-##### Step 7:
-
-* Similarly, upload `read-py-files.txt` file and observe the results
-
-* By observing source-code of application, we can see that `auth` is imported.
+* By observing the results, we were able to fetch the source-code of application. By further investigation of the source-code, we can see that `auth` is imported.
 
 * Edit `read-py-files.txt` file to fetch source-code of `auth.py` and upload the file
 
@@ -95,36 +85,40 @@ export AWS_SECRET_ACCESS_KEY=<VALUE-OF-AWS_SECRET_ACCESS_KEY>
 
 * From `auth.py`, it can be observed that `AWS SSM` is being used and `JWT_PASS` is the parameter that needs to be fetched.
 
+-------
 
-##### Step 8:
+#### Step 6:
 
-* Use `aws-cli` to fetch decrypted `JWT_PASS` from `SSM` 
+* Use `awscli` to fetch decrypted `JWT_PASS` from `SSM` 
 
-###### * Note: Ensure that `aws-cli` has been installed and the AWS `environment variables` have been set 
+### *Note: Ensure that `awscli` has been installed and the AWS `environment variables` have been set*
 
-```bash
+```commandline
 aws ssm get-parameters --names "JWT_PASS" --with-decryption
 ```
 
 * The `Value` fetched in encoded with `base64`. Decode to get the private key.
 
-```bash
+```commandline
 echo "<JWT_PASS value>" | base64 --d > privkey
 ```
 
-##### Step 9:
-
 * Using the private key, create a public key using `openssl`
 
-```bash
+```commandline
 openssl rsa -in privkey -pubout -outform PEM -out public.key.pub
 ```
 
-##### Step 10:
+-------
 
-* On the browser, access [`https://jwt.io`](https://jwt.io) and paste the `JWT Token` fetched in Step 2.
+#### Step 7:
+
+* Access [`jwt.io`](https://jwt.io) on the browser and paste the `JWT Token` fetched in **Step 2**.
 
 * Paste the value of `privkey` and `public.key.pub` under the `Verify Signature` section.
 
 * The `Payload` data can now be tampered with
 
+--------
+
+### Reading Material/References:

@@ -1,49 +1,48 @@
-# Scanning K8s Cluster - Kubehunter
+# **KubeHunter**
 
 
+### *Scanning a K8s cluster for vulnerabilities*
 
-##### Step 1: 
+-------
 
+#### Step 1:
 
-* Navigate to the `Kube-Hunter` directory that has `kubehunter.py` file.
+* Navigate to the `KubeHunter` directory on the provisioned server.
 
-```bash
+```commandline
 cd /root/container_training/Kubernetes/Kube-Hunter
 ```
 
+-------
 
-##### Step 2: 
+#### Step 2:
 
-* To get a list of arguments available, run
+* Get the list of arguments available
 
-```bash
+```commandline
 ./kube-hunter.py --help
-```
 
-
-##### Step 3: 
-
-* To get list of all passive and active scans, run the following command
-
-```bash
 ./kube-hunter.py --active --list
 ```
 
+-------
 
-##### Step 4: 
+#### Step 3:
 
-* Start a passive scan with kube-hunter on the server
+* Fetch the IP of the provisioned server
 
-###### * Note: Server IP can be fetched by running `serverip` on the provisioned server.
-
-
-```bash
+```commandline
 serverip
-
-./kube-hunter.py
 ```
 
+* Start a `KubeHunter` scan on the K8s cluster running on the provisioned server
 
-##### Step 5: 
+```commandline
+./kube-hunter.py
 
-* Select `option 1` to run a scan on the kubernetes instance deployed on the server and enter the Server IP
+# Select 'Option 1' and enter the IP of the provisioned server
+```
+
+---------
+
+### Reading Material/References:

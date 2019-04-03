@@ -1,64 +1,106 @@
-## OSQuery for Docker Security Monitoring
+# **OSQuery**
 
-#### Install OSQuery on your VM
-* `wget https://pkg.osquery.io/deb/osquery_3.3.2_1.linux.amd64.deb`
-* `dpkg -i osquery_3.3.2_1.linux.amd64.deb`
+### *Monitoring Docker Security with OSQuery*
 
-#### Examples of what we'll look for
-* Containers running with `--privileged` flag
-* Containers running dangerous volume mounts
-* Containers with dangerous environment variables
-* Containers consuming excessive resources
-* Containers running without security_opts
+-------
 
-### Setup
-* Run `tmux`
-* Run `ctrl + b + "` to split horizontally
-* goto top pane with `ctrl + b + (upper arrow key)`, opposite to access lower pane
+#### Step 1:
 
-### Privileged Containers
-* In the upper pane, type
-* Run Container in privileged mode: `docker run -d --privileged nginx:latest`
-* goto lower pane
-* Start OSquery Interactive Interface: `osqueryi`
-* In the osqueryi interface, enter: 
+* Install OSQuery on the provisioned server
+
+```commandline
+wget https://pkg.osquery.io/deb/osquery_3.3.2_1.linux.amd64.deb
+
+dpkg -i osquery_3.3.2_1.linux.amd64.deb
+```
+
+-------
+
+#### Step 2:
+
+* Launch a few containers with insecure configurations
+
+```commandline
+# Container Running in 'Privileged' Mode
+docker run -d --privileged nginx:latest
+
+# Container Running with Sensitive Environment Variables and Sensitive Volumes exposed
+docker run -e MYSQL_ROOT_PASSWORD=my-secret-pw  -v /etc:/hostFS -d mysql:latest
+```
+
+* Start the OSQuery Interactive interface
+
+```commandline
+osqueryi
+```
+
+-------
+
+#### Step 3:
+
+* Query for all containers running with the `--privileged` flag
 
 ```sql
 SELECT name, image, status from docker_containers where privileged=1;
 ```
 
-### Containers with Sensitive Env-Vars
-* In the upper pane, type: `docker run -it -e MYSQL_PASSWORD=helloworld -v /etc:/hostFS alpine sh`
-* In the lower pane with the `osqueryi` still running, type: 
+* Query for all containers with `Sensitive` environment variables
+
 ```sql
 select name,env_variables FROM docker_containers where env_variables LIKE "%PASSWORD%";
 ```
 
-### Containers with Dangerous Volume Mounts
-* In the lower pane, run:
+* Query for containers with Dangerous Volume mounts
 
 ```sql
 select id, source, destination from docker_container_mounts where source LIKE "%etc%";
 ```
 
-### Containers running without `security_opts`
-* In the lower pane, run: 
+* Query for containers running without `security_opts`
 
 ```sql
-SELECT name, image, state 
-FROM docker_containers 
+SELECT name, image, state
+
+FROM docker_containers
+
 WHERE security_options NOT LIKE "%apparmor%";
 ```
 
-### Examine users with access to Docker Daemon
+* Query for users with access to docker daemon
+
 ```sql
-SELECT u.username 
-FROM user_groups ug 
-LEFT JOIN users u ON u.uid=ug.uid  
+SELECT u.username
+
+FROM user_groups ug
+
+LEFT JOIN users u ON u.uid=ug.uid
+
 WHERE ug.gid IN (SELECT gid FROM groups WHERE groupname="docker");
 ```
 
-### Get Memory limits and usage per container
+* Query for Memory limits and usage for all containers
+
 ```sql
 select ds.name, ds.memory_usage, ds.memory_limit from docker_container_stats ds, docker_containers dc where dc.id=ds.id;
 ```
+
+* Exit from the OSQuery Interactive interface
+
+```commandline
+crtl + c
+```
+
+-------
+
+#### Step 4:
+
+* Stop all containers
+
+```commandline
+clean-docker
+```
+
+---------
+
+### Reading Material/References:
+

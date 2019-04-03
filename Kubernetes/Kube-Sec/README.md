@@ -1,30 +1,35 @@
-# YAML Static Analyser - Kubesec
-
-###### Kubesec helps quantify risk for K8s resources based on the suggested best-practices. Lists of test run can be found at https://kubesec.io/basics/.
+# **KubeSec**
 
 
-##### Step 1: 
+### *Kubesec helps quantify risk for K8s resources based on the suggested best-practices*
 
-* Navigate to the `Kube-Sec` directory
+-------
 
-```bash
+#### Step 1:
+
+* Navigate to the `KubeHunter` directory on the provisioned server.
+
+```commandline
 cd /root/container_training/Kubernetes/Kube-Sec
 ```
 
+-------
 
-##### Step 2: 
+#### Step 2:
 
-* To analyze a Kubernetes YAML spec file, run
+* Analyze the K8s YAML spec `insecure_vulflask_deployment.yaml`
 
-```bash
+```commandline
 ./kubesec insecure_vulflask_deployment.yaml
+
 ```
 
+* Save results to a `.json` file
 
-##### Step 3:
-
-* To save results to a file, run the following command
-
-```bash
+```commandline
 ./kubesec insecure_vulflask_deployment.yaml >> kubesec_result.json
 ```
+
+---------
+
+### Reading Material/References:

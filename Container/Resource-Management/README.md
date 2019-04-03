@@ -1,34 +1,54 @@
-## Resource Management
+# **Resource Management**
 
+### *Restricting host resources for a container*
 
-**Note:**
+-------
+
+#### Step 1:
+
+* Host resources such as `Storage`, `CPU` and `Memory` can be restricted when running a container
+
 ```commandline
 --storage-opt           Storage driver
---cpus		        Number of CPUs
+--cpus                  Number of CPUs
 -m                      Memory Size 
-
 ```
 
-* Run `docker run -it --storage-opt size=10G -m=4M --cpus=".5" ubuntu:latest /bin/bash`
+* Launch a container and restrict the CPU utilization.
 
+```commandline
+docker run -it --cpus=".5" ubuntu:latest /bin/bash
+```
 
-##### Step 2:
+-------
 
-* Run `clean-docker` to stop all containers.  
+#### Step 2:
 
-    ```commandline
-    (venv)root@we45: clean-docker
-    92200af86b18
-    ca94dab2d52e
-    92200af86b18
-    34c4adcf326d
-    86cd73d03ef1
-    ca94dab2d52e
-    "docker rmi" requires at least 1 argument.
-    See 'docker rmi --help'.
-    
-    Usage:  docker rmi [OPTIONS] IMAGE [IMAGE...]
-    
-    Remove one or more images
-    
-    ```
+* Install `stress` on the container
+
+```commandline
+apt update
+
+apt install stress
+```
+
+* Stress test the CPU utilization for 5 seconds and observe the results
+
+```commandline
+stress --cpu 10 --timeout 5
+```
+
+-------
+
+#### Step 3:
+
+* Stop all containers
+
+```commandline
+clean-docker
+```
+
+---------
+
+### Reading Material/References:
+

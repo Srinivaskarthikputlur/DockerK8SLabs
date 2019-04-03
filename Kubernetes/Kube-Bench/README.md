@@ -1,39 +1,50 @@
-# K8s CIS Benchmark - Kube-bench
+# **KubeBench**
 
 
-##### Step 1: 
+### *K8s CIS Benchmark*
 
-* Navigate to the `Kube-Bench` directory
+-------
 
-```bash
+#### Step 1:
+
+* Navigate to the `Kube-Bench` directory on the provisioned server
+
+```commandline
 cd /root/container_training/Kubernetes/Kube-Bench
 ```
 
+-------
 
-##### Step 2: 
+#### Step 2:
 
-* To get a list of available commands and options, run the following command
+* Fetch the list of available commands and options
 
-```bash
+```commandline
 ./kube-bench --help
+
 ```
 
+-------
 
-##### Step 3: 
+#### Step 3:
 
-* To run CIS benchmark scan, run
+* Run the `Kube-bench` scan on the k8s cluster
 
-```bash
+```commandline
 ./kube-bench master
 ```
 
+-------
 
-##### Step 4: 
+#### Step 4:
 
-* To save results to a `json` file, run the following command
+* Save results as a `.json` file
 
-If a `.json` report is necessary, run 
-
-```bash
+```commandline
 ./kube-bench --json master > report.json
 ```
+
+---------
+
+### Reading Material/References:
+

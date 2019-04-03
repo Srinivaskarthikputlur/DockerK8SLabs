@@ -1,92 +1,68 @@
-# Network Namespace
+# **Network Namespace**
 
+### * *
 
-##### Step 1:
+-------
 
-*  Get the list of network interfaces on the machine.
+#### Step 1:
 
-```bash
+* Get the list of network interfaces, iptables and network gateways on the machine.
+
+```commandline
 ifconfig -a
-```
 
-
-##### Step 2:
-
-* Get the iptables info.
-
-```bash
 iptables -L
-```
 
-
-##### Step 3:
-
-* Get the default network gateways.
-
-```bash
 route -n
 ```
 
+-------
 
-##### Step 4:
+#### Step 2:
 
-* Add a Networking Namespace.
+* Add a Networking namespace and fetch the list of Network namespaces
 
-```
+```commandline
 ip netns add NetNameSpace
-```
 
-
-##### Step 5:
-
-* Get the list of Network Namespaces
-
-```bash
 ip netns list
 ```
 
+-------
 
-##### Step 6:
+#### Step 3:
 
-* Exec into the Network Namespace and get the list of network interfaces on the 'NetNameSpace' Network Namespace.
+* Exec into the Network namespace and run **Step 1** again. Observe the results
 
-```bash
+```commandline
 sudo ip netns exec NetNameSpace bash
 
 ifconfig -a
-```
 
-
-##### Step 7:
-
-* Verify that there is no iptables available, since this is a new networking stack.
-
-```bash
 iptables -L
-```
 
-* Verify that there is no default gateway, inside a new container.
-
-```bash
 route -n
 ```
 
+-------
 
-##### Step 8:
+#### Step 4:
 
-* Exit from the Network Namespace.
+* Exit from the Network namespace
 
-```bash
-exit 
+```commandline
+exit
 ```
 
+* Fetch the list of Network namespaces and delete the once created in **Step 2**
 
-##### Step 9:
-
-* Run  `ip netns list` to verify the Network Namespace and delete it
-
-```bash
+```commandline
 ip netns list
 
 sudo ip netns del NetNameSpace
 ```
+
+---------
+
+### Reading Material/References:
+
