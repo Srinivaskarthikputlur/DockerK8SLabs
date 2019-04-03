@@ -1,7 +1,13 @@
 version: "3"
 services:
   helloworld:
-    image: helloworld:latest
+    build: .
+    image: helloworld
+    container_name: helloworld_container
+    entrypoint: "python"
+    command: "app.py"
+    environment:
+      - VALUE=random
     expose:
     - "5000"
   nginx:
