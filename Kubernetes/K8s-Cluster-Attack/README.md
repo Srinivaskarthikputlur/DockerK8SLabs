@@ -183,7 +183,7 @@ cat reverse_shell.yml
 
 #### Step 7:
 
-* Switch to the lowe panel and start the `netcat` listener on port `1337`
+* Switch to the lower panel and start the `netcat` listener on port `1337`
 
 ```commandline
 # Switches to the lower panel

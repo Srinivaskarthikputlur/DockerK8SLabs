@@ -1,0 +1,30 @@
+version: '2'
+services:
+  anchore-engine:
+    image: docker.io/anchore/anchore-engine:latest
+    #privileged: true
+    depends_on:
+    - anchore-db
+    ports:
+    - "8228:8228"
+    - "8338:8338"
+    volumes:
+    - ./config:/config/:z
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 100m
+    environment:
+    - ANCHORE_HOST_ID=dockerhostid-anchore-engine
+    - ANCHORE_ENDPOINT_HOSTNAME=anchore-engine
+  anchore-db:
+    image: "postgres:9"
+    volumes:
+    - ./db:/var/lib/postgresql/data/pgdata/:z
+    environment:
+    - POSTGRES_PASSWORD=mysecretpassword
+    - PGDATA=/var/lib/postgresql/data/pgdata/
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 100m

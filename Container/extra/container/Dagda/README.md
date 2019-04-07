@@ -1,3 +1,113 @@
+# **Dagda**
+
+
+### * *
+
+-------
+
+#### Step 1:
+
+* Navigate to the `Dagda` directory on the provisioned server
+
+```commandline
+cd /root/container-training/Container/Dagda/
+```
+
+* Multiplex terminal session with `tmux` and split panes horizontally.
+
+```
+tmux
+
+tmux split-window -v
+```
+
+-------
+
+#### Step 2:
+
+* Clone [`dagda`](https://github.com/eliasgranderubio/dagda) from GitHub
+
+```commandline
+git clone https://github.com/eliasgranderubio/dagda.git
+```
+
+* Create a python virtual-environment and install the necessary requirements
+
+```commandline
+virtualenv -p python3 venv
+
+source venv/bin/activate
+
+cd dagda
+
+pip install -r requirements.txt
+```
+
+-------
+
+#### Step 3:
+
+* Launch mongodb that is used to store all the vulnerability information
+
+```commandline
+docker run -d -p 27017:27017 -v db:/data/db --name mongodb mongo
+```
+
+* Start the Dagda server
+
+```commandline
+cd dagda
+
+python3 dagda.py start
+```
+
+-------
+
+#### Step 4:
+
+* Switch to the lower panel to use the `dagda` cli 
+
+```commandline
+# Switches to the lower panel
+ctrl + b + (lower arrow key)
+``` 
+
+* Activate the dagda python virtual-environment
+
+```commandline
+source venv/bin/activate
+```
+
+* Set the necessary environment variables
+
+```commandline
+serverip
+
+export DAGDA_HOST='<IP>'
+
+export DAGDA_PORT=5000
+```
+
+-------
+
+#### Step 5:
+
+* Populate the vulnerabilities and exploits in the database
+
+```commandline
+python3 dagda.py vuln --init
+```
+
+### *This might take a while*
+
+* Check the status
+
+```commandline
+python3 dagda.py vuln --init_status
+```
+
+# -------------
+
 ## Dagda
 
 
