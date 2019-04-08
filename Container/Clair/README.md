@@ -72,3 +72,5 @@ clean-docker
 ---------
 
 ### Reading Material/References:
+
+* https://github.com/coreos/clair

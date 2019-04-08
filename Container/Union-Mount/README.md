@@ -76,3 +76,7 @@ rm -rf Folder-1 Folder-2 mnt
 ---------
 
 ### Reading Material/References:
+
+* https://lwn.net/Articles/312641/
+
+* https://www.thegeekstuff.com/2013/05/linux-aufs/

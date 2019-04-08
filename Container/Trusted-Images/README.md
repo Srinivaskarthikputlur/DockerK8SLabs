@@ -112,3 +112,4 @@ export DOCKER_CONTENT_TRUST=0
 
 ### Reading Material/References:
 
+* https://docs.docker.com/engine/security/trust/content_trust/

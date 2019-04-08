@@ -48,3 +48,6 @@ clean-docker
 
 ### Reading Material/References:
 
+* http://man7.org/linux/man-pages/man2/seccomp.2.html
+
+* https://docs.docker.com/engine/security/seccomp/

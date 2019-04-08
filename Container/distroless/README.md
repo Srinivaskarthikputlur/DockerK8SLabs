@@ -92,3 +92,7 @@ clean-docker
 ---------
 
 ### Reading Material/References:
+
+* https://github.com/GoogleContainerTools/distroless
+
+* https://www.abhaybhargav.com/stories-of-my-experiments-with-distroless-containers/

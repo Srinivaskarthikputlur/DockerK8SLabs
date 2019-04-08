@@ -76,3 +76,4 @@ clean-docker
 
 ### Reading Material/References:
 
+* https://www.thegeekdiary.com/understanding-system-auditing-with-auditd/

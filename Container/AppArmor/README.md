@@ -186,3 +186,7 @@ clean-docker
 ---------
 
 ### Reading Material/References:
+
+* https://docs.docker.com/engine/security/apparmor/
+
+* https://gitlab.com/apparmor/apparmor

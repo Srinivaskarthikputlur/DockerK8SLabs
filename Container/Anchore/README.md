@@ -92,3 +92,9 @@ clean-docker
 ---------
 
 ### Reading Material/References:
+
+* https://github.com/anchore/anchore-engine
+
+* https://github.com/anchore/anchore-cli
+
+* https://anchore.com/opensource/

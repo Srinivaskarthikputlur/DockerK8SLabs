@@ -104,3 +104,9 @@ clean-docker
 
 ### Reading Material/References:
 
+* https://osquery.readthedocs.io/en/stable/
+
+* https://github.com/facebook/osquery
+
+* https://blog.rapid7.com/2016/05/09/introduction-to-osquery-for-threat-detection-dfir/
+
