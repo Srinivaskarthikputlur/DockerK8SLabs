@@ -348,6 +348,26 @@ http://<IP>:6080/vnc.html
 
 #### Step 4:
 
+* On the container terminal, fetch the list of loaded kernel modules
+
+```commandline
+apt update && apt install -y kmod
+
+lsmod
+``` 
+
+* Remove the `floppy` module that has been previously loaded and confirm
+
+```commandline
+rmmod floppy
+
+lsmod
+```
+
+-------
+
+#### Step 5:
+
 * Stop all containers
 
 ```commandline
