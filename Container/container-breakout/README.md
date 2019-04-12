@@ -64,9 +64,9 @@ docker run -ti --rm -v /root:/hostFS/ alpine sh
 * On the container, try to read and edit the secret file
 
 ```commandline
-cat /hostFS/root/secret.txt
+cat /hostFS/secret.txt
 
-echo "Tampered data!!" >> /hostFS/root/secret.txt
+echo "Tampered data!!" >> /hostFS/secret.txt
 ```
 
 * Exit from the container
@@ -264,8 +264,6 @@ exit
 ```commandline
 clean-docker
 ```
-
----------
 
 ---------
 
