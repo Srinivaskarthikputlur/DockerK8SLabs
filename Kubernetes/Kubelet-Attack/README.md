@@ -81,8 +81,26 @@ python3 kubelet-anon-rce.py --target <serverip> --port 10250 --namespace kube-sy
 
 ### *It can be observed that all data is stored in plain text!!*
 
+-------
+
+#### Step 5:
+
+* Delete all the secrets created in *Step 1* by deleting the `secret` namespace
+
+```commandline
+kubectl delete ns secret
+```
+
 ---------
 
 ### Reading Material/References:
 
+* https://github.com/serain/kubelet-anon-rce
 
+* https://labs.mwrinfosecurity.com/blog/attacking-kubernetes-through-kubelet/
+
+* https://jakubbujny.com/2018/09/02/what-stores-kubernetes-in-etcd/
+
+* https://coreos.com/etcd/docs/latest/dev-guide/interacting_v3.html
+
+* https://github.com/etcd-io/etcd/blob/7f7e2cc79d9c5c342a6eb1e48c386b0223cf934e/Documentation/admin_guide.md
