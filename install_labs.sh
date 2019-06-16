@@ -52,6 +52,9 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 pip uninstall -y urllib3 && pip install urllib3==1.22
 
+# Install docker-slim
+wget https://downloads.dockerslim.com/releases/1.25.0/dist_linux.tar.gz && tar -xvzf dist_linux.tar.gz && rm dist_linux.tar.gz && mv dist_linux/* /usr/local/bin/ && rm -rf dist_linux/
+
 # Clone repositories
 git clone https://github.com/we45/DVFaaS-Damn-Vulnerable-Functions-as-a-Service.git ~/DVFaaS-Damn-Vulnerable-Functions-as-a-Service
 git clone https://github.com/we45/Cut-The-Funds-NodeJS.git ~/Cut-The-Funds-NodeJS
@@ -82,8 +85,5 @@ sed -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/ss
 service ssh restart
 service sshd restart
 
-# Clone container-training
-git clone https://gitlab+deploy-token-60427:friiMNV6CyYtShJ55Te7@gitlab.com/we45/container-training.git
-
-
-
+# Clone container-training (Token expires on 27 July 2019)
+git clone https://gitlab+deploy-token-74859:if-CbsryE3YMn3XUjXXF@gitlab.com/we45/container-training.git
