@@ -12,6 +12,12 @@
 cd /root/container-training/Container/dockerslim/
 ```
 
+* Install `docker-slim`
+
+```bash
+wget https://downloads.dockerslim.com/releases/1.25.0/dist_linux.tar.gz && tar -xvzf dist_linux.tar.gz && mv dist_linux/* /usr/local/bin/
+```
+
 * Ensure that `docker-slim` has been installed successfully
 
 ```commandline
@@ -42,6 +48,12 @@ cat probeCmds.json
 
 ```commandline
 docker-slim build --show-clogs --http-probe-cmd-file probeCmds.json abhaybhargav/vul_flask
+```
+
+* Fetch the docker `IMAGE ID` of `abhaybhargav/vul_flask`
+
+```bash
+docker images
 ```
 
 * It can be observed that the `http` calls were made and the `AppArmor` and `SecComp` profiles were generated.
