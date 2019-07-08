@@ -1,8 +1,0 @@
-netaddr
-netifaces
-enum34
-scapy
-requests
-PrettyTable
-urllib3
-ruamel.yaml

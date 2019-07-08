@@ -20,9 +20,9 @@ cd /root/container-training/Kubernetes/Kube-Hunter
 * Get the list of arguments available
 
 ```commandline
-./kube-hunter.py --help
+docker run -it --rm --network host aquasec/kube-hunter --help
 
-./kube-hunter.py --active --list
+docker run -it --rm --network host aquasec/kube-hunter --active --list
 ```
 
 -------
@@ -38,7 +38,7 @@ serverip
 * Start a `KubeHunter` scan on the K8s cluster running on the provisioned server
 
 ```commandline
-./kube-hunter.py
+docker run -it --rm --network host aquasec/kube-hunter
 
 # Select 'Option 1' and enter the IP of the provisioned server
 ```
@@ -46,3 +46,7 @@ serverip
 ---------
 
 ### Reading Material/References:
+
+* https://github.com/aquasecurity/kube-hunter
+
+* https://kube-hunter.aquasec.com/
