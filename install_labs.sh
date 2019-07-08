@@ -52,6 +52,9 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 pip uninstall -y urllib3 && pip install urllib3==1.22
 
+# Install docker-slim
+wget https://downloads.dockerslim.com/releases/1.25.0/dist_linux.tar.gz && tar -xvzf dist_linux.tar.gz && rm dist_linux.tar.gz && mv dist_linux/* /usr/local/bin/ && rm -rf dist_linux/
+
 # Clone repositories
 git clone https://github.com/we45/DVFaaS-Damn-Vulnerable-Functions-as-a-Service.git ~/DVFaaS-Damn-Vulnerable-Functions-as-a-Service
 git clone https://github.com/we45/Cut-The-Funds-NodeJS.git ~/Cut-The-Funds-NodeJS
@@ -69,7 +72,7 @@ bash -c "usermod -aG docker we45"
 # Install K8s
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" >> /etc/apt/sources.list.d/kubernetes.list
-apt update && apt install -y kubelet=1.10.3-00 kubeadm=1.10.3-00 kubectl=1.10.3-00 kubernetes-cni=0.6.0-00
+apt update && apt install -y kubelet kubeadm kubectl kubernetes-cni
 
 # Install vault
 wget https://releases.hashicorp.com/vault/1.0.1/vault_1.0.1_linux_amd64.zip && unzip vault_1.0.1_linux_amd64.zip && mv vault /usr/local/bin && rm vault_1.0.1_linux_amd64.zip

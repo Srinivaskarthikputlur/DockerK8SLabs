@@ -1,0 +1,60 @@
+{
+  "commands":
+  [
+    {
+      "protocol": "http",
+      "resource": "/",
+      "method": "GET"
+    },
+    {
+      "protocol": "http",
+      "method": "POST",
+      "resource": "/register/user"
+    },
+    {
+      "protocol": "http",
+      "method": "POST",
+      "resource": "/register/customer"
+    },
+    {
+      "protocol": "http",
+      "method": "POST",
+      "resource": "/login"
+    },
+    {
+      "protocol": "http",
+      "method": "POST",
+      "resource": "/fetch/customer"
+    },
+    {
+      "protocol": "http",
+      "method": "GET",
+      "resource": "/get/1"
+    },
+    {
+      "protocol": "http",
+      "method": "POST",
+      "resource": "/search"
+    },
+    {
+      "protocol": "http",
+      "method": "GET",
+      "resource": "/xxe"
+    },
+    {
+      "protocol": "http",
+      "method": "GET",
+      "resource": "/yaml"
+    },
+    {
+      "protocol": "http",
+      "method": "POST",
+      "resource": "/yaml_hammer"
+    },
+    {
+      "protocol": "http",
+      "method": "POST",
+      "resource": "/yaml_hammer"
+    }
+  ]
+}

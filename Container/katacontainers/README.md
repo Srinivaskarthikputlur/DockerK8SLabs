@@ -6,7 +6,7 @@
 
 #### Step 1:
 
-* Navigate to the `Docker Capabilities` directory on the provisioned server.
+* Navigate to the `Kata Containers` directory on the provisioned server.
 
 ```
 cd /root/container-training/Container/katacontainers/
