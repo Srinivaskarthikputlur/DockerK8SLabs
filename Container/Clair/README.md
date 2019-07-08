@@ -20,7 +20,7 @@ cd /root/container-training/Container/Clair/
 * Launch [`arminc/clair-db`](https://cloud.docker.com/repository/docker/arminc/clair-db), the pre-filled Database
 
 ```commandline
-docker run -d -p 5432:5432 --name db arminc/clair-db:2019-01-01
+docker run -d -p 5432:5432 --name db arminc/clair-db:latest
 ```
 
 * Wait for a few seconds for the database to initialize. Check the container logs to confirm
