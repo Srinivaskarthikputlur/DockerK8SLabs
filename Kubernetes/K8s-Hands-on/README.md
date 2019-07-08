@@ -9,7 +9,7 @@
 * Navigate to the `K8s Hands On` directory on the provisioned server
 
 ```commandline
-cd /root/container_training/Kubernetes/K8s-Hands-on
+cd /root/container-training/Kubernetes/K8s-Hands-on
 ```
 
 * Fetch the IP of the provisioned server

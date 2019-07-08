@@ -10,7 +10,7 @@
 * Navigate to `Insecure Deployment` directory on the provisioned server
 
 ```commandline
-cd container_training/Serverless/insecure-deployment
+cd container-training/Serverless/insecure-deployment
 ```
 
 -------

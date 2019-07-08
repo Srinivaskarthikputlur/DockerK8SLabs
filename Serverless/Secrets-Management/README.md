@@ -10,7 +10,7 @@
 * Navigate to the `ops` directory within `Secrets-Management` on the provisioned server
 
 ```commandline
-cd /root/container_training/Serverless/Secrets-Management/ops
+cd /root/container-training/Serverless/Secrets-Management/ops
 ```
 
 * Ensure that the AWS credentials have been configured
@@ -69,7 +69,7 @@ ls
 * Navigate to the `training-secrets` directory within `Secrets-Management` on the provisioned server
 
 ```commandline
-cd /root/container_training/Serverless/Secrets-Management/training-secrets
+cd /root/container-training/Serverless/Secrets-Management/training-secrets
 ```
 
 * Create a `chalice` directory and copy the `config.json` that was generated in **Step 2**

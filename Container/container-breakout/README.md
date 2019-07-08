@@ -146,7 +146,9 @@ docker exec -ti <CONTAINER_ID> /bin/bash
 * On the container, install the firewall program(`ufw`)
 
 ```commandline
-apt update && apt install -y ufw
+apt update 
+
+apt install -y ufw
 ```
 
 * Check the status of the firewall inside the container
