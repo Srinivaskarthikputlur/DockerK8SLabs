@@ -59,7 +59,7 @@ echo $NGFLASK
 * Check if the service is running correctly. It should respond with `Please POST JSON requests to this URL`.
 
 ```commandline
-curl -XGET $NGFLASK
+http GET $NGFLASK
 ```
 
 -------
@@ -69,7 +69,7 @@ curl -XGET $NGFLASK
 * Generate a few artifacts by creating transactions on the Application
 
 ```commandline
-curl -XGET $NGFLASK/generate
+http GET $NGFLASK/generate
 ```
 
 ### *It should return with the following response*
@@ -80,7 +80,7 @@ curl -XGET $NGFLASK/generate
 * Check the latest transaction that has been logged by our app
 
 ```commandline
-curl -XGET $NGFLASK/status
+http GET $NGFLASK/status
 ```
 
 ### *It should come back with a response that looks similar to the one below*
