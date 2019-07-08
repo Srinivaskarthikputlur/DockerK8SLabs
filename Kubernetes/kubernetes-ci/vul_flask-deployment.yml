@@ -25,3 +25,5 @@ spec:
           # the privileged flag will be marked as a critical risk
           privileged: true
           readOnlyRootFilesystem: true
+      imagePullSecrets:
+        - name: gitlab-registry
