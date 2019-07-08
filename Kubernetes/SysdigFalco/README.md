@@ -63,7 +63,7 @@ kubectl get pods
 * Start a server to get real-time logs of malicious events generated on the cluster. Observe the results
 
 ```commandline
-./tornado_server.py
+python3 tornado_server.py
 ```
 
 * Stop the server

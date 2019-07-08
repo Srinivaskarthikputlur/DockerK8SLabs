@@ -54,13 +54,13 @@ kubectl get pods
 * Start the tornado server
 
 ```bash
-./tornado_server.py
+python3 tornado_server.py
 ```
 
 * Start tornado server to get the real-time logs of malicious events
 
 ```bash
-./tornado_server.py
+python3 tornado_server.py
 ```
 
 * Stop the tornado server with `ctrl + c`

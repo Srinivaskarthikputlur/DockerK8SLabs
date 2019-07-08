@@ -373,7 +373,7 @@ ctrl + b + (upper arrow key)
 
 cd /root/container-training/Kubernetes/K8s-Cluster-Attack
 
-./tornado_server.py
+python3 tornado_server.py
 ```
 
 ### *You should now see all the credit-card details being posted to the listener from the malicious redis pod*

