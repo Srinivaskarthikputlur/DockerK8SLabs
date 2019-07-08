@@ -13,7 +13,7 @@
 * Navigate to the `PodSecurityPolicy` directory on the provisioned server
 
 ```commandline
-cd /root/container_training/Kubernetes/PodSecurityPolicy
+cd /root/container-training/Kubernetes/PodSecurityPolicy
 ```
 
 * Read the `secure-ngflask-deploy.yml` file and observe the changes
@@ -56,7 +56,7 @@ apparmor_parser k8s-vul-flask-redis-armor
 * Create a nginx `configmap`
 
 ```commandline
-kubectl create configmap nginx-config --from-file=/root/container_training/Kubernetes/PodSecurityPolicy/reverseproxy.conf
+kubectl create configmap nginx-config --from-file=/root/container-training/Kubernetes/PodSecurityPolicy/reverseproxy.conf
 ```
 
 * Deploy the Secure nginx-flask pod and wait the the status of the pod is `Running`

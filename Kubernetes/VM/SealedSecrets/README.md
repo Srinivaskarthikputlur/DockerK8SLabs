@@ -6,7 +6,7 @@
 * Navigate to the `SealedSecrets` directory
 
 ```bash
-cd /root/container_training/Kubernetes/VM/SealedSecrets
+cd /root/container-training/Kubernetes/VM/SealedSecrets
 ```
 
 

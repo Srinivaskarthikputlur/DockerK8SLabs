@@ -10,7 +10,7 @@
 * Navigate to the `KubeAudit` directory on the provisioned server.
 
 ```commandline
-cd /root/container_training/Kubernetes/KubeAudit
+cd /root/container-training/Kubernetes/KubeAudit
 ```
 
 -------

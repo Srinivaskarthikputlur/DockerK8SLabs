@@ -9,7 +9,7 @@
 * Navigate to `K8s-Cluster-Attack` directory
 
 ```bash
-cd /home/we45/container_training/Kubernetes/VM/K8s-Cluster-Attack
+cd /home/we45/container-training/Kubernetes/VM/K8s-Cluster-Attack
 ```
 
 ##### Step 2: 
@@ -112,7 +112,7 @@ It should come back with a response that looks similar to the one below
 * Navigate to `payloads` directory that has malicious yaml files
 
 ```bash
-cd /home/we45/container_training/Kubernetes/VM/K8s-Cluster-Attack/payloads
+cd /home/we45/container-training/Kubernetes/VM/K8s-Cluster-Attack/payloads
 ```
 
 * Upload a malicious yaml file and identify the flaw
@@ -329,7 +329,7 @@ curl -s https://10.96.0.1/api/v1/namespaces/default/pods -XPOST -H "Authorizatio
 * In the other tab, navigate to `K8s-Cluster-Attack` directory and run the `tornado server`.
 
 ```bash
-cd /home/we45/container_training/Kubernetes/VM/K8s-Cluster-Attack
+cd /home/we45/container-training/Kubernetes/VM/K8s-Cluster-Attack
 
 ./tornado_server.py
 ```
@@ -343,7 +343,7 @@ You should now see all the credit-card details being posted to the tornado liste
 * Stop the pods and services
 
 ```bash
-cd /home/we45/container_training/Kubernetes/VM/K8s-Cluster-Attack
+cd /home/we45/container-training/Kubernetes/VM/K8s-Cluster-Attack
 
 kubectl delete -f ngflask-redis-service.yml -f redis-service.yml -f ngflaskredis-deployment.yml
 ```

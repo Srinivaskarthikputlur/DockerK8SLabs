@@ -9,10 +9,10 @@
 
 ##### Step 2:
 
-*  **cd** into  `/home/we45/container_training/Container/Container-Tech-Deep-Dive/Analysing-Docker-Layers`
+*  **cd** into  `/home/we45/container-training/Container/Container-Tech-Deep-Dive/Analysing-Docker-Layers`
 
     ```commandline
-    cd /home/we45/container_training/Container/Container-Tech-Deep-Dive/Analysing-Docker-Layers
+    cd /home/we45/container-training/Container/Container-Tech-Deep-Dive/Analysing-Docker-Layers
     ```
 
 ##### Step 3:  
@@ -20,7 +20,7 @@
 * Run `docker images` to get list of images on the machine
 
     ```commandline
-    root@we45:~/container_training/Container/Container-Tech-Deep-Dive/Analysing-Docker-Layers# docker images
+    root@we45:~/container-training/Container/Container-Tech-Deep-Dive/Analysing-Docker-Layers# docker images
     REPOSITORY                     TAG                 IMAGE ID            CREATED             SIZE
     mongo                          latest              e3985c6fb3c8        2 weeks ago         381MB
     ubuntu                         16.04               b9e15a5d1e1a        2 weeks ago         115MB

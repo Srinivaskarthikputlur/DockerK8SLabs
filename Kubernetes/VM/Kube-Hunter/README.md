@@ -8,7 +8,7 @@
 * Navigate to the `Kube-Hunter` directory that has `kubehunter.py` file.
 
 ```bash
-cd /home/we45/container_training/Kubernetes/VM/Kube-Hunter
+cd /home/we45/container-training/Kubernetes/VM/Kube-Hunter
 ```
 
 

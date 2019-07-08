@@ -5,7 +5,7 @@
 * Navigate to the `ResourceQuota_Limit` directory
 
 ```bash
-cd /home/we45/container_training/Kubernetes/VM/ResourceQuota_Limit
+cd /home/we45/container-training/Kubernetes/VM/ResourceQuota_Limit
 ```
 
 ##### Step 2:

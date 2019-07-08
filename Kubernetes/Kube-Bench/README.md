@@ -10,7 +10,7 @@
 * Navigate to the `Kube-Bench` directory on the provisioned server
 
 ```commandline
-cd /root/container_training/Kubernetes/Kube-Bench
+cd /root/container-training/Kubernetes/Kube-Bench
 ```
 
 -------

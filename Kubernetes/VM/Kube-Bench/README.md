@@ -6,7 +6,7 @@
 * Navigate to the `Kube-Bench` directory
 
 ```bash
-cd /home/we45/container_training/Kubernetes/VM/Kube-Bench
+cd /home/we45/container-training/Kubernetes/VM/Kube-Bench
 ```
 
 

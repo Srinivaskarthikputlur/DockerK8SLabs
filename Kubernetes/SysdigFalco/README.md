@@ -10,7 +10,7 @@
 * Navigate to the `SysdigFalco` directory on the provisioned server
 
 ```commandline
-cd /root/container_training/Kubernetes/SysdigFalco
+cd /root/container-training/Kubernetes/SysdigFalco
 ```
 
 * Fetch the IP of the provisioned server

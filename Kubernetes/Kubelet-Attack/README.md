@@ -9,7 +9,7 @@
 * Navigate to the `Kubelet Attack` directory on the provisioned server.
 
 ```
-cd /root/container_training/Kubernetes/Kubelet-Attack
+cd /root/container-training/Kubernetes/Kubelet-Attack
 ```
 
 * Create a few secrets on the k8s cluster

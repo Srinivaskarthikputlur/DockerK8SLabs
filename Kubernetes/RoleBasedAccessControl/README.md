@@ -10,7 +10,7 @@
 * Navigate to the `RoleBasedAccessControl` directory on the provisioned server.
 
 ```commandline
-cd /root/container_training/Kubernetes/RoleBasedAccessControl
+cd /root/container-training/Kubernetes/RoleBasedAccessControl
 ```
 
 -------

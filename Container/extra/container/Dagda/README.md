@@ -120,11 +120,11 @@ python3 dagda.py vuln --init_status
 
 ##### Step 2:
 
-* Run `cd /home/we45/container_training/Container/Container-Vulnerability-Assessment/Dagda` to cd into a Dagda directory.
+* Run `cd /home/we45/container-training/Container/Container-Vulnerability-Assessment/Dagda` to cd into a Dagda directory.
 
 ```commandline
-root@we45:~# cd /home/we45/container_training/Container/Container-Vulnerability-Assessment/Dagda
-root@we45:~/container_training/Container/Container-Vulnerability-Assessment/Dagda#
+root@we45:~# cd /home/we45/container-training/Container/Container-Vulnerability-Assessment/Dagda
+root@we45:~/container-training/Container/Container-Vulnerability-Assessment/Dagda#
 ```
    
 ##### Step 3:
@@ -132,7 +132,7 @@ root@we45:~/container_training/Container/Container-Vulnerability-Assessment/Dagd
 * Run `docker run -d -p 27017:27017 -v dagda_db:/data/db --name mongodb mongo` for dagda related requisites.
 
 ```commandline
-root@we45:~/container_training/Container/Container-Vulnerability-Assessment/Dagda# docker run -d -p 27017:27017 -v dagda_db:/data/db --name mongodb mongo
+root@we45:~/container-training/Container/Container-Vulnerability-Assessment/Dagda# docker run -d -p 27017:27017 -v dagda_db:/data/db --name mongodb mongo
 ca94dab2d52ed092ad7a3bd5f00c73cd8cb6692f271b688068cafac478737bfe
 ```
     
@@ -152,17 +152,17 @@ export DAGDA_PORT=5000
 * Run `source venv/bin/activate` to activate the virtualenv.
 
 ```commandline
-root@we45:~/container_training/Container/Container-Vulnerability-Assessment/Dagda# source venv/bin/activate
-(venv)root@we45:~/container_training/Container/Container-Vulnerability-Assessment/Dagda#
+root@we45:~/container-training/Container/Container-Vulnerability-Assessment/Dagda# source venv/bin/activate
+(venv)root@we45:~/container-training/Container/Container-Vulnerability-Assessment/Dagda#
 ```
 
 ##### Step 6:
 
-* Run `cd /home/we45/container_training/Container/Container-Vulnerability-Assessment/Dagda/dagda/dagda`, where dagda.py file exists.
+* Run `cd /home/we45/container-training/Container/Container-Vulnerability-Assessment/Dagda/dagda/dagda`, where dagda.py file exists.
 
 ```commandline
-(venv)root@we45:~# cd /home/we45/container_training/Container/Container-Vulnerability-Assessment/Dagda/dagda/dagda
-(venv)root@we45:~/container_training/Container/Container-Vulnerability-Assessment/Dagda/dagda/dagda#
+(venv)root@we45:~# cd /home/we45/container-training/Container/Container-Vulnerability-Assessment/Dagda/dagda/dagda
+(venv)root@we45:~/container-training/Container/Container-Vulnerability-Assessment/Dagda/dagda/dagda#
 ```
 
 ##### Step 7:
@@ -170,12 +170,12 @@ root@we45:~/container_training/Container/Container-Vulnerability-Assessment/Dagd
 * Run `python3 dagda.py start` to start the dagda server
     
 ```commandline
-(venv)root@we45:~/container_training/Container/Container-Vulnerability-Assessment/Dagda/dagda/dagda# python3 dagda.py start
+(venv)root@we45:~/container-training/Container/Container-Vulnerability-Assessment/Dagda/dagda/dagda# python3 dagda.py start
 ```
   
 ##### Step 8:
 
-* Open Another Tab and navigate to `/home/we45/container_training/Container/Container-Vulnerability-Assessment/Dagda/` and set the necessary environment variables
+* Open Another Tab and navigate to `/home/we45/container-training/Container/Container-Vulnerability-Assessment/Dagda/` and set the necessary environment variables
 
 ```commandline
 export DAGDA_HOST='127.0.0.1'
@@ -183,8 +183,8 @@ export DAGDA_PORT=5000
 ```
 
 ```commandline
-root@we45:~# cd /home/we45/container_training/Container/Container-Vulnerability-Assessment/Dagda/
-root@we45:~/container_training/Container/Container-Vulnerability-Assessment/Dagda#
+root@we45:~# cd /home/we45/container-training/Container/Container-Vulnerability-Assessment/Dagda/
+root@we45:~/container-training/Container/Container-Vulnerability-Assessment/Dagda#
 ```
 
 ##### Step 9:
@@ -192,18 +192,18 @@ root@we45:~/container_training/Container/Container-Vulnerability-Assessment/Dagd
 * Run `source venv/bin/activate` to activate the virtualenv.
 
 ```commandline
-root@we45:~/container_training/Container/Container-Vulnerability-Assessment/Dagda# source venv/bin/activate
-(venv)root@we45:~/container_training/Container/Container-Vulnerability-Assessment/Dagda#
+root@we45:~/container-training/Container/Container-Vulnerability-Assessment/Dagda# source venv/bin/activate
+(venv)root@we45:~/container-training/Container/Container-Vulnerability-Assessment/Dagda#
 ```
 
 
 ##### Step 10:
 
-* Run `cd /home/we45/container_training/Container/Container-Vulnerability-Assessment/Dagda/dagda/dagda`, where dagda.py file exists.
+* Run `cd /home/we45/container-training/Container/Container-Vulnerability-Assessment/Dagda/dagda/dagda`, where dagda.py file exists.
 
 ```commandline
-(venv)root@we45:~# cd /home/we45/container_training/Container/Container-Vulnerability-Assessment/Dagda/dagda/dagda
-(venv)root@we45:~/container_training/Container/Container-Vulnerability-Assessment/Dagda/dagda/dagda#
+(venv)root@we45:~# cd /home/we45/container-training/Container/Container-Vulnerability-Assessment/Dagda/dagda/dagda
+(venv)root@we45:~/container-training/Container/Container-Vulnerability-Assessment/Dagda/dagda/dagda#
 ```
 
 
@@ -212,7 +212,7 @@ root@we45:~/container_training/Container/Container-Vulnerability-Assessment/Dagd
 * Run `python3 dagda.py vuln --cve_info CVE-2009-2890`
 
 ```commandline
-(venv)root@we45:~/container_training/Container/Container-Vulnerability-Assessment/Dagda/dagda/dagda# python3 dagda.py vuln --cve_info CVE-2009-2890
+(venv)root@we45:~/container-training/Container/Container-Vulnerability-Assessment/Dagda/dagda/dagda# python3 dagda.py vuln --cve_info CVE-2009-2890
 [
     {
         "cveid": "CVE-2009-2890",

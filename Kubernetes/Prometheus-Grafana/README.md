@@ -10,7 +10,7 @@
 * Navigate to the `Prometheus-Grafana` directory on the provisioned server
 
 ```commandline
-cd /root/container_training/Kubernetes/Prometheus-Grafana
+cd /root/container-training/Kubernetes/Prometheus-Grafana
 ```
 
 -------

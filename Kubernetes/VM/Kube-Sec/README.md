@@ -8,7 +8,7 @@
 * Navigate to the `Kube-Sec` directory
 
 ```bash
-cd /home/we45/container_training/Kubernetes/VM/Kube-Sec
+cd /home/we45/container-training/Kubernetes/VM/Kube-Sec
 ```
 
 

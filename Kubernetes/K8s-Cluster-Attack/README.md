@@ -9,7 +9,7 @@
 * Navigate to the `K8s-Cluster-Attack` directory on the provisioned server.
 
 ```
-cd /root/container_training/Kubernetes/K8s-Cluster-Attack
+cd /root/container-training/Kubernetes/K8s-Cluster-Attack
 ```
 
 * Multiplex terminal session with `tmux` and split panes horizontally.
@@ -121,7 +121,7 @@ curl -XGET $NGFLASK/status
 * Navigate to `payloads` directory that has malicious yaml files
 
 ```commandline
-cd /root/container_training/Kubernetes/K8s-Cluster-Attack/payloads
+cd /root/container-training/Kubernetes/K8s-Cluster-Attack/payloads
 ```
 
 * Upload a malicious yaml file and identify the flaw
@@ -371,7 +371,7 @@ curl -s https://10.96.0.1/api/v1/namespaces/default/pods -XPOST -H "Authorizatio
 ```commandline
 ctrl + b + (upper arrow key)
 
-cd /root/container_training/Kubernetes/K8s-Cluster-Attack
+cd /root/container-training/Kubernetes/K8s-Cluster-Attack
 
 ./tornado_server.py
 ```
@@ -388,7 +388,7 @@ cd /root/container_training/Kubernetes/K8s-Cluster-Attack
 # Stop the listener
 crtl + c
 
-cd /root/container_training/Kubernetes/K8s-Cluster-Attack
+cd /root/container-training/Kubernetes/K8s-Cluster-Attack
 
 kubectl delete -f ngflask-redis-service.yml -f redis-service.yml -f ngflaskredis-deployment.yml
 ```

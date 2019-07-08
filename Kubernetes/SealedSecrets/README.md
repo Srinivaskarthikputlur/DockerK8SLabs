@@ -10,7 +10,7 @@
 * Navigate to the `SealedSecrets` directory on the provisioned server
 
 ```commandline
-cd /root/container_training/Kubernetes/SealedSecrets
+cd /root/container-training/Kubernetes/SealedSecrets
 ```
 
 -------

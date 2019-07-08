@@ -6,7 +6,7 @@
 * Navigate to the `SysdigFalco` directory
 
 ```bash
-cd /home/we45/container_training/Kubernetes/VM/SysdigFalco
+cd /home/we45/container-training/Kubernetes/VM/SysdigFalco
 ```
 
 ##### Step 2: 

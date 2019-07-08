@@ -1,4 +1,4 @@
-# [Container Security, Orchestration and Serverless Training Manual](https://github.com/we45/container_training)
+# [Container Security, Orchestration and Serverless Training Manual](https://github.com/we45/container-training)
 
 ## Content
 

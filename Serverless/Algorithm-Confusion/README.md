@@ -10,7 +10,7 @@
 * Navigate to the `Algorithm-Confusion` directory on the provisioned server
 
 ```commandline
-cd /root/container_training/Serverless/Algorithm-Confusion
+cd /root/container-training/Serverless/Algorithm-Confusion
 ```
 
 -------

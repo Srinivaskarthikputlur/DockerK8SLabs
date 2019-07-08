@@ -10,7 +10,7 @@
 * Navigate to the `Vault` directory on the provisioned server.
 
 ```commandline
-cd /root/container_training/Kubernetes/Vault
+cd /root/container-training/Kubernetes/Vault
 ```
 
 -------

@@ -11,7 +11,7 @@
 * Navigate to the istio directory
 
 ```commandline
-cd /root/container_training/Kubernetes/Istio
+cd /root/container-training/Kubernetes/Istio
 ```
 
 * Download the installation file

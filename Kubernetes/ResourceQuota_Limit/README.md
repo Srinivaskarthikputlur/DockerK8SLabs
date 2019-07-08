@@ -10,7 +10,7 @@
 * Navigate to the `Resource Quota and Limits` directory on the provisioned server.
 
 ```commandline
-cd /root/container_training/Kubernetes/ResourceQuota_Limit
+cd /root/container-training/Kubernetes/ResourceQuota_Limit
 ```
 
 -------

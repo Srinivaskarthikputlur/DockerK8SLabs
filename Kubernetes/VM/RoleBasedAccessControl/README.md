@@ -6,7 +6,7 @@
 * Navigate to `RoleBasedAccessControl` directory.
 
 ```bash
-cd /home/we45/container_training/Kubernetes/VM/RoleBasedAccessControl
+cd /home/we45/container-training/Kubernetes/VM/RoleBasedAccessControl
 ```
 
 ##### Step 2: 

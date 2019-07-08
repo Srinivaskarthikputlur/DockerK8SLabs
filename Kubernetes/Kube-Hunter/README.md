@@ -10,7 +10,7 @@
 * Navigate to the `KubeHunter` directory on the provisioned server.
 
 ```commandline
-cd /root/container_training/Kubernetes/Kube-Hunter
+cd /root/container-training/Kubernetes/Kube-Hunter
 ```
 
 -------
