@@ -1,37 +1,37 @@
 ### Kubernetes
 
-  * [Kubernetes Hands-on](Kubernetes/K8s-Hands-On/README.md)
+  * [Kubernetes Hands-on](K8s-Hands-On/README.md)
 
-  * [Attacking a K8s Cluster](Kubernetes/K8s-Cluster-Attack/README.md)
+  * [Attacking a K8s Cluster](K8s-Cluster-Attack/README.md)
 
-  * [Role Based Access Control](Kubernetes/RoleBasedAccessControl/README.md)
+  * [Role Based Access Control](RoleBasedAccessControl/README.md)
 
-  * [Pod Security Policy](Kubernetes/PodSecurityPolicy/README.md)
+  * [Pod Security Policy](PodSecurityPolicy/README.md)
 
-  * [Kubeseal - Shared Secrets](Kubernetes/SealedSecrets/README.md)
+  * [Kubeseal - Shared Secrets](SealedSecrets/README.md)
 
-  * [Vault](Kubernetes/Vault/README.md)
+  * [Vault](Vault/README.md)
 
-  * [Istio](Kubernetes/Istio/README.md)
+  * [Istio](Istio/README.md)
   
-  * [KubeAudit](Kubernetes/KubeAudit/README.md)
+  * [KubeAudit](KubeAudit/README.md)
 
-  * [KubeSec](Kubernetes/Kube-Sec/README.md)
+  * [KubeSec](Kube-Sec/README.md)
 
-  * [KubeBench](Kubernetes/Kube-Bench/README.md)
+  * [KubeBench](Kube-Bench/README.md)
 
-  * [KubeHunter](Kubernetes/Kube-Hunter/README.md)
+  * [KubeHunter](Kube-Hunter/README.md)
  
-  * [Prometheus Grafana](Kubernetes/Prometheus-Grafana/README.md)
+  * [Prometheus Grafana](Prometheus-Grafana/README.md)
 
-  * [Sysdig Falco](Kubernetes/SysdigFalco/README.md)
+  * [Sysdig Falco](SysdigFalco/README.md)
 
 
 
 ##### New labs to be added in slides/Extras
 
-  * [Kubelet Attack](Kubernetes/Kubelet-Attack/README.md)
+  * [Kubelet Attack](Kubelet-Attack/README.md)
 
-  * [Kubernetes CI/CD](Kubernetes/kubernetes-ci/README.md)
+  * [Kubernetes CI/CD](kubernetes-ci/README.md)
 
-  * [Resource Quota Limit](Kubernetes/ResourceQuota_Limit/README.md)
+  * [Resource Quota Limit](ResourceQuota_Limit/README.md)

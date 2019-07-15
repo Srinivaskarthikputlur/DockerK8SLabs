@@ -1,51 +1,51 @@
 ### Containers
 
-  * [Union Mount File-System](Container/Union-Mount/README.md)
+  * [Union Mount File-System](Union-Mount/README.md)
   
-  * [Network Namespace](Container/Network-Namespace/README.md)
+  * [Network Namespace](Network-Namespace/README.md)
  
-  * [Docker Hands-on](Container/Docker-Hands-On/README.md)
+  * [Docker Hands-on](Docker-Hands-On/README.md)
 
-  * [Analysing Docker Layers](Container/dive/README.md)
+  * [Analysing Docker Layers](dive/README.md)
 
-  * [Container Breakout](Container/container-breakout/README.md)
+  * [Container Breakout](container-breakout/README.md)
 
-  * [Trojanized Docker Images](Container/Trojanized-Docker-Image/README.md)
+  * [Trojanized Docker Images](Trojanized-Docker-Image/README.md)
 
-  * [Vulnerable/Outdated Libraries](Container/Vulnerable-Libraries/README.md)
+  * [Vulnerable/Outdated Libraries](Vulnerable-Libraries/README.md)
 
-  * [Non-Root Container and Container Breakout](Container/Non-Root-Container/README.md)
+  * [Non-Root Container and Container Breakout](Non-Root-README.md)
 
-  * [Distroless vs Distro"ful" Containers](Container/distroless/README.md)
+  * [Distroless vs Distro"ful" Containers](distroless/README.md)
 
-  * [SecComp](Container/seccomp/README.md)
+  * [SecComp](seccomp/README.md)
 
-  * [AppArmor](Container/AppArmor/README.md)
+  * [AppArmor](AppArmor/README.md)
 
-  * [Limiting Docker Capabilities](Container/DockerCapabilities/README.md)
+  * [Limiting Docker Capabilities](DockerCapabilities/README.md)
 
-  * [Resource Management](Container/Resouce-Management/README.md)
+  * [Resource Management](Resouce-Management/README.md)
 
-  * [Trusted Docker Images](Container/Trusted-Images/README.md)
+  * [Trusted Docker Images](Trusted-Images/README.md)
 
-  * [Monitoring Docker events with 'Auditd'](Container/Auditd/README.md)
+  * [Monitoring Docker events with 'Auditd'](Auditd/README.md)
 
-  * [OsQuery Monitoring for Containers](Container/OSQuery/README.md)
+  * [OsQuery Monitoring for Containers](OSQuery/README.md)
 
-  * [Clair](Container/Clair/README.md)
+  * [Clair](Clair/README.md)
 
-  * [Docker Bench](Container/Docker-bench/README.md)
+  * [Docker Bench](Docker-bench/README.md)
   
-  * [Anchore](Container/Anchore/README.md)
+  * [Anchore](Anchore/README.md)
 
-  * [Docker Compose](Container/Docker-Compose/README.md)
+  * [Docker Compose](Docker-Compose/README.md)
 
 
 
 ##### New labs to be added in slides/Extras
 
-  * [Container Native CI/CD](Container/container-ci/README.md)
+  * [Container Native CI/CD](container-ci/README.md)
   
-  * [Docker Slim](Container/dockerslim/README.md)
+  * [Docker Slim](dockerslim/README.md)
 
-  * [KataContainers](Container/katacontainers/README.md)
+  * [KataContainers](katacontainers/README.md)
