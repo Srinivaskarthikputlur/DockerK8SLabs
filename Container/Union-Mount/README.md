@@ -27,11 +27,14 @@ cd /root/container-training/Container/Union-Mount/
 
 ```commandline
 mkdir Folder-1 Folder-2 mnt
-
+```
+```commandline
 mkdir -p Folder-1/Dir1 Folder-2/Dir1 Folder-2/Dir2
-
+```
+```commandline
 touch Folder-1/File1.txt Folder-1/Dir1/dir1.txt Folder-1/Dir1/one.txt
-
+```
+```commandline
 touch Folder-2/Dir1/file2.txt Folder-2/Dir1/two.txt Folder-2/Dir2/dir2_file.txt Folder-2/File2.txt
 ```
 

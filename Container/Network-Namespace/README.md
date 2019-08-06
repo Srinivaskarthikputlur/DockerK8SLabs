@@ -10,11 +10,14 @@
 
 ```commandline
 ifconfig -a
-
+```
+```commandline
 iptables -L
-
+```
+```commandline
 route -n
 ```
+
 
 -------
 
@@ -24,7 +27,8 @@ route -n
 
 ```commandline
 ip netns add NetNameSpace
-
+```
+```commandline
 ip netns list
 ```
 
@@ -36,11 +40,14 @@ ip netns list
 
 ```commandline
 sudo ip netns exec NetNameSpace bash
-
+```
+```commandline
 ifconfig -a
-
+```
+```commandline
 iptables -L
-
+```
+```commandline
 route -n
 ```
 
@@ -58,7 +65,8 @@ exit
 
 ```commandline
 ip netns list
-
+```
+```commandline
 sudo ip netns del NetNameSpace
 ```
 

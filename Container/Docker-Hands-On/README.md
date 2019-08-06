@@ -79,7 +79,8 @@ docker ps -a
 
 ```commandline
 docker build -t helloworld:latest .
-
+```
+```commandline
 docker run -d -p 5000:5000 helloworld:latest
 ```
 

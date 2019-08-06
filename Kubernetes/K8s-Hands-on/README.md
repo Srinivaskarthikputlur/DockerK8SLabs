@@ -21,6 +21,8 @@ serverip
 * Setup a K8s cluster on the provisioned server. Replace `<serverip>` with the public IP of the server provisioned.
 
 ```commandline
+export HOME=/root
+
 kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address <serverip>
 ```
 

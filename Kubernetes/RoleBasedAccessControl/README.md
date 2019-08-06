@@ -53,13 +53,20 @@ kubectl config set-credentials restricteduser --client-certificate=restricteduse
 kubectl config set-context restricteduser-context --cluster=kubernetes --namespace=restricted-namespace --user=restricteduser
 ```
 
-* Try fetching the list of pods with `restricteduser-context`
+* Using [`can-i`](https://kubernetes.io/docs/reference/access-authn-authz/authorization/#checking-api-access), check to see if `restricteduser-context` user has access to fetch pods
+
+```commandline
+kubectl --context=restricteduser-context auth can-i get pods
+```
+
+* Confirm by trying to fetch the list of pods with `restricteduser-context`
 
 ```commandline
 kubectl --context=restricteduser-context get pods
 ```
 
 #### **It will show the following Error: `Error from server (Forbidden): pods is forbidden: User "restricteduser" cannot list pods in the namespace "restricted-namespace"`**
+
 
 -------
 
@@ -73,6 +80,16 @@ kubectl -n restricted-namespace create -f role-deployment-manager.yaml
 kubectl -n restricted-namespace create -f rolebinding-deployment-manager.yaml
 ```
 
+* Confirm that `restricteduser-context` now has permissions to fetch and create pods
+
+```commandline
+kubectl --context=restricteduser-context auth can-i get pods
+```
+
+```commandline
+kubectl --context=restricteduser-context auth can-i create pods
+```
+
 * Run a pod using `restricteduser-context`
 
 ```commandline
@@ -82,6 +99,12 @@ kubectl --context=restricteduser-context run --image nginx:alpine nginx
 -------
 
 #### Step 5:
+
+* Using [`can-i`](https://kubernetes.io/docs/reference/access-authn-authz/authorization/#checking-api-access), check to see if `restricteduser-context` user has permission to delete pods
+
+```commandline
+kubectl --context=restricteduser-context auth can-i delete pods
+```
 
 * Using the restricteduser-context, try deleting the pod running
 

