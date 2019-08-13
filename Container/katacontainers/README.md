@@ -2,13 +2,15 @@
 
 ### *Lightweight virtual machines that feel and perform like containers, but provide stronger workload isolation using hardware virtualization technology*
 
--------
+### **Lab Image : `Containers`**
+
+---
 
 #### Step 1:
 
 * Navigate to the `Kata Containers` directory on the provisioned server.
 
-```
+```commandline
 cd /root/container-training/Container/katacontainers/
 ```
 
@@ -16,11 +18,12 @@ cd /root/container-training/Container/katacontainers/
 
 ```commandline
 docker images
-
+```
+```commandline
 docker ps
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -28,17 +31,21 @@ docker ps
 
 ```commandline
 ARCH=$(arch)
-
+```
+```commandline
 BRANCH="${BRANCH:-master}"
-
+```
+```commandline
 sh -c "echo 'deb http://download.opensuse.org/repositories/home:/katacontainers:/releases:/${ARCH}:/${BRANCH}/xUbuntu_$(lsb_release -rs)/ /' > /etc/apt/sources.list.d/kata-containers.list"
-
+```
+```commandline
 curl -sL  http://download.opensuse.org/repositories/home:/katacontainers:/releases:/${ARCH}:/${BRANCH}/xUbuntu_$(lsb_release -rs)/Release.key | sudo apt-key add -
-
+```
+```commandline
 apt-get update && apt-get -y install kata-runtime kata-proxy kata-shim
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -46,7 +53,8 @@ apt-get update && apt-get -y install kata-runtime kata-proxy kata-shim
 
 ```commandline
 mkdir -p /etc/systemd/system/docker.service.d/
-
+```
+```commandline
 cat <<EOF | sudo tee /etc/systemd/system/docker.service.d/kata-containers.conf
 [Service]
 ExecStart=
@@ -56,7 +64,7 @@ EOF
 
 * Add the following definitions to `/etc/docker/daemon.json`.
 
-```commandline
+```json
 {
   "default-runtime": "kata-runtime",
   "runtimes": {
@@ -67,7 +75,7 @@ EOF
 }
 ```
 
--------
+---
 
 #### Step 4:
 
@@ -75,7 +83,8 @@ EOF
 
 ```commandline
 systemctl daemon-reload
-
+```
+```commandline
 systemctl restart docker
 ```
 
@@ -83,13 +92,14 @@ systemctl restart docker
 
 ```commandline
 uname -a
-
+```
+```commandline
 docker run alpine  uname -a
 ```
 
-### *The kernel on `alpine` container is different because `docker` is configured to use `katacontainer` and not the host-machine kernel. This feature makes `katacontainers` more isolated and secure*
+> **EXAMPLE**: The kernel on `alpine` container is different because `docker` is configured to use `katacontainer` and not the host-machine kernel. This feature makes `katacontainers` more isolated and secure
 
--------
+---
 
 #### Step 5:
 
@@ -97,7 +107,8 @@ docker run alpine  uname -a
 
 ```commandline
 lsmod
-
+```
+```commandline
 docker run -ti --rm --privileged -v /:/hostFS/ alpine lsmod
 ```
 
@@ -105,7 +116,8 @@ docker run -ti --rm --privileged -v /:/hostFS/ alpine lsmod
 
 ```commandline
 docker run -ti --rm --privileged -v /:/hostFS/ alpine sh
-
+```
+```commandline
 rmmod floppy /hostFS
 ```
 
@@ -115,13 +127,13 @@ rmmod floppy /hostFS
 exit
 ```
 
-### *It can be observed that removing the `host` modules is not possible with `kataconatiners`
+> **NOTE**: It can be observed that removing the `host` modules is not possible with `kataconatiners`
 
--------
+---
 
-### *Try to launch a container with the `docker.sock` mounted and observe the results*
+> **EXERCISE**: Try to launch a container with the `docker.sock` mounted and observe the results
 
--------
+---
 
 #### Step 6:
 
@@ -131,7 +143,7 @@ exit
 clean-docker
 ```
 
----------
+---
 
 ### Reading Material/References:
 

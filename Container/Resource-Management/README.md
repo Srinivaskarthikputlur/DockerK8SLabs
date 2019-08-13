@@ -2,7 +2,9 @@
 
 ### *Restricting host resources for a container*
 
--------
+### **Lab Image : `Containers`**
+
+---
 
 #### Step 1:
 
@@ -20,7 +22,7 @@
 docker run -it --cpus=".5" ubuntu:latest /bin/bash
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -28,7 +30,8 @@ docker run -it --cpus=".5" ubuntu:latest /bin/bash
 
 ```commandline
 apt update
-
+```
+```commandline
 apt install stress
 ```
 
@@ -38,7 +41,7 @@ apt install stress
 stress --cpu 10 --timeout 5
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -48,7 +51,7 @@ stress --cpu 10 --timeout 5
 clean-docker
 ```
 
----------
+---
 
 ### Reading Material/References:
 

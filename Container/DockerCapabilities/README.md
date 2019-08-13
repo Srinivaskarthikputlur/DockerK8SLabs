@@ -2,23 +2,25 @@
 
 ### * *
 
--------
+### **Lab Image : `Containers`**
+
+---
 
 #### Step 1:
 
 * Navigate to the `Docker Capabilities` directory on the provisioned server.
 
-```
+```command
 cd /root/container-training/Container/DockerCapabilities/
 ```
 
--------
+---
 
 #### Step 2:
 
 * Launch an `alpine` container and run ping on `localhost`
 
-```
+```command
 docker run -it alpine ping -c 1 localhost
 ```
 
@@ -28,7 +30,7 @@ docker run -it alpine ping -c 1 localhost
 docker run --cap-drop=net_raw -it alpine ping -c 1 localhost
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -38,7 +40,7 @@ docker run --cap-drop=net_raw -it alpine ping -c 1 localhost
 docker run --cap-drop=ALL --cap-add=net_raw -it alpine ping -c 1 localhost
 ```
 
--------
+---
 
 #### Step 4:
 
@@ -48,7 +50,7 @@ docker run --cap-drop=ALL --cap-add=net_raw -it alpine ping -c 1 localhost
 clean-docker
 ```
 
----------
+---
 
 ### Reading Material/References:
 

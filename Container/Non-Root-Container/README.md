@@ -2,6 +2,8 @@
 
 ### *Preventing `Container Breakout` using `Non-root`*
 
+### **Lab Image : `Containers`**
+
 -------
 
 #### Step 1:
@@ -32,7 +34,8 @@ docker run -ti --rm -u 1000 -v /root:/hostFS/ alpine sh
 
 ```commandline
 cat /hostFS/secret.txt
-
+```
+```commandline
 cd /hostFS
 ```
 

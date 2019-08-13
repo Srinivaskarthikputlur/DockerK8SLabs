@@ -2,7 +2,9 @@
 
 ### * *
 
--------
+### **Lab Image : `Containers`**
+
+---
 
 #### Step 1:
 
@@ -19,7 +21,7 @@ apt install unionfs-fuse tree
 cd /root/container-training/Container/Union-Mount/
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -44,7 +46,7 @@ touch Folder-2/Dir1/file2.txt Folder-2/Dir1/two.txt Folder-2/Dir2/dir2_file.txt 
 tree .
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -60,7 +62,7 @@ unionfs-fuse -o dirs=Folder-1:Folder-2  mnt/
 tree mnt
 ```
 
--------
+---
 
 #### Step 4:
 
@@ -76,7 +78,7 @@ umount -l mnt
 rm -rf Folder-1 Folder-2 mnt
 ```
 
----------
+---
 
 ### Reading Material/References:
 

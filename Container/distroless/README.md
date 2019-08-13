@@ -1,9 +1,10 @@
 # **Distroless**
 
-
 ### * *
 
--------
+### **Lab Image : `Containers`**
+
+---
 
 #### Step 1:
 
@@ -13,7 +14,7 @@
 cd /root/container-training/Container/distroless/
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -35,7 +36,7 @@ cd /root/container-training/Container/distroless/distroful
 docker build -t distroful_flask_py .
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -43,15 +44,17 @@ docker build -t distroful_flask_py .
 
 ```commandline
 cd /root/container-training/Container/Clair/
-
+```
+```commandline
 docker run -d -p 5432:5432 --name db arminc/clair-db:2019-01-01
+```
 
-# Wait for few seconds till the container is initialized
+> ##### Wait for few seconds till the container is initialized
 
 docker run -d -p 6060:6060 --link db:postgres --name clair arminc/clair-local-scan:v2.0.1
 ```
 
--------
+---
 
 #### Step 4:
 
@@ -64,22 +67,22 @@ serverip
 * Run `clair-scan` against the `distroless_flask` image
 
 ```commandline
-./clair-scanner --ip <IP> -r clair_report.json distroless_flask_py
+./clair-scanner --ip $(serverip) -r clair_report.json distroless_flask_py
 ```
 
-**EXAMPLE**: `./clair-scanner --ip 104.1.1.1 -r clair_report.json distroless_flask_py`
+> **EXAMPLE**: `./clair-scanner --ip 104.1.1.1 -r clair_report.json distroless_flask_py`
 
 * Run `clair-scan` against the `distroful_flask` image
 
 ```commandline
-./clair-scanner --ip <IP> -r clair_report.json distroful_flask_py
+./clair-scanner --ip $(serverip) -r clair_report.json distroful_flask_py
 ```
 
-**EXAMPLE**: `./clair-scanner --ip 104.1.1.1 -r clair_report.json distroful_flask_py`
+> **EXAMPLE**: `./clair-scanner --ip 104.1.1.1 -r clair_report.json distroful_flask_py`
 
 * Observe the results
 
--------
+---
 
 #### Step 5:
 
@@ -89,7 +92,7 @@ serverip
 clean-docker
 ```
 
----------
+---
 
 ### Reading Material/References:
 

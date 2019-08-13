@@ -1,9 +1,8 @@
 # **CI for Container Security**
 
-
 ### *CI to run security scans using GitLab*
 
--------
+---
 
 #### Step 1:
 
@@ -15,7 +14,7 @@
 
 * Once the repository has been imported, all files should be visible in the project.
 
--------
+---
 
 #### Step 2:
 
@@ -25,6 +24,6 @@
 
 * Wait for the pipeline to execute and observe the results
 
----------
+---
 
 ### Reading Material/References:

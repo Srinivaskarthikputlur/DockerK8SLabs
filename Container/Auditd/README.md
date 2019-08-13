@@ -2,7 +2,9 @@
 
 ### *Docker access monitoring and accounting*
 
--------
+### **Lab Image : `Containers`**
+
+---
 
 #### Step 1:
 
@@ -16,11 +18,12 @@ apt install auditd
 
 ```commandline
 service auditd status
-
+```
+```commandline
 service auditd start
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -29,10 +32,9 @@ service auditd start
 ```commandline
 auditctl -w /usr/bin/docker -p rwxa -k docker-daemon
 ```
+> **NOTE**: `auditctl` is for temporary use till system is shutdown. For a more permanent approach, add rule in rules.d/ and run `augenriles --check`.  If there's a difference, run `augenrules --load` to load the new rules
 
-#####  **`auditctl` is for temporary use till system is shutdown. For a more permanent approach, add rule in rules.d/ and run `augenriles --check`.  If there's a difference, run `augenrules --load` to load the new rules**
-
--------
+---
 
 #### Step 3:
 
@@ -40,13 +42,15 @@ auditctl -w /usr/bin/docker -p rwxa -k docker-daemon
 
 ```commandline
 docker run -d nginx:alpine
-
+```
+```commandline
 docker run -d alpine:latest
-
+```
+```commandline
 docker run -d -p 5050:5050 abhaybhargav/vul_flask
 ```
 
--------
+---
 
 #### Step 4:
 
@@ -62,7 +66,7 @@ ausearch -k docker-daemon
 ausearch --start today --raw | aureport -x --summary
 ```
 
--------
+---
 
 #### Step 5:
 
@@ -72,7 +76,7 @@ ausearch --start today --raw | aureport -x --summary
 clean-docker
 ```
 
----------
+---
 
 ### Reading Material/References:
 

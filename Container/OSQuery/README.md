@@ -2,7 +2,9 @@
 
 ### *Monitoring Docker Security with OSQuery*
 
--------
+### **Lab Image : `Containers`**
+
+---
 
 #### Step 1:
 
@@ -10,7 +12,8 @@
 
 ```commandline
 wget https://pkg.osquery.io/deb/osquery_3.3.2_1.linux.amd64.deb
-
+```
+```commandline
 dpkg -i osquery_3.3.2_1.linux.amd64.deb
 ```
 
@@ -20,13 +23,18 @@ dpkg -i osquery_3.3.2_1.linux.amd64.deb
 
 * Launch a few containers with insecure configurations
 
-```commandline
-# Container Running in 'Privileged' Mode
-docker run -d --privileged nginx:latest
+> ##### Container Running in 'Privileged' Mode
 
-# Container Running with Sensitive Environment Variables and Sensitive Volumes exposed
+```commandline
+docker run -d --privileged nginx:latest
+```
+
+> ##### Container Running with Sensitive Environment Variables and Sensitive Volumes exposed
+
+```commandline
 docker run -e MYSQL_ROOT_PASSWORD=my-secret-pw  -v /etc:/hostFS -d mysql:latest
 ```
+
 
 * Start the OSQuery Interactive interface
 

@@ -2,7 +2,9 @@
 
 ### * *
 
--------
+### **Lab Image : `Containers`**
+
+---
 
 #### Step 1:
 
@@ -18,8 +20,7 @@ iptables -L
 route -n
 ```
 
-
--------
+---
 
 #### Step 2:
 
@@ -32,7 +33,7 @@ ip netns add NetNameSpace
 ip netns list
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -51,7 +52,7 @@ iptables -L
 route -n
 ```
 
--------
+---
 
 #### Step 4:
 
@@ -70,7 +71,7 @@ ip netns list
 sudo ip netns del NetNameSpace
 ```
 
----------
+---
 
 ### Reading Material/References:
 

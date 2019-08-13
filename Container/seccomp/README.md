@@ -2,6 +2,8 @@
 
 ### *Secure Computing Profiles for Docker*
 
+### **Lab Image : `Containers`**
+
 -------
 
 #### Step 1:
@@ -22,7 +24,7 @@ cd /root/container-training/Container/seccomp/
 cat custom_profile.json
 ```
 
-#####  **The SecComp profile blocks `chmod`, `chown` and `chown32` when loaded onto a container**
+> **NOTE**: The SecComp profile blocks `chmod`, `chown` and `chown32` when loaded onto a container
 
 -------
 

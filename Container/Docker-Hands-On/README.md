@@ -1,9 +1,10 @@
 # **Docker Hands-On**
 
-
 ### * *
 
--------
+### **Lab Image : `Containers`**
+
+---
 
 #### Step 1:
 
@@ -13,7 +14,7 @@
 cd /root/container-training/Container/Docker-Hands-On/
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -47,7 +48,7 @@ docker ps
 docker logs vul_flask
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -93,7 +94,7 @@ serverip
 * Access the `helloworld` application on the browser
 
 ```commandline
-http://<IP>:5000
+http://$(serverip):5000
 ```
 
 * Remove an image from the server
@@ -102,7 +103,7 @@ http://<IP>:5000
 docker rmi abhaybhargav/vul_flask
 ```
 
--------
+---
 
 #### Step 4:
 
@@ -112,6 +113,6 @@ docker rmi abhaybhargav/vul_flask
 clean-docker
 ```
 
----------
+---
 
 ### Reading Material/References:

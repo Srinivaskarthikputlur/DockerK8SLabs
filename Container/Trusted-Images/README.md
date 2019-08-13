@@ -2,7 +2,9 @@
 
 ### *Ensuring the integrity and the publisher of all the data a system operates on with content-trust*
 
--------
+### **Lab Image : `Containers`**
+
+---
 
 #### Step 1:
 
@@ -18,7 +20,7 @@ https://hub.docker.com/
 docker login
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -34,7 +36,7 @@ docker tag alpine <username>/untrusted:latest
 docker push <username>/untrusted:latest
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -42,7 +44,6 @@ docker push <username>/untrusted:latest
 
 ```commandline
 export DOCKER_CONTENT_TRUST=1
-
 ```
 
 * Try to pull the `<username>/untrusted:latest` image from DockerHub and observe the results
@@ -51,7 +52,7 @@ export DOCKER_CONTENT_TRUST=1
 docker pull <username>/untrusted:latest
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -67,11 +68,11 @@ docker tag alpine <username>/trusted:latest
 docker push <username>/trusted:latest
 ```
 
-------
+---
 
-###  ** Note: You will be prompted to create a new root signing key passphrase. 
+> **NOTE**: You will be prompted to create a new root signing key passphrase. 
 
-----
+---
 
 #### Step 4:
 
@@ -83,9 +84,9 @@ docker pull <username>/trusted:latest
 
 * It can be observed that only signed images can be pulled.
 
-###  ** Note: Check `~/.docker/trust/private` for private keys
+> **NOTE**: Note: Check `~/.docker/trust/private` for private keys
 
-----
+---
 
 #### Step 5:
 
@@ -93,11 +94,12 @@ docker pull <username>/trusted:latest
 
 ```commandline
 docker trust inspect <username>/untrusted:latest
-
+```
+```commandline
 docker trust inspect <username>/trusted:latest
 ```
 
-----
+---
 
 #### Step 6:
 
@@ -107,7 +109,7 @@ docker trust inspect <username>/trusted:latest
 export DOCKER_CONTENT_TRUST=0
 ```
 
--------
+---
 
 
 ### Reading Material/References:

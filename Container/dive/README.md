@@ -2,7 +2,9 @@
 
 ### *Exploring Docker image(s) and layer contents with [`Dive`](https://github.com/wagoodman/dive/)*
 
--------
+### **Lab Image : `Containers`**
+
+---
 
 #### Step 1:
 
@@ -12,7 +14,7 @@
 docker pull abhaybhargav/vul_flask
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -22,7 +24,7 @@ docker pull abhaybhargav/vul_flask
 dive abhaybhargav/vul_flask
 ```
 
----------
+---
 
 ### Reading Material/References:
 

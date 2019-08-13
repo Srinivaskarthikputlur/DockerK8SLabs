@@ -1,9 +1,11 @@
 # **Anchore**
 
 
-### * *
+### *[Anchore](https://anchore.com/opensource/) engine helps perform detailed analysis on container images that can be easily integrated in CI/CD pipelines.*
 
--------
+### **Lab Image : `Containers`**
+
+---
 
 #### Step 1:
 
@@ -13,7 +15,7 @@
 cd /root/container-training/Container/Anchore/
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -21,11 +23,12 @@ cd /root/container-training/Container/Anchore/
 
 ```commandline
 docker-compose up -d
-
+```
+```commandline
 docker ps
 ```
 
-### *Note: We will have an separate section on `docker-compose` soon!*
+> **NOTE**: We will have an separate section on `docker-compose` soon!*
 
 * Install [`anchorecli`](https://github.com/anchore/anchore-cli), the command line interface on top of the `Anchore Engine` REST API
 
@@ -37,13 +40,15 @@ pip install anchorecli
 
 ```commandline
 export ANCHORE_CLI_URL=http://localhost:8228/v1
-
+```
+```commandline
 export ANCHORE_CLI_USER=admin
-
+```
+```commandline
 export ANCHORE_CLI_PASS=foobar
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -57,7 +62,8 @@ anchore-cli image add abhaybhargav/vul_flask:latest
 
 ```commandline
 anchore-cli image list
-
+```
+```commandline
 anchore-cli image get docker.io/abhaybhargav/vul_flask:latest
 ```
 
@@ -71,13 +77,16 @@ anchore-cli image vuln docker.io/abhaybhargav/vul_flask:latest
 
 ```commandline
 anchore-cli image content docker.io/abhaybhargav/vul_flask:latest os
-
+```
+```commandline
 anchore-cli image content docker.io/abhaybhargav/vul_flask:latest python
 ```
 
-### *Note: Try to perform a vulnerability scan on a distroless image and observe the results
+---
 
--------
+> **EXERCISE**: Try to perform a vulnerability scan on a distroless image and observe the results
+
+---
 
 #### Step 4:
 
@@ -85,11 +94,12 @@ anchore-cli image content docker.io/abhaybhargav/vul_flask:latest python
 
 ```commandline
 docker-compose down
-
+```
+```commandline
 clean-docker
 ```
 
----------
+---
 
 ### Reading Material/References:
 

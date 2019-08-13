@@ -1,7 +1,8 @@
 # **Container Breakout - Multiple Attacks**
 
-
 ### *Gaining access and tampering Host resources from a container*
+
+### **Lab Image : `Containers`**
 
 -------
 
@@ -206,7 +207,7 @@ cd /root/container-training/Container/container-breakout/
 
 * Multiplex terminal session with `tmux` and split panes horizontally.
 
-```
+```commandline
 tmux
 ```
 ```commandline
@@ -238,10 +239,7 @@ printf "$command" > super_important_process.sh && chmod +x super_important_proce
 
 * With `tmux`, switch to the lower panel
 
-```commandline
-# Switches to the lower panel
-ctrl + b + (lower arrow key) 
-```
+> ###### Switch to the lower panel with `ctrl` + `b` and then `lower arrow key`
 
 * Launch a container and mount the host processes on the container
 
@@ -259,20 +257,7 @@ kill <PID>
 
 #### Step 4:
 
-* Exit from the container and the `tmux` sessions
-
-```commandline
-exit
-```
-```commandline
-exit
-```
-
--------
-
-#### Step 5:
-
-* Stop all containers
+* Exit from the `tmux` sessions and stop all the containers
 
 ```commandline
 clean-docker
@@ -318,17 +303,18 @@ serverip
 
 * Run an Nmap Scan on the provisioned server to get the list of port and services
 
+> ###### We're running scan against a single port to save some time, but this might take a while
 ```commandline
-# We're running scan against a single port to save some time, but this might take a while
-nmap <IP> -sV -p 4243
+nmap $(serverip) -sV -p 4243
 ```
 
 * On the browser, verify access to the docker API
 
 ```commandline
-http://<IP>:4243/version
-
-http://<IP>:4243/images/json
+echo "http://$(serverip):4243/version"
+```
+```commandline
+echo "http://$(serverip):4243/images/json"
 ```
 
 -------
@@ -356,7 +342,7 @@ python launch-malicious-docker.py
 * On the browser, try to access the service running on the container
 
 ```commandline
-http://<IP>:6080/vnc.html
+echo "http://$(serverip):6080/vnc.html"
 ```
 
 * Once connected to the `VNC`, `Right-Click` to get access to the container terminal
@@ -383,7 +369,8 @@ lsmod
 
 ```commandline
 insmod /rootFS/lib/modules/4.x.x-xxx-generic/kernel/fs/isofs/isofs.ko
-
+```
+```commandline
 lsmod | grep isofs
 ```
 
@@ -401,7 +388,8 @@ lsmod | grep isofs
 
 ```commandline
 rmmod isofs
-
+```
+```commandline
 lsmod
 ```
 
