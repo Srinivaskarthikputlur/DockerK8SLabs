@@ -6,7 +6,7 @@
  
   * [Docker Hands-on](Docker-Hands-On/README.md)
 
-  * [Analysing Docker Layers](dive/README.md)
+  * [Dive](dive/README.md)
 
   * [Container Breakout](container-breakout/README.md)
 
@@ -30,6 +30,8 @@
 
   * [Monitoring Docker events with 'Auditd'](Auditd/README.md)
 
+  * [Docker Slim](Containers/DockerSlim/README.md)
+
   * [OsQuery Monitoring for Containers](OSQuery/README.md)
 
   * [Clair](Clair/README.md)
@@ -40,11 +42,7 @@
 
   * [Docker Compose](Docker-Compose/README.md)
 
-
-
-##### New labs to be added in slides/Extras
-
-  * [Container Native CI/CD](container-ci/README.md)
+  * [CI for Containers](container-ci/README.md)
   
   * [Docker Slim](dockerslim/README.md)
 
