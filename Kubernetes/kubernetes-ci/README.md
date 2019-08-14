@@ -2,9 +2,9 @@
 
 ---
 
-> #### CI/CD to run security scans and deploy to a k8s cluster using GitLab CI*
+> #### CI/CD to run security scans and deploy to a k8s cluster using GitLab CI
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
 
 ---
 

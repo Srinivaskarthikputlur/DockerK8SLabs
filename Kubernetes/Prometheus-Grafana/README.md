@@ -4,7 +4,7 @@
 
 > #### Monitoring a K8s cluster with Prometheus + Grafana
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
 
 ---
 

@@ -4,7 +4,7 @@
 
 > #### Audit K8s cluster against common security controls
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
 
 ---
 

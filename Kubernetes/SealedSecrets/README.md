@@ -4,7 +4,7 @@
 
 > #### K8s Sealed Secrets with KubeSeal
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
 
 ---
 

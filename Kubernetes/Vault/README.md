@@ -4,7 +4,7 @@
 
 > #### Dynamic Secrets with Vault
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
 
 ---
 

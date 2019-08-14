@@ -3,7 +3,7 @@
 
 > #### Profiling and Monitoring K8s*
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
 
 ---
 

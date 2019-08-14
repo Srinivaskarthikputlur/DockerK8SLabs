@@ -8,7 +8,7 @@
 
 > #### We are going to use a combination of `AppArmor` profiles, `Seccomp` and some good container security practices to protect our deployment
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
 
 ---
 

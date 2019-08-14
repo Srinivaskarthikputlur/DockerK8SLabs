@@ -4,7 +4,7 @@
 
 > #### Kubesec helps quantify risk for K8s resources based on the suggested best-practices
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
 
 ---
 

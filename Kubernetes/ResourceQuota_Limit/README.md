@@ -2,7 +2,7 @@
 
 ---
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
 
 ---
 
