@@ -12,9 +12,7 @@
 
   * [Kubeseal - Shared Secrets](SealedSecrets/README.md)
 
-  * [Vault](Vault/README.md)
-
-  * [Istio](Istio/README.md)
+  * [K8s Vault](Vault/README.md)
   
   * [KubeAudit](KubeAudit/README.md)
 
@@ -24,12 +22,8 @@
 
   * [KubeHunter](Kube-Hunter/README.md)
  
-  * [Prometheus Grafana](Prometheus-Grafana/README.md)
+  * [K8s + Prometheus + Grafana](Prometheus-Grafana/README.md)
 
   * [Sysdig Falco](SysdigFalco/README.md)
 
-  * [Kubelet Attack](Kubelet-Attack/README.md)
-
   * [Kubernetes CI/CD](kubernetes-ci/README.md)
-
-  * [Resource Quota Limit](ResourceQuota_Limit/README.md)

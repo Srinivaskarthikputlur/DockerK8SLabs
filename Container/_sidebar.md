@@ -28,11 +28,11 @@
 
   * [Resource Management](Resouce-Management/README.md)
 
+  * [Docker Slim](Containers/DockerSlim/README.md)
+
   * [Trusted Docker Images](Trusted-Images/README.md)
 
   * [Monitoring Docker events with 'Auditd'](Auditd/README.md)
-
-  * [Docker Slim](Containers/DockerSlim/README.md)
 
   * [OsQuery Monitoring for Containers](OSQuery/README.md)
 
@@ -42,10 +42,6 @@
   
   * [Anchore](Anchore/README.md)
 
-  * [Docker Compose](Docker-Compose/README.md)
-
   * [CI for Containers](container-ci/README.md)
-  
-  * [Docker Slim](dockerslim/README.md)
 
-  * [KataContainers](katacontainers/README.md)
+  * [Docker Compose](Docker-Compose/README.md)
