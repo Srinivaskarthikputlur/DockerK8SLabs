@@ -1,6 +1,6 @@
 # **Docker Hands-On**
 
-### * *
+---
 
 ### **Lab Image : `Containers`**
 

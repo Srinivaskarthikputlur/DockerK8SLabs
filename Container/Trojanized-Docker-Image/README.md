@@ -1,6 +1,8 @@
 # **Trojanized Docker Images - DockerScan**
 
-### *A docker image can be trojanized with a tool called `DockerScan`. When a trojanized container is launched, the attacker can get a `reverse-shell` on-to the container*
+---
+
+> #### A docker image can be trojanized with a tool called `DockerScan`. When a trojanized container is launched, the attacker can get a `reverse-shell` on-to the container
 
 ### **Lab Image : `Containers`**
 

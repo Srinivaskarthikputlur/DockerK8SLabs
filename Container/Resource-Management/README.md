@@ -1,6 +1,8 @@
 # **Resource Management**
 
-### *Restricting host resources for a container*
+---
+
+> #### Restricting host resources for a container
 
 ### **Lab Image : `Containers`**
 

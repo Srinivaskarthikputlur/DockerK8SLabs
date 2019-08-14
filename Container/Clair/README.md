@@ -1,6 +1,8 @@
 # **Clair**
 
-### *Vulnerability Static Analysis for Containers*
+---
+
+> #### Vulnerability Static Analysis for Containers
 
 ### **Lab Image : `Containers`**
 
@@ -54,7 +56,7 @@ serverip
 
 * Run Clair scan against the image and generate a `json` report
 
-> **EXAMPLE**:  `./clair-scanner --ip 104.1.1.1 -r clair_report.json abhaybhargav/vul_flask:latest`
+> **EXAMPLE**: `./clair-scanner --ip 104.1.1.1 -r clair_report.json abhaybhargav/vul_flask:latest`
 
 ```commandline
 ./clair-scanner --ip $(serverip) -r clair_report.json abhaybhargav/vul_flask:latest

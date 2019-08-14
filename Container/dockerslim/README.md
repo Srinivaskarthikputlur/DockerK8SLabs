@@ -1,6 +1,8 @@
 # **DockerSlim**
 
-### *Minify "bloated" containers making it secure by decreasing the attack surface and using the 'auto-generated' SecComp profiles*
+---
+
+> #### Minify "bloated" containers making it secure by decreasing the attack surface and using the 'auto-generated' SecComp profiles
 
 ### **Lab Image : `Containers`**
 

@@ -1,6 +1,6 @@
 # **Docker Capabilities**
 
-### * *
+---
 
 ### **Lab Image : `Containers`**
 

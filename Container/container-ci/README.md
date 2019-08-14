@@ -1,6 +1,8 @@
 # **CI for Container Security**
 
-### *CI to run security scans using GitLab*
+---
+
+> #### CI to run security scans using GitLab*
 
 ---
 

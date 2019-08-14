@@ -1,6 +1,8 @@
 # **Auditd**
 
-### *Docker access monitoring and accounting*
+---
+
+> #### Docker access monitoring and accounting
 
 ### **Lab Image : `Containers`**
 

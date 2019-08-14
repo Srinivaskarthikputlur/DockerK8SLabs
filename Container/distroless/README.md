@@ -1,6 +1,6 @@
 # **Distroless**
 
-### * *
+---
 
 ### **Lab Image : `Containers`**
 

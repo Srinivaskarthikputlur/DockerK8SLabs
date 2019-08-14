@@ -1,6 +1,8 @@
 # **Docker Compose**
 
-### *Docker-compose is a tool used to run multi-container applications/services on a single host. The multi-container configuration setting can be done using a yaml file where requirements to deploy a service can be specified. Multiple container can be launched using a single command with help of the `docker-compose.yml` file. (https://docs.docker.com/compose/overview/)*
+---
+
+> #### Docker-compose is a tool used to run multi-container applications/services on a single host. The multi-container configuration setting can be done using a yaml file where requirements to deploy a service can be specified. Multiple container can be launched using a single command with help of the `docker-compose.yml` file. (https://docs.docker.com/compose/overview/)
 
 ### **Lab Image : `Containers`**
 

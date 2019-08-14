@@ -1,16 +1,16 @@
 # **Container Breakout - Multiple Attacks**
 
-### *Gaining access and tampering Host resources from a container*
+---
+
+> #### Gaining access and tampering Host resources from a container
 
 ### **Lab Image : `Containers`**
 
--------
+---
 
 ## *Volume Mounts*
 
-### * *
-
--------
+---
 
 #### Step 1:
 
@@ -26,7 +26,7 @@ whoami
 cat /root/secret.txt
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -54,7 +54,7 @@ docker ps
 cat /root/secret.txt
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -85,7 +85,7 @@ exit
 exit
 ```
 
--------
+---
 
 #### Step 4:
 
@@ -95,13 +95,11 @@ exit
 clean-docker
 ```
 
--------
+---
 
 ## *Host Network*
 
-### * *
-
--------
+---
 
 #### Step 1:
 
@@ -123,7 +121,7 @@ ufw allow ssh
 ufw status
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -145,7 +143,7 @@ docker ps
 docker exec -ti <CONTAINER_ID> /bin/bash
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -179,7 +177,7 @@ ufw status
 exit
 ```
 
--------
+---
 
 #### Step 4:
 
@@ -189,13 +187,11 @@ exit
 clean-docker
 ```
 
----------
+---
 
 ## *PID Boundary*
 
-### * *
-
--------
+---
 
 #### Step 1:
 
@@ -214,7 +210,7 @@ tmux
 tmux split-window -v
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -233,7 +229,7 @@ printf "$command" > super_important_process.sh && chmod +x super_important_proce
 ./super_important_process.sh
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -253,7 +249,7 @@ docker run -ti --pid=host --privileged alpine sh
 kill <PID>
 ```
 
--------
+---
 
 #### Step 4:
 
@@ -263,13 +259,13 @@ kill <PID>
 clean-docker
 ```
 
----------
+---
 
 ## *Docker Config*
 
-### *A malicious user who gains access Docker API, can launch a container and gain access to the host machine with root permissions.*
+> #### A malicious user who gains access Docker API, can launch a container and gain access to the host machine with root permissions.
 
--------
+---
 
 #### Step 1:
 
@@ -291,7 +287,7 @@ systemctl daemon-reload
 service docker restart
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -317,7 +313,7 @@ echo "http://$(serverip):4243/version"
 echo "http://$(serverip):4243/images/json"
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -347,7 +343,7 @@ echo "http://$(serverip):6080/vnc.html"
 
 * Once connected to the `VNC`, `Right-Click` to get access to the container terminal
 
--------
+---
 
 #### Step 4:
 
@@ -360,7 +356,7 @@ apt update && apt install -y kmod
 lsmod
 ```
 
--------
+---
 
 #### Step 5:
 
@@ -380,7 +376,7 @@ lsmod | grep isofs
 lsmod | grep isofs
 ```
 
--------
+---
 
 #### Step 5:
 
@@ -399,6 +395,6 @@ lsmod
 clean-docker
 ```
 
----------
+---
 
 ### Reading Material/References:

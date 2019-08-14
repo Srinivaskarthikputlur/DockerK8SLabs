@@ -1,6 +1,8 @@
 # **Dive**
 
-### *Exploring Docker image(s) and layer contents with [`Dive`](https://github.com/wagoodman/dive/)*
+---
+
+> #### Exploring Docker image(s) and layer contents with [`Dive`](https://github.com/wagoodman/dive/)
 
 ### **Lab Image : `Containers`**
 

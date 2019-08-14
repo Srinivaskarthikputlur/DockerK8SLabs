@@ -1,6 +1,8 @@
 # **Vulnerable Libraries**
 
-### *Some containers that are often used and available on `DockerHub` are not updated regularly, which results in them having vulnerable packages and libraries. Shellshock(Bashdoor) is one such vulnerability found in older versions of bash that haven't been updated.*
+---
+
+> #### Some containers that are often used and available on `DockerHub` are not updated regularly, which results in them having vulnerable packages and libraries. Shellshock(Bashdoor) is one such vulnerability found in older versions of bash that haven't been updated.
 
 ### **Lab Image : `Containers`**
 

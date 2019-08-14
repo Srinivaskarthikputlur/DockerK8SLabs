@@ -1,6 +1,8 @@
 # **Trusted Images**
 
-### *Ensuring the integrity and the publisher of all the data a system operates on with content-trust*
+---
+
+> #### Ensuring the integrity and the publisher of all the data a system operates on with content-trust
 
 ### **Lab Image : `Containers`**
 

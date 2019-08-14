@@ -1,7 +1,8 @@
 # **Anchore**
 
+---
 
-### *[Anchore](https://anchore.com/opensource/) engine helps perform detailed analysis on container images that can be easily integrated in CI/CD pipelines.*
+> #### [Anchore](https://anchore.com/opensource/) engine helps perform detailed analysis on container images that can be easily integrated in CI/CD pipelines.
 
 ### **Lab Image : `Containers`**
 

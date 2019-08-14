@@ -1,10 +1,12 @@
 # **Non-root Container**
 
-### *Preventing `Container Breakout` using `Non-root`*
+---
+
+> #### Preventing `Container Breakout` using `Non-root`
 
 ### **Lab Image : `Containers`**
 
--------
+---
 
 #### Step 1:
 
@@ -20,7 +22,7 @@ whoami
 cat /root/secret.txt
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -45,7 +47,7 @@ cd /hostFS
 exit
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -55,7 +57,7 @@ exit
 clean-docker
 ```
 
----------
+---
 
 ### Reading Material/References:
 

@@ -1,6 +1,8 @@
 # **Kata Containers**
 
-### *Lightweight virtual machines that feel and perform like containers, but provide stronger workload isolation using hardware virtualization technology*
+---
+
+> #### Lightweight virtual machines that feel and perform like containers, but provide stronger workload isolation using hardware virtualization technology
 
 ### **Lab Image : `Containers`**
 
