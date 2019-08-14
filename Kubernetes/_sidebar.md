@@ -26,10 +26,6 @@
 
   * [Sysdig Falco](SysdigFalco/README.md)
 
-
-
-##### New labs to be added in slides/Extras
-
   * [Kubelet Attack](Kubelet-Attack/README.md)
 
   * [Kubernetes CI/CD](kubernetes-ci/README.md)
