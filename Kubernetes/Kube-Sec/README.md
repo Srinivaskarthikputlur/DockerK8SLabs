@@ -1,9 +1,12 @@
 # **KubeSec**
 
+---
 
-### *Kubesec helps quantify risk for K8s resources based on the suggested best-practices*
+> #### Kubesec helps quantify risk for K8s resources based on the suggested best-practices
 
--------
+#### **Lab Image : Kubernetes**
+
+---
 
 #### Step 1:
 
@@ -13,7 +16,7 @@
 cd /root/container-training/Kubernetes/Kube-Sec
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -30,6 +33,6 @@ cd /root/container-training/Kubernetes/Kube-Sec
 ./kubesec insecure_vulflask_deployment.yaml >> kubesec_result.json
 ```
 
----------
+---
 
 ### Reading Material/References:

@@ -1,9 +1,11 @@
 # **Sysdig Falco**
+---
 
+> #### Profiling and Monitoring K8s*
 
-### *Profiling and Monitoring K8s*
+#### **Lab Image : Kubernetes**
 
--------
+---
 
 #### Step 1:
 
@@ -19,20 +21,19 @@ cd /root/container-training/Kubernetes/SysdigFalco
 serverip
 ```
 
--------
+---
 
 #### Step 2:
 
 * On `line 21` in `falco_daemonset.yaml`, replace `<serverip>` and update the IP in curl command
 
 ```commandline
-sed -i -e 's/SERVER-IP/<serverip>/g' falco_daemonset.yaml
+sed -i -e 's/SERVER-IP/'"$(serverip)"'/g' falco_daemonset.yaml
 ```
 
 **EXAMPLE**: `sed -i -e 's/SERVER-IP/104.1.1.1/g' falco_daemonset.yaml`
 
-
--------
+---
 
 #### Step 3:
 
@@ -40,7 +41,8 @@ sed -i -e 's/SERVER-IP/<serverip>/g' falco_daemonset.yaml
 
 ```commandline
 kubectl create -f falco_daemonset.yaml
-
+```
+```commandline
 kubectl get pods
 ```
 
@@ -48,15 +50,17 @@ kubectl get pods
 
 ```commandline
 kubectl create -f falco-event-generator-deployment.yaml
-
+```
+```commandline
 kubectl get deployments
-
+```
+```commandline
 kubectl get pods
 ```
 
 * Ensure that the `Status` of pods are `Running`
 
--------
+---
 
 #### Step 4:
 
@@ -66,13 +70,9 @@ kubectl get pods
 python3 tornado_server.py
 ```
 
-* Stop the server
+* Stop the server with `ctrl` + `c`
 
-```commandline
-crtl + c
-```
-
--------
+---
 
 #### Step 5:
 
@@ -82,7 +82,7 @@ crtl + c
 kubectl delete -f falco-event-generator-deployment.yaml -f falco_daemonset.yaml
 ```
 
----------
+---
 
 ### Reading Material/References:
 

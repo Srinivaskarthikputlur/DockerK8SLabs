@@ -1,9 +1,12 @@
 # **Vault**
 
+---
 
-### *Dynamic Secrets with Vault*
+> #### Dynamic Secrets with Vault
 
--------
+#### **Lab Image : Kubernetes**
+
+---
 
 #### Step 1:
 
@@ -13,7 +16,7 @@
 cd /root/container-training/Kubernetes/Vault
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -21,15 +24,17 @@ cd /root/container-training/Kubernetes/Vault
 
 ```commandline
 kubectl create -f vault.yaml
-
+```
+```commandline
 kubectl get deployment
-
+```
+```commandline
 kubectl get svc
 ```
 
-### **`Vault root key` has been set to `vault-root-token`. It should ideally be something a LOT stronger**
+> **NOTE**: `Vault root key` has been set to `vault-root-token`. It should ideally be something a LOT stronger
 
--------
+---
 
 #### Step 3:
 
@@ -37,13 +42,14 @@ kubectl get svc
 
 ```commandline
 VaultIP=http://$(kubectl get svc vault -o yaml | grep "clusterIP" |awk '{print $2}'):8200
-
+```
+```commandline
 echo $VaultIP
 ```
 
-### **Vault is available on `http://vault:8200` for other k8s pods**
+> **NOTE**: Vault is available on `http://vault:8200` for other k8s pods
 
--------
+---
 
 #### Step 4:
 
@@ -57,7 +63,8 @@ vault login -address $VaultIP vault-root-token
 
 ```commandline
 vault secrets enable -address $VaultIP  -path=root-ca -max-lease-ttl=8760h pki
-
+```
+```commandline
 vault write -address $VaultIP root-ca/root/generate/internal common_name="Root CA" ttl=8760h exclude_cn_from_sans=true
 ```
 
@@ -67,7 +74,7 @@ vault write -address $VaultIP root-ca/root/generate/internal common_name="Root C
 vault write -address $VaultIP root-ca/config/urls issuing_certificates="http://vault:8200/v1/root-ca/ca" crl_distribution_points="http://vault:8200/v1/root-ca/crl"
 ```
 
--------
+---
 
 #### Step 5:
 
@@ -81,7 +88,8 @@ vault secrets enable -address $VaultIP -path=intermediate-ca -max-lease-ttl=4320
 
 ```commandline
 vault write -address $VaultIP -format=json intermediate-ca/intermediate/generate/internal common_name="Intermediate CA" ttl=4320h exclude_cn_from_sans=true | jq -r .data.csr > intermediate.csr
-
+```
+```commandline
 vault write -address $VaultIP -format=json root-ca/root/sign-intermediate csr=@intermediate.csr use_csr_values=true exclude_cn_from_sans=true format=pem_bundle | jq -r .data.certificate | sed -e :a -e '/^\n*$/{$d;N;};/\n$/ba' > signed.crt
 ```
 
@@ -89,11 +97,12 @@ vault write -address $VaultIP -format=json root-ca/root/sign-intermediate csr=@i
 
 ```commandline
 vault write -address $VaultIP intermediate-ca/intermediate/set-signed certificate=@signed.crt
-
+```
+```commandline
 vault write -address $VaultIP intermediate-ca/config/urls issuing_certificates="http://vault:8200/v1/intermediate-ca/ca" crl_distribution_points="http://vault:8200/v1/intermediate-ca/crl"
 ```
 
--------
+---
 
 #### Step 6:
 
@@ -107,7 +116,8 @@ vault auth enable -address $VaultIP approle
 
 ```commandline
 vault write -address $VaultIP intermediate-ca/roles/kubernetes-vault allow_any_name=true max_ttl="24h"
-
+```
+```commandline
 vault policy write -address $VaultIP kubernetes-vault policy-kubernetes-vault.hcl
 ```
 
@@ -115,24 +125,23 @@ vault policy write -address $VaultIP kubernetes-vault policy-kubernetes-vault.hc
 
 ```commandline
 vault write -address $VaultIP auth/token/roles/kubernetes-vault allowed_policies=kubernetes-vault period=6h
-
+```
+```commandline
 CLIENTTOKEN=$(vault token-create -address $VaultIP -format=json -role=kubernetes-vault | jq -r .auth.client_token)
-
+```
+```commandline
 echo $CLIENTTOKEN
 ```
 
--------
+---
 
 #### Step 7:
 
-* In `kubernetes-vault.yaml` on `line 54`, replace the value of the token with that of `$CLIENTTOKEN` fetched in the last step and create a deployment.
+* In `kubernetes-vault.yaml` on `line 54`, replace the value of the token with that of `$CLIENTTOKEN` fetched in the last step.
 
 ```commandline
-sed -i -e 's/Replace_with_$CLIENTTOKEN_Here/<CLIENTTOKEN>/g' kubernetes-vault.yaml
-
-kubectl create -f kubernetes-vault.yaml
+sed -i -e 's/Replace_with_$CLIENTTOKEN_Here/'"$CLIENTTOKEN"'/g' kubernetes-vault.yaml
 ```
-
 **EXAMPLE:**
 
 ```yaml
@@ -142,11 +151,17 @@ kubectl create -f kubernetes-vault.yaml
       token: s.5mEiuuaZoSUyfpZ6WC16mrCX
 ```
 
+* Create the deployment
+```commandline
+kubectl create -f kubernetes-vault.yaml
+```
+
 * Set up an app-role for sample-app that generates a periodic 6 hour token and add new rules to kubernetes-vault policy
 
 ```commandline
 vault write -address $VaultIP auth/approle/role/sample-app secret_id_ttl=90s period=6h secret_id_num_uses=1 policies=kubernetes-vault,default
-
+```
+```commandline
 vault policy write -address $VaultIP kubernetes-vault policy-sample-app.hcl
 ```
 
@@ -154,22 +169,22 @@ vault policy write -address $VaultIP kubernetes-vault policy-sample-app.hcl
 
 ```commandline
 VAULT_ROLE_ID=$(vault read -address $VaultIP -format=json auth/approle/role/sample-app/role-id | jq -r .data.role_id)
-
+```
+```commandline
 echo $VAULT_ROLE_ID
 ```
 
--------
+---
 
 #### Step 8:
 
-* In `sample-app.yaml` on `line 27`, replace the value of `VAULT_ROLE_ID` with the value of `$VAULT_ROLE_ID` fetched in the previous step and create the deployment
+* In `sample-app.yaml` on `line 27`, replace the value of `VAULT_ROLE_ID` with the value of `$VAULT_ROLE_ID` fetched in the previous step.
 
 ```commandline
 echo $VAULT_ROLE_ID
-
-sed -i -e 's/Replace_with_$VAULT_ROLE_ID_Value_Here/<VAULT_ROLE_ID>/g' sample-app.yaml
-
-kubectl apply -f sample-app.yaml
+```
+```commandline
+sed -i -e 's/Replace_with_$VAULT_ROLE_ID_Value_Here/'"$VAULT_ROLE_ID"'/g' sample-app.yaml
 ```
 
 **EXAMPLE:**
@@ -181,15 +196,22 @@ kubectl apply -f sample-app.yaml
         value: 23c14dda-11d7-054d-bc7a-5e4fc044c946
 ```
 
+* Create the deployment
+
+```commandline
+kubectl apply -f sample-app.yaml
+```
+
 * Observe the logs of each `sample-app` pod once it's `Running`. It can be seen that each pod receives a unique token from vault.
 
 ```commandline
 kubectl get pods
-
-kubectl logs sample-app-xxxxxxxx
+```
+```commandline
+kubectl logs <sample-app-xxxxxxxx>
 ```
 
--------
+---
 
 #### Step 9:
 
@@ -199,7 +221,7 @@ kubectl logs sample-app-xxxxxxxx
 kubectl delete -f vault.yaml -f kubernetes-vault.yaml -f sample-app.yaml
 ```
 
----------
+---
 
 ### Reading Material/References:
 

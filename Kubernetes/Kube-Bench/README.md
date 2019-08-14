@@ -1,9 +1,12 @@
 # **KubeBench**
 
+---
 
-### *K8s CIS Benchmark*
+> #### K8s CIS Benchmark
 
--------
+### **Lab Image : Kubernetes**
+
+---
 
 #### Step 1:
 
@@ -13,7 +16,7 @@
 cd /root/container-training/Kubernetes/Kube-Bench
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -21,10 +24,9 @@ cd /root/container-training/Kubernetes/Kube-Bench
 
 ```commandline
 ./kube-bench --help
-
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -34,7 +36,7 @@ cd /root/container-training/Kubernetes/Kube-Bench
 ./kube-bench master
 ```
 
--------
+---
 
 #### Step 4:
 
@@ -44,7 +46,7 @@ cd /root/container-training/Kubernetes/Kube-Bench
 ./kube-bench --json master > report.json
 ```
 
----------
+---
 
 ### Reading Material/References:
 

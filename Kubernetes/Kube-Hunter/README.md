@@ -1,9 +1,12 @@
 # **KubeHunter**
 
+---
 
-### *Scanning a K8s cluster for vulnerabilities*
+> #### Scanning a K8s cluster for vulnerabilities
 
--------
+#### **Lab Image : Kubernetes**
+
+---
 
 #### Step 1:
 
@@ -13,7 +16,7 @@
 cd /root/container-training/Kubernetes/Kube-Hunter
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -21,11 +24,12 @@ cd /root/container-training/Kubernetes/Kube-Hunter
 
 ```commandline
 docker run -it --rm --network host aquasec/kube-hunter --help
-
+```
+```commandline
 docker run -it --rm --network host aquasec/kube-hunter --active --list
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -39,11 +43,10 @@ serverip
 
 ```commandline
 docker run -it --rm --network host aquasec/kube-hunter
-
-# Select 'Option 1' and enter the IP of the provisioned server
 ```
+> ###### Select `Option 1` and enter the IP of the provisioned server
 
----------
+---
 
 ### Reading Material/References:
 

@@ -1,12 +1,16 @@
 # **Pod Security Policy**
 
-### *There are multiple options that one can use to protect the runtime deployment of a Pod. One of them is the `PodSecurityPolicy`.*
+---
 
-### *`PodSecurityPolicy` can be deployed, cluster-wide, namespace-wide or inline as part of the Pod's declaration.*
+> #### There are multiple options that one can use to protect the runtime deployment of a Pod. One of them is the `PodSecurityPolicy`.
 
-### *We are going to use a combination of `AppArmor` profiles, `Seccomp` and some good container security practices to protect our deployment*
+> #### `PodSecurityPolicy` can be deployed, cluster-wide, namespace-wide or inline as part of the Pod's declaration.
 
--------
+> #### We are going to use a combination of `AppArmor` profiles, `Seccomp` and some good container security practices to protect our deployment
+
+#### **Lab Image : Kubernetes**
+
+---
 
 #### Step 1:
 
@@ -18,18 +22,18 @@ cd /root/container-training/Kubernetes/PodSecurityPolicy
 
 * Read the `secure-ngflask-deploy.yml` file and observe the changes
 
-```commandline
+```yaml
 annotations:
     seccomp.security.alpha.kubernetes.io/defaultProfileName:  'docker/default'
     container.apparmor.security.beta.kubernetes.io/secure-vul-flask: 'localhost/k8s-vul-flask-redis-armor'
 ```
 
 * These annotations essentially ensure two things:
-    
-    1. The default docker `seccomp` profile is added to the the Pod
-    2. A custom AppArmor Profile that we have prepped for this class, will be applied against a specific container in this case, the flask application.
 
--------
+  1. The default docker `seccomp` profile is added to the the Pod
+  2. A custom AppArmor Profile that we have prepped for this class, will be applied against a specific container in this case, the flask application.
+
+---
 
 #### Step 2:
 
@@ -39,11 +43,11 @@ annotations:
 cat k8s-vul-flask-redis-armor
 ```
 
-### *The objective of this profile is not necessarily to block all possible attacks (which is highly difficult/impossible to achieve).*
+> #### The objective of this profile is not necessarily to block all possible attacks (which is highly difficult/impossible to achieve).
 
-### *The focus is to block off some possible attacks and reduce the damage caused by a compromise of the app or container in any way.*
+> #### The focus is to block off some possible attacks and reduce the damage caused by a compromise of the app or container in any way.
 
--------
+---
 
 #### Step 3:
 
@@ -63,11 +67,12 @@ kubectl create configmap nginx-config --from-file=/root/container-training/Kuber
 
 ```commandline
 kubectl create -f secure-ngflask-deploy.yml
-
+```
+```commandline
 kubectl get pods
 ```
 
--------
+---
 
 #### Step 4:
 
@@ -81,14 +86,17 @@ kubectl exec -it secure-ngflask-redis --container secure-vul-flask -- sh
 
 ```commandline
 touch shell.py
-
+```
+```commandline
 touch /tmp/shell.py
-
+```
+```commandline
 cat /etc/passwd
-
+```
+```commandline
 cat /etc/shadow
 ```
 
----------
+---
 
 ### Reading Material/References:

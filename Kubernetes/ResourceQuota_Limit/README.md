@@ -1,9 +1,10 @@
 # **Resource Quota and Limits**
 
+---
 
-### **
+#### **Lab Image : Kubernetes**
 
--------
+---
 
 #### Step 1:
 
@@ -13,7 +14,7 @@
 cd /root/container-training/Kubernetes/ResourceQuota_Limit
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -31,7 +32,7 @@ kubectl create -f nginx-basic-limit.yaml
 kubectl get pods
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -39,19 +40,22 @@ kubectl get pods
 
 ```commandline
 kubectl exec -it nginx-resource -- stress --cpu 1 --io 1 --vm 2 --vm-bytes 100M
-# Stop it after a few seconds
-crtl + c
+```
+> ###### Stop it after a few seconds with `ctrl` + `c`
 
+```commandline
 kubectl exec -it nginx-resource -- stress --cpu 1 --io 1 --vm 2 --vm-bytes 200M
-# Stop it after a few seconds
-crtl + c
+```
+> ###### Stop it after a few seconds with `ctrl` + `c`
 
+```commandline
 kubectl exec -it nginx-resource -- stress --cpu 1 --io 1 --vm 2 --vm-bytes 400M
 ```
+> ###### Stop it after a few seconds with `ctrl` + `c`
 
 * It can be observed that the stress test fails with **`exit code 1`** at 400M because of the limit specified in Pod Spec.
 
--------
+---
 
 #### Step 4:
 
@@ -61,7 +65,7 @@ kubectl exec -it nginx-resource -- stress --cpu 1 --io 1 --vm 2 --vm-bytes 400M
 kubectl delete -f nginx-basic-limit.yaml
 ```
 
----------
+---
 
 ### Reading Material/References:
 

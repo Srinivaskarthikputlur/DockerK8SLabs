@@ -1,9 +1,12 @@
 # **Prometheus + Grafana**
 
+---
 
-### *Monitoring a K8s cluster with Prometheus + Grafana*
+> #### Monitoring a K8s cluster with Prometheus + Grafana
 
--------
+#### **Lab Image : Kubernetes**
+
+---
 
 #### Step 1:
 
@@ -13,7 +16,7 @@
 cd /root/container-training/Kubernetes/Prometheus-Grafana
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -21,7 +24,8 @@ cd /root/container-training/Kubernetes/Prometheus-Grafana
 
 ```commandline
 kubectl create namespace monitoring
-
+```
+```commandline
 kubectl get ns
 ```
 
@@ -29,13 +33,17 @@ kubectl get ns
 
 ```commandline
 kubectl create -f clusterRole.yaml -f config-map.yaml -f prometheus.yaml
-
+```
+```commandline
 kubectl get configmap -n monitoring
-
+```
+```commandline
 kubectl get deployments -n monitoring
-
+```
+```commandline
 kubectl get svc -n monitoring
-
+```
+```commandline
 kubectl get pods -n monitoring
 ```
 
@@ -43,13 +51,15 @@ kubectl get pods -n monitoring
 
 ```commandline
 kubectl create -f grafana-prometheus.yaml
-
+```
+```commandline
 kubectl get deployments -n monitoring
-
+```
+```commandline
 kubectl get svc -n monitoring
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -59,15 +69,7 @@ kubectl get svc -n monitoring
 kubectl create -f wecare-k8.yaml
 ```
 
-* Upgrade `kubectl` to the later version
-
-```commandline
-apt-get install --only-upgrade kubectl
-```
-
-### *This upgrade is to allow usage of bind-ip(0.0.0.0) for the proxy-forward functionality.*
-
--------
+---
 
 #### Step 4:
 
@@ -77,9 +79,9 @@ apt-get install --only-upgrade kubectl
 kubectl -n monitoring get svc
 ```
 
-### *The output should be similar to:*
+> #### The output should be similar to:
 
-```bash
+```commandline
 NAME                 TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
 grafana              NodePort   10.109.181.65    <none>        3000:32310/TCP   25m
 prometheus-service   NodePort   10.101.242.178   <none>        8080:31000/TCP   26m
@@ -87,7 +89,7 @@ prometheus-service   NodePort   10.101.242.178   <none>        8080:31000/TCP   
 
 * Make note of the `CLUSTER-IP` and `PORT(S)` of both services
 
--------
+---
 
 #### Step 5:
 
@@ -105,7 +107,7 @@ serverip
 
 * Access Grafana on the browser using `IP:3000` and login using the credentials, `admin/admin`.
 
--------
+---
 
 #### Step 6:
 
@@ -119,7 +121,7 @@ serverip
 
 * Dashboard with resource usage statistics should show up. It is possible to select Namespace and Pod from the drop down as well.
 
--------
+---
 
 #### Step 7:
 
@@ -129,6 +131,6 @@ serverip
 kubectl delete ns monitoring
 ```
 
----------
+---
 
 ### Reading Material/References:

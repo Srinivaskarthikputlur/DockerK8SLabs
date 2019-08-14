@@ -1,9 +1,12 @@
 # **Sealed Secrets**
 
+---
 
-### *K8s Sealed Secrets with KubeSeal*
+> #### K8s Sealed Secrets with KubeSeal
 
--------
+#### **Lab Image : Kubernetes**
+
+---
 
 #### Step 1:
 
@@ -13,7 +16,7 @@
 cd /root/container-training/Kubernetes/SealedSecrets
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -21,13 +24,15 @@ cd /root/container-training/Kubernetes/SealedSecrets
 
 ```commandline
 kubectl create -f controller.yaml
-
+```
+```commandline
 kubectl create -f sealedsecret-crd.yaml
-
+```
+```commandline
 kubectl get pods -n kube-system
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -43,7 +48,7 @@ kubeseal <mysecret.json >mysealedsecret.json
 cat mysealedsecret.json
 ```
 
--------
+---
 
 #### Step 4:
 
@@ -51,11 +56,12 @@ cat mysealedsecret.json
 
 ```commandline
 kubectl create -f mysealedsecret.json
-
+```
+```commandline
 kubectl get secrets
 ```
 
--------
+---
 
 #### Step 5:
 
@@ -65,6 +71,6 @@ kubectl get secrets
 kubectl delete -f mysealedsecret.json -f controller.yaml -f sealedsecret-crd.yaml
 ```
 
----------
+---
 
 ### Reading Material/References:

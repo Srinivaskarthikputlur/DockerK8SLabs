@@ -1,8 +1,10 @@
 # **Kubernetes Hands-on**
 
-### * *
+---
 
--------
+### **Lab Image : Kubernetes**
+
+---
 
 #### Step 1:
 
@@ -12,31 +14,28 @@
 cd /root/container-training/Kubernetes/K8s-Hands-on
 ```
 
-* Fetch the IP of the provisioned server
-
-```commandline
-serverip
-```
-
-* Setup a K8s cluster on the provisioned server. Replace `<serverip>` with the public IP of the server provisioned.
+* Setup a K8s cluster on the provisioned server.
 
 ```commandline
 export HOME=/root
-
-kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address <serverip>
+```
+```commandline
+kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address $(serverip)
 ```
 
 * Copy the `config` to communicate with `kube-apiserver` using `kubectl`
 
 ```commandline
 mkdir -p $HOME/.kube
-
+```
+```commandline
 cp /etc/kubernetes/admin.conf $HOME/.kube/config
-
+```
+```commandline
 chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -44,7 +43,8 @@ chown $(id -u):$(id -g) $HOME/.kube/config
 
 ```commandline
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-
+```
+```commandline
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
 ```
 
@@ -54,7 +54,7 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
 kubectl taint nodes --all node-role.kubernetes.io/master-
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -62,13 +62,15 @@ kubectl taint nodes --all node-role.kubernetes.io/master-
 
 ```commandline
 kubectl get nodes
-
+```
+```commandline
 kubectl -n kube-system get pods
-
+```
+```commandline
 kubectl get svc
 ```
 
--------
+---
 
 #### Step 4:
 
@@ -76,7 +78,8 @@ kubectl get svc
 
 ```commandline
 kubectl create deployment --image nginx we45-nginx
-
+```
+```commandline
 kubectl get pods
 ```
 
@@ -84,9 +87,11 @@ kubectl get pods
 
 ```commandline
 kubectl get deployment
-
+```
+```commandline
 kubectl scale deployment --replicas 3 we45-nginx
-
+```
+```commandline
 kubectl get pods
 ```
 
@@ -94,7 +99,8 @@ kubectl get pods
 
 ```commandline
 kubectl expose deployment we45-nginx --port=80 --type=NodePort
-
+```
+```commandline
 kubectl get services
 ```
 
@@ -105,14 +111,16 @@ kubectl get services
 
 * Access the nginx service on the browser
 
-```commandline
-# Fetch the IP of the provisioned server
-serverip
+> ###### Fetch the IP of the provisioned server
 
+```commandline
+serverip
+```
+```commandline
 http://<serverip>:<nodePort>
 ```
 
--------
+---
 
 #### Step 5:
 
@@ -120,17 +128,21 @@ http://<serverip>:<nodePort>
 
 ```commandline
 kubectl delete service we45-nginx
-
+```
+```commandline
 kubectl delete deployment we45-nginx
-
+```
+```commandline
 kubectl get service
-
+```
+```commandline
 kubectl get deployment
-
+```
+```commandline
 kubectl get pods
 ```
 
--------
+---
 
 #### Step 6:
 
@@ -138,7 +150,8 @@ kubectl get pods
 
 ```commandline
 kubectl create namespace wecare
-
+```
+```commandline
 kubectl get namespace
 ```
 
@@ -146,26 +159,31 @@ kubectl get namespace
 
 ```commandline
 kubectl -n wecare create -f wecare-deployment.yaml
-
+```
+```commandline
 kubectl -n wecare create -f wecare-service.yaml
-
+```
+```commandline
 kubectl get deployment
-
+```
+```commandline
 kubectl -n wecare get deployment
-
+```
+```commandline
 kubectl -n wecare get service
 ```
 
 * The `NodePort` service can be accessed on the browser
 
+> ###### Fetch the IP of the provisioned server
 ```commandline
-# Fetch the IP of the provisioned server
 serverip
-
+```
+```commandline
 http://<serverip>:<nodePort>
 ```
 
--------
+---
 
 #### Step 7:
 
@@ -175,6 +193,6 @@ http://<serverip>:<nodePort>
 kubectl delete ns wecare
 ```
 
----------
+---
 
 ### Reading Material/References:

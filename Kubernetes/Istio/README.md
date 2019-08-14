@@ -1,10 +1,16 @@
-# Istio for Network Security Policies
+# **Istio for Network Security Policies**
+
+---
 
 ## Objective
 
 * In the K8s Attack exercies, RCE could have been prevented if `reverse shell` was blocked by Network Security controls
 
 * Istio by default blocks `egress`. 
+
+#### **Lab Image : Kubernetes**
+
+---
 
 ##### Step 1:
 
@@ -28,6 +34,8 @@ ls
 cd istio-1.x.x
 ```
 
+---
+
 ##### Step 2:
 
 * Install Istio without mutual TLS authentication between sidecars
@@ -44,6 +52,8 @@ kubectl get svc -n istio-system
 kubectl get pods -n istio-system
 ```
 
+---
+
 ##### Step 3:
 
 * Apply automatic sidecar injection to the `default` namespace
@@ -52,12 +62,15 @@ kubectl get pods -n istio-system
 kubectl label namespace default istio-injection=enabled
 ```
 
+---
+
 ##### Step 4:
 
 * Navigate to `K8s-Cluster-Attack` and try to run the exercise again
 
 * Observe the results
 
+---
 
 ##### Step 5:
 
