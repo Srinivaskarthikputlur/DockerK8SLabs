@@ -1,5 +1,9 @@
 ### Serverless
 
+  * [Using the Labs](using-the-labs/README.md)
+
+  * [Configure AWS](aws-configure/README.md)
+
   * [Deploy a Function](Deploy_a_Function/README.md)  ####### Fix Path
 
   * [Event-Injection-S3](Event-Injection-S3/README.md)

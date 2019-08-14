@@ -1,5 +1,7 @@
 ### Kubernetes
 
+  * [Using the Labs](using-the-labs/README.md)
+
   * [Kubernetes Hands-on](K8s-Hands-On/README.md)
 
   * [Attacking a K8s Cluster](K8s-Cluster-Attack/README.md)
