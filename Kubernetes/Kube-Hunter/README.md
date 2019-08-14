@@ -4,7 +4,7 @@
 
 > #### Scanning a K8s cluster for vulnerabilities
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
 
 ---
 
