@@ -14,6 +14,8 @@
 
   * [JWK Authentication Bypass](JWT-JWK/README.md)
 
+  * [None-Signed-Token](None-Signed-Token/README.md)
+
   * [Deploy Architect Function in your AWS Lambda](insecure-deployment/README.md)
 
   * [DynamoDB Injection](DynamoDB-Injection/README.md)
@@ -29,37 +31,3 @@
   * [Serverless Secrets Management](Secrets-Management/README.md)
 
   * [serverless-ci](serverless-ci/README.md)
-
-
-
-
-
-
-  * [None-Signed-Token](None-Signed-Token/README.md)
-
-  
-
-  * [SQL Injection - Faas](SQL_Injection-Faas/README.md)   ####### Fix Path
-
-
-
-
-
-
-
-
-
------
-
-
-* [Insecure Deserialization](Insecure-Deserialization/README.md)
-
- 
-##### New labs to be added in slides/Extras
-
-
-
-  * [Server-Side-Template-Injection](Server-Side-Template-Injection/README.md)
-
-  * [Serverless-Attack](Serverless-Attack/README.md)
-

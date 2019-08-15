@@ -7,7 +7,7 @@
 * ##### Steal meta-data from the said function
 * ##### Use the stolen data to compromise AWS service(s)
 * ##### Gain access to AWS service(s), steal necessary information
-* ##### Deface a [website](https://serverless-defaceme.netlify.com/) that using the info
+* ##### Deface a [website](https://serverless-defaceme.netlify.com/) using the info
 
 -------
 
