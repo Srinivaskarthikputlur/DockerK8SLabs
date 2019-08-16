@@ -1,9 +1,10 @@
 # **`None` Signed Token**
 
+---
 
-### *  *
+### **Lab Image : `Serverless`**
 
--------
+---
 
 #### Step 1:
 
@@ -15,10 +16,9 @@ http://sls-training-ui.s3-website-us-east-1.amazonaws.com/
 
 * Register and Login to the Application
 
-### *Note: The details provided CAN be fake and we highly recommend it!*
+> **NOTE**: The details provided CAN be fake and we highly recommend it!*
 
-
--------
+---
 
 #### Step 2:
 
@@ -40,9 +40,11 @@ http://sls-training-ui.s3-website-us-east-1.amazonaws.com/
 http GET https://3u97ne6l2g.execute-api.us-east-1.amazonaws.com/latest/none Authorization:<token>
 ```
 
-### *It should return with a response similar to the one below:*
+* It should return with a response similar to the one below:
 
-```commandline
+> **EXAMPLE**:
+
+```text
 root@we45-VirtualBox:/home/we45# http GET https://3u97ne6l2g.execute-api.us-east-1.amazonaws.com/latest/none Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkB3aWRnZXQuY28ifQ.PSIL13J1t8Rrfd33fxgO2X3EaDaFQcsa0S3dAi07GLU
 HTTP/1.1 200 OK
 Access-Control-Allow-Credentials: true
@@ -69,7 +71,3 @@ x-amzn-RequestId: 8a1c7c11-c0e0-11e8-9e6d-b3dfa2e0c648
     }
 }
 ```
-
----------
-
-### Reading Material/References:

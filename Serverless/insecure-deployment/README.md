@@ -1,9 +1,10 @@
 # **Insecure Deployment**
 
+---
 
-### *  *
+### **Lab Image : `Serverless`**
 
--------
+---
 
 #### Step 1:
 
@@ -13,7 +14,7 @@
 cd container-training/Serverless/insecure-deployment
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -31,6 +32,4 @@ npx deploy
 
 * On the browser, login to AWS console and look at the deployed function in `lambda`
 
--------
-
-### Reading Material/References:
+---
