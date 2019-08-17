@@ -1,9 +1,12 @@
 # **NodeJsScan**
 
+---
 
-### *NodeJS Static-Application-Security-Testing*
+> #### NodeJS Static-Application-Security-Testing
 
--------
+### **Lab Image : `Serverless`**
+
+---
 
 #### Step 1:
 
@@ -13,7 +16,7 @@
 cd /root/NodeJsScan
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -21,15 +24,18 @@ cd /root/NodeJsScan
 
 ```commandline
 virtualenv -p python2 venv
-
+```
+```commandline
 ls
-
+```
+```commandline
 source venv/bin/activate
-
+```
+```commandline
 pip install -r requirements.txt
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -38,7 +44,3 @@ pip install -r requirements.txt
 ```commandline
 python cli.py -r report -d /root/serverless-training-apps/jwt_example/
 ```
-
----------
-
-### Reading Material/References:

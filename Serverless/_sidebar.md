@@ -14,8 +14,6 @@
 
   * [JWK Authentication Bypass](JWT-JWK/README.md)
 
-  * [None-Signed-Token](None-Signed-Token/README.md)
-
   * [Deploy Architect Function in your AWS Lambda](insecure-deployment/README.md)
 
   * [DynamoDB Injection](DynamoDB-Injection/README.md)

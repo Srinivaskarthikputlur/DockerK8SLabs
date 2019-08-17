@@ -1,9 +1,10 @@
 # **Secrets Management**
 
+---
 
-### *  *
+### **Lab Image : `Serverless`**
 
--------
+---
 
 #### Step 1:
 
@@ -31,11 +32,11 @@ wget https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py && rm get-pip.py
 pip3 install chalice
 ```
 
--------
+---
 
 #### Step 2:
 
-* Install `Terraform`
+* Install `Terraform`, if it's not installed already.
 
 ```commandline
 wget https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip &&
@@ -49,11 +50,12 @@ terraform --version
 
 ```commandline
 terraform init
-
+```
+```commandline
 terraform apply
 ```
 
-### *Note: Select `us-west-2` when terraform prompts. Other regions are ok to. Please use a valid region*
+> **Note:**  Select `us-west-2` when terraform prompts. Other regions are ok to. Please use a valid region
 
 
 * If terraform has run successfully, it generates a `config.json`
@@ -62,7 +64,7 @@ terraform apply
 ls
 ```
 
--------
+---
 
 #### Step 3:
 
@@ -76,7 +78,8 @@ cd /root/container-training/Serverless/Secrets-Management/training-secrets
 
 ```commandline
 mkdir -p .chalice
-
+```
+```commandline
 cp ../ops/config.json .chalice/
 ```
 
@@ -84,11 +87,12 @@ cp ../ops/config.json .chalice/
 
 ```commandline
 pip3 install -r requirements.txt
-
+```
+```commandline
 pip3 install chalice
 ```
 
--------
+---
 
 #### Step 4:
 
@@ -103,7 +107,3 @@ chalice deploy
 ```commandline
 http POST https://<api-generated-url>/api/create-user email=<some-email>
 ```
-
--------
-
-### Reading Material/References:

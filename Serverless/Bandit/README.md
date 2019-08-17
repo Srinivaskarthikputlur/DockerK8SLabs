@@ -1,9 +1,12 @@
 # **Bandit**
 
+---
 
-### *Python Static-Application-Security-Testing*
+> #### Python Static-Application-Security-Testing
 
--------
+### **Lab Image : `Serverless`**
+
+---
 
 #### Step 1:
 
@@ -13,7 +16,7 @@
 cd /root/
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -29,6 +32,3 @@ bandit -r -f json DVFaaS-Damn-Vulnerable-Functions-as-a-Service/
 bandit -r -f json -o bandit_result.json DVFaaS-Damn-Vulnerable-Functions-as-a-Service/
 ```
 
----------
-
-### Reading Material/References:

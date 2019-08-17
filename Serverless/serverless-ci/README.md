@@ -1,9 +1,12 @@
 # **Serverless CI/CD**
 
+---
 
-### *CI/CD to run security scans, deploy function(s) to AWS Lambda and run scans on the deployed function(s)*
+> #### CI/CD to run security scans, deploy function(s) to AWS Lambda and run scans on the deployed function(s)
 
--------
+### **Lab Image : `Serverless`**
+
+---
 
 #### Step 1:
 
@@ -15,7 +18,7 @@
 
 * Once the repository has been imported, all files should be visible in the project.
 
--------
+---
 
 #### Step 2:
 
@@ -23,7 +26,7 @@
 
 * Create a new variables with `ACCESS_KEY_ID` and `SECRET_ACCESS_KEY` as the keys and paste their respective values. Ensure that the Variable is `Protected` and `Masked`
 
--------
+---
 
 #### Step 3:
 
@@ -41,12 +44,8 @@
 
 * Wait for the pipeline to execute and observe the results
 
----------
+---
 
 #### Step 4:
 
 * Login to AWS management console on the browser and verify if the Lambda function has been deployed successfully.
-
----------
-
-### Reading Material/References:

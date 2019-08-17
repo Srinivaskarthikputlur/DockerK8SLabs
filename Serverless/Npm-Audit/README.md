@@ -1,9 +1,12 @@
 # **NPM Audit**
 
+---
 
-### *NodeJs Source-Code-Analysis-Tool*
+> #### NodeJs Source-Code-Analysis-Tool
 
--------
+### **Lab Image : `Serverless`**
+
+---
 
 #### Step 1:
 
@@ -13,7 +16,7 @@
 cd /root/Cut-The-Funds-NodeJS
 ```
 
--------
+---
 
 #### Step 2:
 
@@ -22,7 +25,3 @@ cd /root/Cut-The-Funds-NodeJS
 ```commandline
 npm audit --json >> npm_audit.json
 ```
-
----------
-
-### Reading Material/References:
