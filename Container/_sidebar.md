@@ -26,7 +26,7 @@
 
   * [Limiting Docker Capabilities](DockerCapabilities/README.md)
 
-  * [Resource Management](Resouce-Management/README.md)
+  * [Resource Management](Resource-Management/README.md)
 
   * [Docker Slim](Containers/DockerSlim/README.md)
 
