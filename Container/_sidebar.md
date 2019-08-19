@@ -28,7 +28,7 @@
 
   * [Resource Management](Resource-Management/README.md)
 
-  * [Docker Slim](Containers/dockerslim/README.md)
+  * [Docker Slim](dockerslim/README.md)
 
   * [Trusted Docker Images](Trusted-Images/README.md)
 
