@@ -51,6 +51,7 @@ docker run -d -p 5432:5432 --name db arminc/clair-db:2019-01-01
 
 > ##### Wait for few seconds till the container is initialized
 
+```commandline
 docker run -d -p 6060:6060 --link db:postgres --name clair arminc/clair-local-scan:v2.0.1
 ```
 

@@ -16,7 +16,7 @@
 
   * [Vulnerable/Outdated Libraries](Vulnerable-Libraries/README.md)
 
-  * [Non-Root Container and Container Breakout](Non-Root-README.md)
+  * [Non-Root Container and Container Breakout](Non-Root-Container/README.md)
 
   * [Distroless vs Distro"ful" Containers](distroless/README.md)
 
@@ -26,9 +26,9 @@
 
   * [Limiting Docker Capabilities](DockerCapabilities/README.md)
 
-  * [Resource Management](Resouce-Management/README.md)
+  * [Resource Management](Resource-Management/README.md)
 
-  * [Docker Slim](Containers/DockerSlim/README.md)
+  * [Docker Slim](dockerslim/README.md)
 
   * [Trusted Docker Images](Trusted-Images/README.md)
 
