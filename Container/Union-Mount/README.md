@@ -8,13 +8,6 @@
 
 #### Step 1:
 
-* Install `unionfs` and `tree` on the provisioned server
-
-```commandline
-apt install unionfs-fuse tree
-
-```
-
 * Navigate to the Union Mount directory
 
 ```commandline
@@ -64,7 +57,7 @@ tree mnt
 
 ---
 
-#### Step 4:
+#### *Teardown*:
 
 * Unmount the mount that was created
 

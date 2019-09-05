@@ -105,7 +105,7 @@ docker rmi abhaybhargav/vul_flask
 
 ---
 
-#### Step 4:
+#### *Teardown*:
 
 * Stop all containers
 

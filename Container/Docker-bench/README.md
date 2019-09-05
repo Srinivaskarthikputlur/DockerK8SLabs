@@ -30,7 +30,7 @@ docker run -it --net host --pid host --userns host --cap-add audit_control -e DO
 
 ---
 
-#### Step 3:
+#### *Teardown*:
 
 * Stop all containers
 

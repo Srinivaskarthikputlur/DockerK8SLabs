@@ -31,24 +31,6 @@ docker ps
 
 > **NOTE**: We will have an separate section on `docker-compose` soon!*
 
-* Install [`anchorecli`](https://github.com/anchore/anchore-cli), the command line interface on top of the `Anchore Engine` REST API
-
-```commandline
-pip install anchorecli
-```
-
-* Set the necessary environment variables
-
-```commandline
-export ANCHORE_CLI_URL=http://localhost:8228/v1
-```
-```commandline
-export ANCHORE_CLI_USER=admin
-```
-```commandline
-export ANCHORE_CLI_PASS=foobar
-```
-
 ---
 
 #### Step 3:
@@ -89,7 +71,7 @@ anchore-cli image content docker.io/abhaybhargav/vul_flask:latest python
 
 ---
 
-#### Step 4:
+#### *Teardown*:
 
 * Stop all containers
 

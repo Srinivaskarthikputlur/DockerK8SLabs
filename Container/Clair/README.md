@@ -64,7 +64,7 @@ serverip
 
 ---
 
-#### Step 4:
+#### *Teardown*:
 
 * Stop all containers
 

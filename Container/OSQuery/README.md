@@ -10,19 +10,6 @@
 
 #### Step 1:
 
-* Install OSQuery on the provisioned server
-
-```commandline
-wget https://pkg.osquery.io/deb/osquery_3.3.2_1.linux.amd64.deb
-```
-```commandline
-dpkg -i osquery_3.3.2_1.linux.amd64.deb
-```
-
----
-
-#### Step 2:
-
 * Launch a few containers with insecure configurations
 
 > ##### Container Running in 'Privileged' Mode
@@ -45,7 +32,7 @@ osqueryi
 
 ---
 
-#### Step 3:
+#### Step 2:
 
 * Query for all containers running with the `--privileged` flag
 
@@ -102,7 +89,7 @@ select ds.name, ds.memory_usage, ds.memory_limit from docker_container_stats ds,
 
 ---
 
-#### Step 4:
+#### *Teardown*:
 
 * Stop all containers
 

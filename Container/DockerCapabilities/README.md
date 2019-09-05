@@ -42,7 +42,7 @@ docker run --cap-drop=ALL --cap-add=net_raw -it alpine ping -c 1 localhost
 
 ---
 
-#### Step 4:
+#### *Teardown*:
 
 * Stop all containers
 

@@ -16,12 +16,6 @@
 cd /root/container-training/Container/Trojanized-Docker-Image/
 ```
 
-* Install `dockerscan`
-
-```commandline
-export LC_CTYPE=en_US.UTF-8 && pip3 install dockerscan
-```
-
 * Pull and save the docker image that is to be trojanized
 
 ```commandline
@@ -32,14 +26,6 @@ docker pull abhaybhargav/vul_flask && docker save abhaybhargav/vul_flask:latest 
 
 #### Step 2:
 
-* Set the necessary environment variables for `dockerscan` to run
-
-```commandline
-export LC_ALL=C.UTF-8
-```
-```commandline
-export LANG=C.UTF-8
-```
 
 * Fetch the IP of the provisioned server
 
@@ -91,7 +77,7 @@ docker run -d -p 5000:5000 abhaybhargav/vul_flask
 
 ---
 
-#### Step 5:
+#### *Teardown*:
 
 * Stop/Close the `reverse-shell` tab
 

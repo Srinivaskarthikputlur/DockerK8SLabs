@@ -182,7 +182,7 @@ touch /tmp/shell.py
 
 ---
 
-#### Step 8:
+#### *Teardown*:
 
 * Exit from the `tmux` sessions and stop all the containers
 

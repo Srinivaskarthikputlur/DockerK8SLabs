@@ -49,7 +49,7 @@ exit
 
 ---
 
-#### Step 3:
+#### *Teardown*:
 
 * Stop all containers
 

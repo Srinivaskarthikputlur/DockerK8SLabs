@@ -16,12 +16,6 @@
 cd /root/container-training/Container/dockerslim/
 ```
 
-* Install `docker-slim`
-
-```commandline
-wget https://downloads.dockerslim.com/releases/1.25.0/dist_linux.tar.gz && tar -xvzf dist_linux.tar.gz && mv dist_linux/* /usr/local/bin/
-```
-
 * Ensure that `docker-slim` has been installed successfully
 
 ```commandline
@@ -89,7 +83,7 @@ docker images
 cd /root/container-training/Container/Clair/
 ```
 ```commandline
-docker run -d -p 5432:5432 --name db arminc/clair-db:2019-01-01
+docker run -d -p 5432:5432 --name db arminc/clair-db:latest
 ```
 
 > ##### Wait for few seconds till the container is initialized
@@ -128,7 +122,7 @@ serverip
 
 ---
 
-#### Step 6:
+#### *Teardown*:
 
 * Stop all containers
 

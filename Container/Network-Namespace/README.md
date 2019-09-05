@@ -54,7 +54,7 @@ route -n
 
 ---
 
-#### Step 4:
+#### *Teardown*:
 
 * Exit from the Network namespace
 

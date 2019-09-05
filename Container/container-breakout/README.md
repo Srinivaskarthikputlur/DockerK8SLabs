@@ -87,7 +87,7 @@ exit
 
 ---
 
-#### Step 4:
+#### *Teardown*:
 
 * Stop all containers
 
@@ -179,7 +179,7 @@ exit
 
 ---
 
-#### Step 4:
+#### *Teardown*:
 
 * Stop all containers
 
@@ -251,7 +251,7 @@ kill <PID>
 
 ---
 
-#### Step 4:
+#### *Teardown*:
 
 * Exit from the `tmux` sessions and stop all the containers
 
@@ -320,9 +320,6 @@ echo "http://$(serverip):4243/images/json"
 * Create and activate the python virtual environment and run the script that will launch a malicious container via. the docker API.
 
 ```commandline
-apt install -y virtualenv && export LC_ALL="en_US.UTF-8" && export LC_CTYPE="en_US.UTF-8"
-```
-```commandline
 virtualenv venv
 ```
 ```commandline
@@ -378,7 +375,7 @@ lsmod | grep isofs
 
 ---
 
-#### Step 5:
+#### *Teardown*:
 
 * Remove the `isofs` module that has been previously loaded and confirm
 

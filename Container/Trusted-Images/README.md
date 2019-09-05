@@ -103,7 +103,7 @@ docker trust inspect <username>/trusted:latest
 
 ---
 
-#### Step 6:
+#### *Teardown*:
 
 * Disable `Content Trust` to pull images for other exercises
 

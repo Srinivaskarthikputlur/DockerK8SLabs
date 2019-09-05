@@ -10,12 +10,6 @@
 
 #### Step 1:
 
-* Install `auditd`
-
-```commandline
-apt install auditd
-```
-
 * Check if the `auditd` service is running. If it's not, start the `auditd` service.
 
 ```commandline
@@ -70,7 +64,7 @@ ausearch --start today --raw | aureport -x --summary
 
 ---
 
-#### Step 5:
+#### *Teardown*:
 
 * Stop all containers
 

@@ -45,7 +45,7 @@ stress --cpu 10 --timeout 5
 
 ---
 
-#### Step 3:
+#### *Teardown*:
 
 * Stop all containers
 

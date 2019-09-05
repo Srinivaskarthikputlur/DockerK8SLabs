@@ -16,12 +16,6 @@
 docker run -d -it -p 8080:80 vulnerables/cve-2014-6271
 ```
 
-* Fetch the public IP of the server
-
-```commandline
-serverip
-```
-
 ---
 
 #### Step 2:
@@ -52,7 +46,7 @@ echo "http://$(serverip):8080"
 
 ---
 
-#### Step 3:
+#### *Teardown*:
 
 * Stop all containers
 

@@ -68,7 +68,7 @@ docker-compose down
 
 ---
 
-#### Step 5:
+#### *Teardown*:
 
 * Stop all containers
 

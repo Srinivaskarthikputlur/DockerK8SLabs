@@ -46,7 +46,7 @@ docker build -t distroful_flask_py .
 cd /root/container-training/Container/Clair/
 ```
 ```commandline
-docker run -d -p 5432:5432 --name db arminc/clair-db:2019-01-01
+docker run -d -p 5432:5432 --name db arminc/clair-db:latest
 ```
 
 > ##### Wait for few seconds till the container is initialized
@@ -85,7 +85,7 @@ serverip
 
 ---
 
-#### Step 5:
+#### *Teardown*:
 
 * Stop all containers
 
