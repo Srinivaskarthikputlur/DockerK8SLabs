@@ -17,9 +17,6 @@ cd /root/container-training/Kubernetes/K8s-Hands-on
 * Setup a K8s cluster on the provisioned server.
 
 ```commandline
-export HOME=/root
-```
-```commandline
 kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address $(serverip)
 ```
 
