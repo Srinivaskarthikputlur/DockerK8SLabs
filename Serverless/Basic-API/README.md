@@ -72,7 +72,7 @@ http GET https://XXXXXXXX.execute-api.us-west-2.amazonaws.com/dev/hello
 
 ---
 
-### Step 6:
+#### *Teardown*:
 
 * On the provisioned server, navigate to `Basic-API` directory.
 

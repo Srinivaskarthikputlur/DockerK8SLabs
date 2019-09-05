@@ -117,7 +117,7 @@ http POST <https://xxxx.execute-api.us-east-1.amazonaws.com/dev/dynamo-search> d
 
 ---
 
-#### Step 7:
+#### *Teardown*:
 
 * Navigate to `DynamoDB-Injection` directory
 

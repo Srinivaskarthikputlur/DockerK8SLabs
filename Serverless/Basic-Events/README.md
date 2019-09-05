@@ -98,7 +98,7 @@ START RequestId: 1066617f-4b0f-4683-b91b-ffbd81e40a86 Version: $LATEST
 
 ---
 
-#### Step 7:
+#### *Teardown*:
 
 * On the provisioned server, navigate to `Basic-Event` directory.
 

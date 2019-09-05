@@ -164,7 +164,7 @@ x-amzn-RequestId: e66e15fb-b1b2-11e9-8818-53f47d545fa4
 
 ---
 
-#### Step 8:
+#### *Teardown*:
 
 * Navigate to the `Algo-Confusion` directory
  

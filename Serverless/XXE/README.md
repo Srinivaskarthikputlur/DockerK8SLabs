@@ -70,7 +70,7 @@ sls logs --function xxe
 
 ---
 
-#### Step 5:
+#### *Teardown*:
 
 * On the provisioned server, navigate to `XXE` directory.
 
