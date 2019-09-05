@@ -27,12 +27,6 @@ tmux split-window -v
 
 #### Step 2:
 
-* Update container name in the deployment spec file
-
-```commandline
-sed -i -e 's/abhaybhargav/we45/g' ngflaskredis-deployment.yml
-```
-
 * Setup the insecure cluster and start the flask stack to be run on the cluster. Wait for the command to complete.
 
 ```commandline
@@ -380,7 +374,7 @@ python3 tornado_server.py
 
 ---
 
-#### Step 11:
+#### *Teardown*:
 
 * Stop the listener, pods and services that were created
 

@@ -74,7 +74,7 @@ python3 tornado_server.py
 
 ---
 
-#### Step 5:
+#### *Teardown*:
 
 * Stop the Malicious event-generator and Falco daemonset
 

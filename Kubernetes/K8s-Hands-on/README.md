@@ -185,7 +185,7 @@ http://<serverip>:<nodePort>
 
 ---
 
-#### Step 7:
+#### *Teardown*:
 
 * The `service` and `deployment` can be deleted by deleting the `namespace`.
 

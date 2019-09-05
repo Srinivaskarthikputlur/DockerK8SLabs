@@ -123,7 +123,7 @@ serverip
 
 ---
 
-#### Step 7:
+#### *Teardown*:
 
 * On the server provisioned, stop all the pods and services running by deleting the `monitoring` namespace
 

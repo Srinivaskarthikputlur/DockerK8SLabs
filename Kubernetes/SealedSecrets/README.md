@@ -63,7 +63,7 @@ kubectl get secrets
 
 ---
 
-#### Step 5:
+#### *Teardown*:
 
 * Delete the created sealed secret, controller and the custom resource definition
 

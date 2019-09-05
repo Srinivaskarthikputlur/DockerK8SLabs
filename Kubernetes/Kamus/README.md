@@ -105,7 +105,7 @@ mysql -u root -p
 
 ---
 
-#### Step 6:
+#### *Teardown*:
 
 * Exit the Shell and the container
 

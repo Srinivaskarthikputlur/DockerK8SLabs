@@ -213,7 +213,7 @@ kubectl logs <sample-app-xxxxxxxx>
 
 ---
 
-#### Step 9:
+#### *Teardown*:
 
 * Stop all the deployments and services created
 

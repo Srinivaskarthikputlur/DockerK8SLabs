@@ -121,7 +121,7 @@ kubectl --context=restricteduser-context delete pod <pod_name>
 
 ---
 
-#### Step 6:
+#### *Teardown*:
 
 * To Remove the `Role`, `RoleBinding` and the `Pod`, delete the `restricted-namespace`. 
 

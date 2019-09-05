@@ -71,7 +71,7 @@ kubectl -n staging get pods
 
 ---
 
-#### Step 5:
+#### *Teardown*:
 
 * Stop the pods running on the `staging` namespace by deleting it
 
