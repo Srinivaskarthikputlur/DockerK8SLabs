@@ -30,7 +30,7 @@ tmux split-window -v
 * Setup the insecure cluster and start the flask stack to be run on the cluster. Wait for the command to complete.
 
 ```commandline
-./setup_insecure_kube.sh
+kubectl create clusterrolebinding badboy  --user system:anonymous --group system:unauthenticated --clusterrole cluster-admin --serviceaccount=default:default
 ```
 ```commandline
 ./setup_flask_stack.sh
@@ -399,6 +399,12 @@ kubectl delete pod mal-redis
 ```
 ```commandline
 kubectl delete configmap nginx-config
+```
+
+* Exit from `tmux` sessions
+
+```commandline
+exit
 ```
 
 ---
