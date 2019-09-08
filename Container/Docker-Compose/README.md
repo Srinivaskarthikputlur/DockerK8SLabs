@@ -44,6 +44,8 @@ cat conf.d/app.conf
 serverip
 ```
 
+* Edit the compose file and change the value of nginx port to `8090`. This is since port `80` is in-use already.
+
 * Build and launch the containers using docker-compose
 
 ```commandline
@@ -53,7 +55,7 @@ docker-compose up -d
 * Once the containers are up and running, access the application on the browser using the IP of the provisioned server
 
 ```commandline
-echo "http://$(serverip)"
+echo "http://$(serverip):8090"
 ```
 
 ---
