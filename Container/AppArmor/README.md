@@ -60,7 +60,7 @@ serverip
 > **EXAMPLE**: `sed -i -e 's/Server_IP_Here/192.168.1.1/g' reverse_shell.yml`
 
 ```commandline
-sed -i -e 's/Server_IP_Here/'"$(serverip)"'/g' reverse_shell.ymll
+sed -i -e 's/Server_IP_Here/'"$(serverip)"'/g' reverse_shell.yml
 ```
 
 * Confirm if `reverse_shell.yml` has been edited.
