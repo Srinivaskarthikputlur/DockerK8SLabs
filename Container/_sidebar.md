@@ -2,10 +2,6 @@
 
   * [Using the Labs](using-the-labs/README.md)
 
-  * [Union Mount File-System](Union-Mount/README.md)
-
-  * [Network Namespace](Network-Namespace/README.md)
- 
   * [Docker Hands-on](Docker-Hands-On/README.md)
 
   * [Dive](dive/README.md)
@@ -29,8 +25,6 @@
   * [Resource Management](Resource-Management/README.md)
 
   * [Docker Slim](dockerslim/README.md)
-
-  * [Trusted Docker Images](Trusted-Images/README.md)
 
   * [Monitoring Docker events with 'Auditd'](Auditd/README.md)
 
