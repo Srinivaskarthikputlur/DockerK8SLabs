@@ -64,16 +64,26 @@ docker exec -it vul_flask bash
 exit
 ```
 
-* Stop the running `vul_flask` container
+* Stop the running `vul_flask` container.
 
 ```commandline
 docker stop vul_flask
+```
+
+```commandline
+docker rm vul_flask
 ```
 
 * View all running and stopped containers
 
 ```commandline
 docker ps -a
+```
+
+* Remove the stopped `vul_flask` container
+
+```commandline
+docker stop vul_flask
 ```
 
 * Build and run a Docker image
