@@ -65,11 +65,15 @@ sleep 10
 
 * Step 8:  Run `clair-scan` against the `distroless_flask` image
 
+>> Note: `$(serverip)` will automatically takes your server ip.
+
 ```commandline
 ./clair-scanner --ip $(serverip) -r clair_distroless_flask_report.json distroless_flask_py
 ```
 
 * Step 9:  Run `clair-scan` against the `distroful_flask` image
+
+>> Note: `$(serverip)` will automatically takes your server ip.
 
 ```commandline
 ./clair-scanner --ip $(serverip) -r clair_distroful_flask_report.json distroful_flask_py

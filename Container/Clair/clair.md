@@ -46,6 +46,8 @@ docker pull abhaybhargav/vul_flask:latest
 
 * Step 5: Run Clair scan against the image and generate a `json` report
 
+>> Note: `$(serverip)` will automatically takes your server ip.
+
 ```commandline
 ./clair-scanner --ip $(serverip) -r clair_report.json abhaybhargav/vul_flask:latest
 ```

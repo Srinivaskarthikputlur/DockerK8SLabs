@@ -104,11 +104,15 @@ sleep 10
 
 * Step 14: Run `clair-scan` against the `abhaybhargav/vul_flask` image
 
+>> Note: `$(serverip)` will automatically takes your server ip.
+
 ```commandline
 ./clair-scanner --ip $(serverip) -r clair_report.json abhaybhargav/vul_flask
 ```
 
 * Step 15: Run `clair-scan` against the `abhaybhargav/vul_flask.slim` image
+
+>> Note: `$(serverip)` will automatically takes your server ip.
 
 ```commandline
 ./clair-scanner --ip $(serverip) -r clair_slim_report.json abhaybhargav/vul_flask.slim

