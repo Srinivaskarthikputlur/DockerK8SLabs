@@ -2,40 +2,40 @@
 
   * [Using the Labs](using-the-labs/README.md)
 
-  * [Docker Hands-on](Docker-Hands-On/README.md)
+  * [Docker Hands-on](Docker-Hands-On/docker_hands_on.md)
 
-  * [Dive](dive/README.md)
+  * [Dive](dive/dive.md)
 
-  * [Container Breakout](container-breakout/README.md)
+  * [Container Breakout](container-breakout/breakout.md)
 
-  * [Trojanized Docker Images](Trojanized-Docker-Image/README.md)
+  * [Trojanized Docker Images](Trojanized-Docker-Image/trojanized.md)
 
-  * [Vulnerable/Outdated Libraries](Vulnerable-Libraries/README.md)
+  * [Vulnerable/Outdated Libraries](Vulnerable-Libraries/vullib.md)
 
-  * [Non-Root Container and Container Breakout](Non-Root-Container/README.md)
+  * [Non-Root Container and Container Breakout](Non-Root-Container/nonroot.md)
 
-  * [Distroless vs Distro"ful" Containers](distroless/README.md)
+  * [Distroless vs Distro"ful" Containers](distroless/distro.md)
 
-  * [SecComp](seccomp/README.md)
+  * [SecComp](seccomp/seccomp.md)
 
-  * [AppArmor](AppArmor/README.md)
+  * [AppArmor](AppArmor/apparmor.md)
 
-  * [Limiting Docker Capabilities](DockerCapabilities/README.md)
+  * [Limiting Docker Capabilities](DockerCapabilities/dockercaps.md)
 
-  * [Resource Management](Resource-Management/README.md)
+  * [Resource Management](Resource-Management/resourcemanagement.md)
 
-  * [Docker Slim](dockerslim/README.md)
+  * [Docker Slim](dockerslim/dockerslim.md)
 
-  * [Monitoring Docker events with 'Auditd'](Auditd/README.md)
+  * [Monitoring Docker events with 'Auditd'](Auditd/auditd.md)
 
-  * [OsQuery Monitoring for Containers](OSQuery/README.md)
+  * [OsQuery Monitoring for Containers](OSQuery/osquery.md)
 
-  * [Clair](Clair/README.md)
+  * [Clair](Clair/clair.md)
 
   * [Docker Bench](Docker-bench/README.md)
   
-  * [Anchore](Anchore/README.md)
+  * [Anchore](Anchore/anchore.md)
 
-  * [CI for Containers](container-ci/README.md)
+  * [CI for Containers](container-ci/containerci.md)
 
-  * [Docker Compose](Docker-Compose/README.md)
+  * [Docker Compose](Docker-Compose/dockercompose.md)
