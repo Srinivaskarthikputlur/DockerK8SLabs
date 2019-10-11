@@ -2,30 +2,26 @@
 
   * [Using the Labs](using-the-labs/README.md)
 
-  * [Kubernetes Hands-on](K8s-Hands-On/README.md)
+  * [Kubernetes Hands-on](K8s-Hands-on/k8s-hands-on.md)
 
-  * [Attacking a K8s Cluster](K8s-Cluster-Attack/README.md)
+  * [Attacking a K8s Cluster](K8s-Cluster-Attack/k8s-cluster-attack.md)
 
-  * [Role Based Access Control](RoleBasedAccessControl/README.md)
+  * [Role Based Access Control](RoleBasedAccessControl/rbac.md)
 
-  * [Pod Security Policy](PodSecurityPolicy/README.md)
+  * [Pod Security Policy](PodSecurityPolicy/psp.md)
 
-  * [Kubeseal - Shared Secrets](SealedSecrets/README.md)
+  * [Kubeseal - Shared Secrets](SealedSecrets/kubeseal.md)
 
-  * [K8s Vault](Vault/README.md)
+  * [K8s Vault](Vault/vault.md)
 
-  * [Kamus](Kamus/README.md)
+  * [Kamus](Kamus/kamus.md)
 
-  * [KubeAudit](KubeAudit/README.md)
+  * [KubeAudit](KubeAudit/kubeaudit.md)
 
-  * [KubeSec](Kube-Sec/README.md)
+  * [KubeSec](Kube-Sec/kubesec.md)
 
-  * [KubeBench](Kube-Bench/README.md)
+  * [KubeBench](Kube-Bench/kube-bench.md)
 
-  * [KubeHunter](Kube-Hunter/README.md)
+  * [KubeHunter](Kube-Hunter/kube-hunter.md)
 
-  * [K8s + Prometheus + Grafana](Prometheus-Grafana/README.md)
-
-  * [Sysdig Falco](SysdigFalco/README.md)
-
-  * [Kubernetes CI/CD](kubernetes-ci/README.md)
+  * [Kubernetes CI/CD](kubernetes-ci/k8s-ci.md)
