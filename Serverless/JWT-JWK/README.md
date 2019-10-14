@@ -1,4 +1,4 @@
-## JWT - JKU Authorization Bypass
+# JWT - JKU Authorization Bypass
 
 **Note:** If you have not setup your aws cli follow [AWS-CLI-Configuration](aws-configure/README.md) under the `Setup` section*
 

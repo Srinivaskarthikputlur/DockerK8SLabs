@@ -4,19 +4,17 @@
 
   * [Configure AWS](aws-configure/README.md)
   
-  * [Basic API](Basic-API/README.md)
+  * [Basic API](Basic-API/basic-api.md)
   
-  * [Basic Events](Basic-Events/README.md)
+  * [Basic Events](Basic-Events/basic-events.md)
 
-  * [XXE Event Injection](XXE/README.md)
+  * [XXE Event Injection](XXE/xxe.md)
 
-  * [Algorithm Confusion](Algorithm-Confusion/README.md)
+  * [Algorithm Confusion](Algorithm-Confusion/algo-confusion.md)
 
   * [JWK Authentication Bypass](JWT-JWK/README.md)
 
-  * [Deploy Architect Function in your AWS Lambda](insecure-deployment/README.md)
-
-  * [DynamoDB Injection](DynamoDB-Injection/README.md)
+  * [DynamoDB Injection](DynamoDB-Injection/dynamodb-injection.md)
 
   * [LambdaGuard](Lambdaguard/README.md)
 
