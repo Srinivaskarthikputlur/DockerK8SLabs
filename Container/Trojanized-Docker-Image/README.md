@@ -85,6 +85,10 @@ docker run -d -p 5000:5000 abhaybhargav/vul_flask
 clean-docker
 ```
 
+```commandline
+docker rmi abhaybhargav/vul_flask
+```
+
 ---
 
 ### Reading Material/References:
