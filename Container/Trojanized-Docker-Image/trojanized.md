@@ -91,6 +91,11 @@ exit
 clean-docker
 ```
 
+* Step 14: Remove Trojanized container
+```commandline
+docker rmi abhaybhargav/vul_flask
+```
+
 ---
 
 ### Reading Material/References:
