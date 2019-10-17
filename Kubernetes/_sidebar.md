@@ -12,15 +12,9 @@
 
   * [Kubeseal - Shared Secrets](SealedSecrets/kubeseal.md)
 
-  <!-- * [K8s Vault](Vault/vault.md) -->
-
-  <!-- * [Kamus](Kamus/kamus.md) -->
-
   * [KubeAudit](KubeAudit/kubeaudit.md)
 
   * [KubeSec](Kube-Sec/kubesec.md)
-
-  <!-- * [KubeBench](Kube-Bench/kube-bench.md) -->
 
   * [KubeHunter](Kube-Hunter/kube-hunter.md)
 
