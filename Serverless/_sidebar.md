@@ -4,8 +4,6 @@
 
   * [Configure AWS](aws-configure/README.md)
   
-  <!-- * [Basic API](Basic-API/basic-api.md) -->
-  
   * [Basic Events](Basic-Events/basic-events.md)
 
   * [XXE Event Injection](XXE/xxe.md)
@@ -19,12 +17,6 @@
   * [LambdaGuard](Lambdaguard/README.md)
 
   * [Insecure Deserialization](Insecure-Deserialization/README.md)
-
-  <!-- * [SAST-1 Bandit](Bandit/README.md)
-
-  * [SAST-2 NodeJsScan](NodeJsScan/README.md) -->
-
-  <!-- * [Npm-Audit](Npm-Audit/README.md) -->
   
   * [Serverless Secrets Management](Secrets-Management/README.md)
 
