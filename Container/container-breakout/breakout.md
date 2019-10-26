@@ -89,7 +89,7 @@ exit
 cat /root/secret.txt
 ```
 
-### Teardown:
+### Teardown
 
 * Stop all containers
 
@@ -172,7 +172,7 @@ exit
 ufw status
 ```
 
-### Teardown:
+### Teardown
 
 * Stop all containers
 
