@@ -57,7 +57,7 @@ anchore-cli image content docker.io/abhaybhargav/vul_flask:latest os
 anchore-cli image content docker.io/abhaybhargav/vul_flask:latest python
 ```
 
-## Teardown:
+## Teardown
 
 * Stop all containers
 

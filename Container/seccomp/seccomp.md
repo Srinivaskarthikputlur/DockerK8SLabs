@@ -28,7 +28,7 @@ docker run -it --rm --security-opt seccomp:custom_profile.json alpine chmod 400 
 
 ---
 
-## Teardown:
+## Teardown
 
 * Stop all containers
 

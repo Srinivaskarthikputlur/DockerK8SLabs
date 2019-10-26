@@ -20,7 +20,7 @@ docker run -it --net host --pid host --userns host --cap-add audit_control -e DO
 
 > **NOTE**: The command exposes all the necessary host resources and volumes to run the scan
 
-## Teardown:
+## Teardown
 
 * Stop all containers
 

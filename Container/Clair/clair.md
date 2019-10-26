@@ -62,7 +62,7 @@ python -m SimpleHTTPServer 9090
 
 * Step 7: Open another browser tab, on the address bar, add `:9090` and press `Enter`. and check the results.
 
-## Teardown:
+## Teardown
 
 * Step 8: Stop `http server` using `ctrl + c`
 

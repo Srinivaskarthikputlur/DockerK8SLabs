@@ -38,9 +38,7 @@ cd /hostFS
 exit
 ```
 
----
-
-### Teardown:
+## Teardown
 
 * Stop all containers
 

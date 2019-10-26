@@ -66,7 +66,7 @@ docker run -d -p 5000:5000 abhaybhargav/vul_flask
 ls
 ```
 
-## Teardown:
+## Teardown
 
 * Step 11: Exit from the `reverse shell` type `ctrl + c`
 

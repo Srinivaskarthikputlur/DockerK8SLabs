@@ -248,7 +248,7 @@ exit
 exit
 ```
 
-## Teardown:
+## Teardown
 
 * Stop all the containers
 
