@@ -1,7 +1,8 @@
-## KubeSeal - Shared Secrets
----
+# KubeSeal - Shared Secrets
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
+
+---
 
 * Step 1: Navigate to the `SealedSecrets` directory on the provisioned server
 
@@ -42,7 +43,7 @@ kubectl create -f mysealedsecret.json
 kubectl get secrets
 ```
 
-#### *Teardown*:
+## Teardown
 
 * Step 1: Delete the created sealed secret, controller and the custom resource definition
 

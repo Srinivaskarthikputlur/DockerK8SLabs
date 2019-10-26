@@ -1,7 +1,8 @@
-## K8s Vault
----
+# K8s Vault
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
+
+---
 
 * Step 1: Navigate to the `Vault` directory on the provisioned server.
 
@@ -188,7 +189,7 @@ kubectl get pods
 kubectl logs <sample-app-xxxxxxxx>
 ```
 
-#### *Teardown*:
+## Teardown
 
 * Step 1: Stop all the deployments and services created
 

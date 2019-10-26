@@ -1,7 +1,8 @@
-## Kube-Hunter
----
+# Kube-Hunter
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
+
+---
 
 * Step 1: Navigate to the `KubeHunter` directory on the provisioned server.
 
@@ -31,7 +32,7 @@ docker run -it --rm --network host aquasec/kube-hunter
 ```
 > **NOTE**: Select 'Option 1' and enter the IP of the provisioned server
 
----------
+---
 
 ### Reading Material/References:
 

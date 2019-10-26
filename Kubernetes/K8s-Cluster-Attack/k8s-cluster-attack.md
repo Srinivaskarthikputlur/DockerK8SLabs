@@ -1,7 +1,8 @@
-## Attacking a K8s Cluster
----
+# Attacking a K8s Cluster
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
+
+---
 
 * Step 1: Navigate to the `K8s-Cluster-Attack` directory on the provisioned server.
 
@@ -348,7 +349,7 @@ python3 tornado_server.py
 
 ### *You should now see all the credit-card details being posted to the listener from the malicious redis pod*
 
-#### *Teardown*:
+## Teardown
 
 * Step 1: Stop the listener with `ctrl` + `c`. Terminate the pods and services that were created
 

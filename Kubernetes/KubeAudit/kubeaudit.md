@@ -1,7 +1,8 @@
-## KubeAudit
----
+# KubeAudit
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
+
+---
 
 * Step 1: Navigate to the `KubeAudit` directory on the provisioned server.
 

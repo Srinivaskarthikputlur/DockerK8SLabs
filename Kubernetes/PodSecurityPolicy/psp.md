@@ -1,5 +1,4 @@
-## Pod Security Policy
----
+# Pod Security Policy
 
 > #### There are multiple options that one can use to protect the runtime deployment of a Pod. One of them is the `PodSecurityPolicy`.
 
@@ -7,7 +6,9 @@
 
 > #### We are going to use a combination of `AppArmor` profiles, `Seccomp` and some good container security practices to protect our deployment
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
+
+---
 
 * Step 1: Navigate to the `PodSecurityPolicy` directory on the provisioned server.
 
@@ -84,7 +85,7 @@ cat /etc/passwd
 cat /etc/shadow
 ```
 
-#### *Teardown*:
+## Teardown
 
 * Step 1: Delete the pods
 

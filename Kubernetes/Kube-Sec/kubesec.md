@@ -1,8 +1,8 @@
-## KubeSec
+# KubeSec
+
+### **Lab Image : Kubernetes**
+
 ---
-
-#### **Lab Image : Kubernetes**
-
 
 * Step 1: Navigate to the `Kube-Sec` directory on the provisioned server.
 

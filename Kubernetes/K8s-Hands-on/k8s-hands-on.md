@@ -1,7 +1,8 @@
-## Kubernetes Hands-on
----
+# Kubernetes Hands-on
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
+
+---
 
 * Step 1: Navigate to the `K8s Hands On` directory on the provisioned server
 
@@ -155,7 +156,7 @@ serverip
 http://<serverip>:<nodePort>
 ```
 
-#### *Teardown*:
+## Teardown
 
 * Step 1: The `service` and `deployment` can be deleted by deleting the `namespace`.
 

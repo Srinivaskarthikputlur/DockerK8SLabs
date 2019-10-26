@@ -1,7 +1,8 @@
-## Role Based Access Control
----
+# Role Based Access Control
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
+
+---
 
 * Step 1: Navigate to the `RoleBasedAccessControl` directory on the provisioned server.
 
@@ -98,7 +99,7 @@ kubectl --context=restricteduser-context delete pod <pod_name>
 
 > **NOTE**: It will show the following Error: `Error from server (Forbidden): pods "nginx-xxxxxxxxxx-xxxxx" is forbidden: User "restricteduser" cannot delete pods in the namespace "restricted-namespace"`
 
-#### *Teardown*:
+## Teardown
 
 * Step 1: To Remove the `Role`, `RoleBinding` and the `Pod`, delete the `restricted-namespace`. 
 

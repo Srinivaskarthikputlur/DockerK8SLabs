@@ -1,7 +1,8 @@
-## KubeBench
----
+# KubeBench
 
-#### **Lab Image : Kubernetes**
+### **Lab Image : Kubernetes**
+
+---
 
 * Step 1: Navigate to the `Kube-Bench` directory on the provisioned server
 
