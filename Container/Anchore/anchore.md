@@ -1,4 +1,5 @@
 # Anchore
+
 > Anchore engine helps perform detailed analysis on container images that can be easily integrated in CI/CD pipelines.
 
 ### **Lab Image : Containers**
@@ -11,7 +12,7 @@
 cd /root/container-training/Container/Anchore/
 ```
 
-* Step 2: Launch Anchore.
+* Step 2: Launch Anchore
 
 ```commandline
 docker-compose up -d
@@ -56,8 +57,7 @@ anchore-cli image content docker.io/abhaybhargav/vul_flask:latest os
 anchore-cli image content docker.io/abhaybhargav/vul_flask:latest python
 ```
 
-
-### Teardown:
+## Teardown:
 
 * Stop all containers
 

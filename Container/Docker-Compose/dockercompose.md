@@ -32,8 +32,7 @@ docker-compose up -d
 
 * Step 5: Open another browser tab, on the address bar, add `:8090` and press `Enter`.
 
-
-### Teardown
+## Teardown
 
 * Step 6: Stop all the running containers
 
@@ -52,4 +51,3 @@ clean-docker
 ### Reading Material/References:
 
 * https://docs.docker.com/compose/overview/
-

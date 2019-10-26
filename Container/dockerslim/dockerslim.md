@@ -1,4 +1,5 @@
-# **DockerSlim**
+# DockerSlim
+
 > Minify "bloated" containers making it secure by decreasing the attack surface and using the 'auto-generated' SecComp profiles
 
 ### **Lab Image : Containers**
@@ -132,7 +133,7 @@ python -m SimpleHTTPServer 9090
 
 ---
 
-### Teardown:
+## Teardown:
 
 * Step 19: Stop `http server` using `ctrl + c`
 

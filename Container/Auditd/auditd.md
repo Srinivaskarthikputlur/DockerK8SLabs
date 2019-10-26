@@ -1,4 +1,5 @@
-# **Auditd**
+# Auditd
+
 >Docker access monitoring and accounting
 
 ### **Lab Image : Containers**
@@ -50,7 +51,7 @@ ausearch -k docker-daemon
 ausearch --start today --raw | aureport -x --summary
 ```
 
-### Teardown:
+## Teardown:
 
 * Step 6: Stop all containers
 

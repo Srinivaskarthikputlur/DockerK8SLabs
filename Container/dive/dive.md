@@ -1,10 +1,10 @@
-# **Dive**
-
----
+# Dive
 
 > #### Exploring Docker image(s) and layer contents with [`Dive`](https://github.com/wagoodman/dive/)
 
 ### **Lab Image : Containers**
+
+---
 
 * Step 1: Pull the image to be analyzed.
 
@@ -20,14 +20,13 @@ dive abhaybhargav/vul_flask
 
 ---
 
-### Teardown
+## Teardown
 
 * To exit from the `dive` window. Press `ctrl + c`
 
 ```commandline
 ctrl + c
 ```
-
 
 ### Reading Material/References:
 

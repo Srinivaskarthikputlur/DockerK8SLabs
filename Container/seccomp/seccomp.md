@@ -1,4 +1,4 @@
-# **SecComp**
+# SecComp
 
 > Secure Computing Profiles for Docker
 
@@ -26,8 +26,9 @@ cat custom_profile.json
 docker run -it --rm --security-opt seccomp:custom_profile.json alpine chmod 400 /etc/hostname
 ```
 
+---
 
-### Teardown:
+## Teardown:
 
 * Stop all containers
 

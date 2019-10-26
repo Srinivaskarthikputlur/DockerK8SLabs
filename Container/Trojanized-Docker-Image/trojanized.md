@@ -1,4 +1,5 @@
 # Trojanized Docker Images - DockerScan
+
 > A docker image can be trojanized with a tool called `DockerScan`. When a trojanized container is launched, the attacker can get a `reverse-shell` on-to the container
 
 ### **Lab Image : Containers**
@@ -16,7 +17,6 @@ cd /root/container-training/Container/Trojanized-Docker-Image/
 ```commandline
 docker pull abhaybhargav/vul_flask && docker save abhaybhargav/vul_flask:latest -o abhaybhargav-vul_flask
 ```
-
 
 * Step 3: Multiplex terminal session with `tmux` and split panes.
 
@@ -66,8 +66,7 @@ docker run -d -p 5000:5000 abhaybhargav/vul_flask
 ls
 ```
 
-
-### Teardown:
+## Teardown:
 
 * Step 11: Exit from the `reverse shell` type `ctrl + c`
 

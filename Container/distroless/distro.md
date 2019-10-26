@@ -1,4 +1,4 @@
-# **Distroless**
+# Distroless
 
 ### **Lab Image : Containers**
 
@@ -56,7 +56,7 @@ docker run -d -p 6060:6060 --link db:postgres --name clair arminc/clair-local-sc
 
 > ##### Wait for few seconds till the container is initialized
 
-or 
+or
 
 ```commandline
 sleep 10
@@ -91,10 +91,9 @@ python -m SimpleHTTPServer 9090
 
 >> Note: Only `clair_distroful_flask_report.json` results has been written.  
 
-
 ---
 
-### Teardown:
+## Teardown:
 
 * Stop `http server` using `ctrl + c`
 

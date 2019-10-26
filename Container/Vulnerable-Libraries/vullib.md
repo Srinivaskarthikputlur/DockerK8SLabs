@@ -1,4 +1,5 @@
 # Vulnerable Libraries
+
 > Some containers that are often used and available on `DockerHub` are not updated regularly, which results in them having vulnerable packages and libraries. Shellshock(Bashdoor) is one such vulnerability found in older versions of bash that haven't been updated.
 
 ### **Lab Image : Containers**
@@ -29,8 +30,7 @@ curl -H "user-agent: () { :; }; echo; echo; /bin/bash -c 'echo \"<html><body><h1
 
 * Step 5: Open another browser tab, on the address bar, add `:8080` and press `Enter`. and check the site.
 
-
-### Teardown:
+## Teardown:
 
 * Stop all containers
 

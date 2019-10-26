@@ -32,7 +32,7 @@
 
   * [Clair](Clair/clair.md)
 
-  * [Docker Bench](Docker-bench/README.md)
+  * [Docker Bench](Docker-bench/docker-bench.md)
   
   * [Anchore](Anchore/anchore.md)
 

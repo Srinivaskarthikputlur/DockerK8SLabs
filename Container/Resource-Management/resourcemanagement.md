@@ -1,4 +1,5 @@
 # Resource Management
+
 > Restricting host resources for a container
 
 ### **Lab Image : Containers**
@@ -23,7 +24,7 @@ apt update && apt install stress -y
 stress --cpu 10 --timeout 5
 ```
 
-### Teardown:
+## Teardown:
 
 * Step 4: Exit from the container
 

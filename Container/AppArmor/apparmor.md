@@ -5,6 +5,7 @@
 ### **Lab Image : Containers**
 
 ---
+
 ## Without AppArmor
 
 * Step 1:  Navigate to the `AppArmor` directory.
@@ -60,7 +61,6 @@ http --form POST http://$(serverip):5050/yaml_hammer file@reverse_shell.yml subm
 
 * Step 9: If the command has successfully executed, the reverse tcp shell in the right panel should be working. To run commands on the shell, switch to the right panel. using `ctrl` + `b` and then `right arrow key` 
 
-
 * Step 10: With a reverse-shell on the container, commands can be run on it.
 
 ```commandline
@@ -100,6 +100,7 @@ clean-docker
 ```
 
 ## With AppArmor
+
 > Let's try and prevent the same attack using `Apparmor`
 
 * Step 1:  Navigate to the `AppArmor` directory.
@@ -124,7 +125,6 @@ nc -l 1337
 ```
 
 * Step 4: Go to the left pane using `ctrl` + `b` and then `left arrow key`
-
 
 * Step 5: Load the apparmor profile to the provisioned server
 
@@ -180,7 +180,7 @@ touch /tmp/shell.py
 
 > **NOTE**: The reverse-shell and the commands do not work because we enabled the runtime security profile with AppArmor
 
-### Teardown
+## Teardown
 
 * Step 14: Exit from the container
 

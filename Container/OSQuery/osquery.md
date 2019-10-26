@@ -75,11 +75,11 @@ WHERE ug.gid IN (SELECT gid FROM groups WHERE groupname="docker");
 select ds.name, ds.memory_usage, ds.memory_limit from docker_container_stats ds, docker_containers dc where dc.id=ds.id;
 ```
 
-* Step 10: Exit from the OSQuery Interactive interface with `ctrl` + `c`
-
 ---
 
-### Teardown:
+## Teardown:
+
+* Step 10: Exit from the OSQuery Interactive interface with `ctrl` + `c`
 
 * Step 11: Stop all containers
 

@@ -1,12 +1,12 @@
-# **Container Breakout - Multiple Attacks**
-
----
+# Container Breakout - Multiple Attacks
 
 > #### Gaining access and tampering Host resources from a container
 
 ### **Lab Image : Containers**
 
-## *Volume Mounts*
+---
+
+## Volume Mounts
 
 * Step 1: Validate that you are the `root` user on the provisioned server
 
@@ -89,7 +89,6 @@ exit
 cat /root/secret.txt
 ```
 
-
 ### Teardown:
 
 * Stop all containers
@@ -100,7 +99,7 @@ clean-docker
 
 ---
 
-## *Host Network*
+## Host Network
 
 ---
 
@@ -183,7 +182,7 @@ clean-docker
 
 ---
 
-## *PID Boundary*
+## PID Boundary
 
 ---
 
@@ -249,13 +248,10 @@ exit
 exit
 ```
 
+## Teardown:
 
-#### *Teardown*:
-
-* stop all the containers
+* Stop all the containers
 
 ```commandline
 clean-docker
 ```
-
-### Reading Material/References:

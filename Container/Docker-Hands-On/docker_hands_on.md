@@ -1,9 +1,8 @@
 # Docker Hands-On
 
----
-
 ### **Lab Image : Containers**
 
+---
 
 * Step 1: Navigate to the `Docker Hands-on` directory
 
@@ -77,8 +76,7 @@ docker ps -a
 docker rm vul_flask
 ```
 
-
-## Build a container image using docker file
+### Build a docker image
 
 * Build and run a Docker image
 
@@ -117,6 +115,8 @@ docker run -d -p 5000:5000 helloworld:latest
 ```
 
 * Step 4: Open another tab and on the address bar, add `:5000` and press enter
+
+## Teardown
 
 * Step 5: Stop all containers
 
