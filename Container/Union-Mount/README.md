@@ -1,24 +1,16 @@
-# **Union Mount**
-
----
+# Union Mount
 
 ### **Lab Image : `Containers`**
 
 ---
 
-#### Step 1:
-
-* Navigate to the Union Mount directory
+* Step 1: Navigate to the Union Mount directory
 
 ```commandline
 cd /root/container-training/Container/Union-Mount/
 ```
 
----
-
-#### Step 2:
-
-* Create Three directories, sub-directories and files
+* Step 2: Create Three directories, sub-directories and files
 
 ```commandline
 mkdir Folder-1 Folder-2 mnt
@@ -33,23 +25,19 @@ touch Folder-1/File1.txt Folder-1/Dir1/dir1.txt Folder-1/Dir1/one.txt
 touch Folder-2/Dir1/file2.txt Folder-2/Dir1/two.txt Folder-2/Dir2/dir2_file.txt Folder-2/File2.txt
 ```
 
-* Check the structure of directories that have been created
+* Step 3: Check the structure of directories that have been created
 
 ```commandline
 tree .
 ```
 
----
-
-#### Step 3:
-
-* Mount the directories and files in `Folder-1` and `Folder-2` to `mnt`
+* Step 4: Mount the directories and files in `Folder-1` and `Folder-2` to `mnt`
 
 ```commandline
 unionfs-fuse -o dirs=Folder-1:Folder-2  mnt/
 ```
 
-* Check the structure of `mnt/`
+* Step 5: Check the structure of `mnt/`
 
 ```commandline
 tree mnt
@@ -57,15 +45,15 @@ tree mnt
 
 ---
 
-#### *Teardown*:
+## Teardown
 
-* Unmount the mount that was created
+* Step 6: Unmount the mount that was created
 
 ```commandline
 umount -l mnt
 ```
 
-* Remove the directories, sub-directories and files created
+* Step 7: Remove the directories, sub-directories and files created
 
 ```commandline
 rm -rf Folder-1 Folder-2 mnt

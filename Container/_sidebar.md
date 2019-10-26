@@ -1,10 +1,14 @@
 ### Containers
 
-  * [Using the Labs](using-the-labs/README.md)
+  * [Using the Lab System](using-the-labs/README.md)
+
+  * [Union Mount File-System](Union-Mount/README.md)
+
+  * [Network Namespace](Network-Namespace/README.md)
 
   * [Docker Hands-on](Docker-Hands-On/docker_hands_on.md)
 
-  * [Dive](dive/dive.md)
+  * [Analysing Docker layers with 'Dive'](dive/dive.md)
 
   * [Container Breakout](container-breakout/breakout.md)
 
@@ -24,7 +28,7 @@
 
   * [Resource Management](Resource-Management/resourcemanagement.md)
 
-  * [Docker Slim](dockerslim/dockerslim.md)
+  * [DockerSlim](dockerslim/dockerslim.md)
 
   * [Monitoring Docker events with 'Auditd'](Auditd/auditd.md)
 
@@ -36,6 +40,6 @@
   
   * [Anchore](Anchore/anchore.md)
 
-  * [CI for Containers](container-ci/containerci.md)
+  * [Container CI Pipeline](container-ci/containerci.md)
 
   * [Docker Compose](Docker-Compose/dockercompose.md)
